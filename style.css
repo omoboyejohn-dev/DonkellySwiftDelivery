@@ -2402,24 +2402,21 @@ footer {
 
 .deposit-page {
     background: #f5faf7;
-    color: var(--black);
+    min-height: 100vh;
 }
 
 
 /* =====================================================
-   BACK TO DASHBOARD
+   BACK BUTTON
 ===================================================== */
 
 .deposit-back {
     color: var(--gray);
     font-size: 13px;
     font-weight: 700;
-
     display: flex;
     align-items: center;
     gap: 7px;
-
-    transition: .3s;
 }
 
 .deposit-back:hover {
@@ -2433,11 +2430,9 @@ footer {
 
 .deposit-container {
     width: 92%;
-    max-width: 900px;
-
+    max-width: 850px;
     margin: auto;
-
-    padding: 45px 0 80px;
+    padding: 45px 0 70px;
 }
 
 
@@ -2446,34 +2441,42 @@ footer {
 ===================================================== */
 
 .deposit-heading {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
-.deposit-label {
+.deposit-heading-icon {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    background: var(--light-green);
     color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
 
-    font-size: 11px;
+.deposit-heading p {
+    color: var(--green);
+    font-size: 10px;
     font-weight: 800;
-
-    letter-spacing: 1.2px;
-
-    margin-bottom: 6px;
+    letter-spacing: 1px;
 }
 
 .deposit-heading h1 {
-    font-size: 32px;
+    font-size: 28px;
     line-height: 1.2;
 }
 
-.deposit-heading > p:last-child {
+.deposit-heading span {
+    display: block;
     color: var(--gray);
-
-    font-size: 13px;
-
-    max-width: 600px;
-
-    margin: 8px auto 0;
+    font-size: 12px;
+    margin-top: 4px;
 }
 
 
@@ -2483,266 +2486,42 @@ footer {
 
 .deposit-card {
     background: #ffffff;
-
     border: 1px solid var(--border);
-
-    border-radius: 17px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,.05);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    margin-bottom: 20px;
 }
-
-
-/* =====================================================
-   CARD HEADER
-===================================================== */
 
 .deposit-card-header {
-    padding: 23px 25px;
-
-    border-bottom: 1px solid var(--border);
-
     display: flex;
+    justify-content: space-between;
     align-items: center;
-
-    gap: 13px;
-}
-
-.deposit-method-icon {
-    width: 48px;
-    height: 48px;
-
-    background: var(--light-green);
-    color: var(--green);
-
-    border-radius: 12px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 19px;
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 .deposit-card-header h2 {
-    font-size: 17px;
+    font-size: 19px;
 }
 
 .deposit-card-header p {
     color: var(--gray);
-    font-size: 11px;
+    font-size: 12px;
+    margin-top: 4px;
 }
 
-
-/* =====================================================
-   GENERATE AREA
-===================================================== */
-
-.generate-area {
-    text-align: center;
-
-    padding: 55px 25px;
-}
-
-.generate-icon {
-    width: 70px;
-    height: 70px;
-
-    margin: 0 auto 18px;
-
+.bank-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
     border-radius: 50%;
-
     background: var(--light-green);
-
     color: var(--green);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 27px;
-}
-
-.generate-area h3 {
-    font-size: 18px;
-}
-
-.generate-area p {
-    max-width: 470px;
-
-    margin: 7px auto 22px;
-
-    color: var(--gray);
-
-    font-size: 12px;
-}
-
-.generate-button {
-    border: none;
-
-    background: var(--green);
-    color: #ffffff;
-
-    padding: 13px 21px;
-
-    border-radius: 8px;
-
-    font-family: inherit;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    cursor: pointer;
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 8px;
-
-    transition: .3s;
-}
-
-.generate-button:hover {
-    background: var(--dark-green);
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 20px rgba(7,148,71,.2);
-}
-
-.generate-button:disabled {
-    opacity: .8;
-    cursor: not-allowed;
-}
-
-
-/* =====================================================
-   PROCESSING
-===================================================== */
-
-.processing-area {
-    display: none;
-
-    text-align: center;
-
-    padding: 65px 25px;
-}
-
-.spinner {
-    width: 48px;
-    height: 48px;
-
-    border: 4px solid #dcefe3;
-
-    border-top-color: var(--green);
-
-    border-radius: 50%;
-
-    margin: auto auto 18px;
-
-    animation:
-        depositSpin .8s linear infinite;
-}
-
-@keyframes depositSpin {
-
-    to {
-        transform: rotate(360deg);
-    }
-
-}
-
-.processing-area h3 {
-    font-size: 17px;
-}
-
-.processing-area p {
-    color: var(--gray);
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-
-/* =====================================================
-   ACCOUNT AREA
-===================================================== */
-
-.account-area {
-    display: none;
-
-    padding: 25px;
-}
-
-
-/* =====================================================
-   SUCCESS
-===================================================== */
-
-.account-success {
-    background: var(--light-green);
-
-    border: 1px solid #c5ead2;
-
-    border-radius: 11px;
-
-    padding: 15px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-}
-
-.account-success > i {
-    color: var(--green);
-    font-size: 24px;
-}
-
-.account-success strong {
-    font-size: 13px;
-}
-
-.account-success p {
-    color: var(--gray);
-    font-size: 11px;
-}
-
-
-/* =====================================================
-   TRANSFER NOTICE
-===================================================== */
-
-.transfer-notice {
-    margin-top: 18px;
-
-    background: #f7faf8;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    padding: 14px;
-
-    display: flex;
-
-    gap: 11px;
-}
-
-.transfer-notice > i {
-    color: var(--green);
-    margin-top: 2px;
-}
-
-.transfer-notice p {
-    color: var(--gray);
-
-    font-size: 12px;
-
-    line-height: 1.6;
+    font-size: 19px;
 }
 
 
@@ -2751,332 +2530,273 @@ footer {
 ===================================================== */
 
 .bank-details {
-    margin-top: 18px;
-
     border: 1px solid var(--border);
-
     border-radius: 12px;
-
     overflow: hidden;
 }
 
-.bank-detail-row {
-    min-height: 62px;
-
-    padding: 12px 15px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
+.bank-detail {
+    padding: 17px 18px;
     border-bottom: 1px solid var(--border);
 }
 
-.bank-detail-row:last-child {
+.bank-detail:last-child {
     border-bottom: none;
 }
 
-.bank-detail-row span {
+.bank-detail span {
+    display: block;
     color: var(--gray);
-    font-size: 12px;
+    font-size: 11px;
+    margin-bottom: 5px;
 }
 
-.bank-detail-row strong {
-    font-size: 13px;
-    text-align: right;
+.bank-detail strong {
+    font-size: 15px;
+    color: var(--black);
 }
 
-
-.account-number {
+.account-number-row {
     display: flex;
     align-items: center;
-    gap: 9px;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-.account-number strong {
-    color: var(--green);
-    font-size: 16px;
-    letter-spacing: .5px;
+.account-number-row strong {
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
-.account-number button {
-    width: 32px;
-    height: 32px;
-
-    border: 1px solid var(--border);
-
+.copy-button {
+    border: 1px solid var(--green);
     background: white;
-
     color: var(--green);
-
-    border-radius: 7px;
-
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
     cursor: pointer;
-
-    transition: .2s;
 }
 
-.account-number button:hover {
+.copy-button:hover {
     background: var(--light-green);
 }
 
 
 /* =====================================================
-   COPY MESSAGE
+   NOTICE
 ===================================================== */
 
-.copy-message {
-    display: none;
-
-    margin-top: 10px;
-
-    color: var(--green);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    text-align: right;
-}
-
-
-/* =====================================================
-   AUTOMATIC CREDIT
-===================================================== */
-
-.automatic-credit {
-    margin-top: 18px;
-
-    background: #f5faf7;
-
-    border-radius: 10px;
-
-    padding: 14px;
-
+.deposit-notice {
     display: flex;
-
-    gap: 11px;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 14px;
+    border-radius: 9px;
+    background: #f4f9f6;
+    border: 1px solid #dcece2;
 }
 
-.automatic-credit > i {
+.deposit-notice i {
     color: var(--green);
     margin-top: 2px;
 }
 
-.automatic-credit strong {
-    font-size: 12px;
-}
-
-.automatic-credit p {
+.deposit-notice p {
     color: var(--gray);
-
     font-size: 11px;
-
-    margin-top: 3px;
-
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 
 /* =====================================================
-   PAYMENT SUPPORT
+   PAID BUTTON
 ===================================================== */
 
-.payment-support {
-    margin-top: 17px;
-
-    background: #ffffff;
-
-    border: 1px solid var(--border);
-
-    border-radius: 12px;
-
-    padding: 16px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    color: var(--gray);
-
-    transition: .3s;
-}
-
-.payment-support > i:first-child {
-    width: 40px;
-    height: 40px;
-
-    flex-shrink: 0;
-
-    background: var(--light-green);
-
-    color: var(--green);
-
-    border-radius: 50%;
-
+.paid-button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
+    transition: .3s;
 }
 
-.payment-support span {
-    flex: 1;
-
-    font-size: 12px;
-}
-
-.payment-support strong {
-    color: var(--green);
-}
-
-.payment-support > i:last-child {
-    font-size: 11px;
-}
-
-.payment-support:hover {
-    border-color: #a9dfbd;
+.paid-button:hover {
+    background: var(--dark-green);
+    transform: translateY(-1px);
 }
 
 
 /* =====================================================
-   ACTIVITY CARD
+   PAYMENT FORM
 ===================================================== */
 
-.activity-card {
-    margin-top: 30px;
-
-    background: #ffffff;
-
-    border: 1px solid var(--border);
-
-    border-radius: 15px;
-
-    overflow: hidden;
+.payment-form-card {
+    display: none;
 }
 
-.activity-header {
-    padding: 21px 22px;
-
-    border-bottom: 1px solid var(--border);
+.deposit-form-group {
+    margin-bottom: 17px;
 }
 
-.activity-header h2 {
-    font-size: 19px;
-}
-
-
-/* =====================================================
-   TABLE
-===================================================== */
-
-.activity-table-wrapper {
-    overflow-x: auto;
-}
-
-.activity-table-wrapper table {
-    width: 100%;
-
-    border-collapse: collapse;
-
-    min-width: 600px;
-}
-
-.activity-table-wrapper th {
-    background: #f7faf8;
-
-    color: var(--gray);
-
-    text-align: left;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: .5px;
-
-    padding: 13px 18px;
-}
-
-.activity-table-wrapper td {
-    padding: 15px 18px;
-
-    border-top: 1px solid var(--border);
-
+.deposit-form-group label {
+    display: block;
     font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
 }
 
-.transaction-type {
+.deposit-input {
+    height: 50px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    gap: 7px;
+    padding: 0 13px;
+    background: #fff;
+    transition: .25s;
 }
 
-.transaction-type i {
+.deposit-input:focus-within {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(7,148,71,.08);
+}
+
+.deposit-input > i {
+    width: 25px;
     color: var(--green);
 }
 
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-.status {
-    display: inline-block;
-
-    padding: 5px 9px;
-
-    border-radius: 20px;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    text-transform: capitalize;
+.deposit-input input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13px;
 }
 
-.status.pending {
-    background: #fff7e6;
-    color: #b77900;
-}
-
-.status.successful {
-    background: var(--light-green);
-    color: var(--dark-green);
+.currency {
+    color: var(--green);
+    font-weight: 800;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 
 /* =====================================================
-   EMPTY ACTIVITY
+   MESSAGE
 ===================================================== */
 
-.empty-row td {
-    padding: 0;
+.deposit-message {
+    display: none;
+    padding: 11px 13px;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    font-size: 12px;
 }
 
-.empty-activity {
+.deposit-message.error {
+    background: #fff0f0;
+    color: #b42318;
+    border: 1px solid #ffd4d1;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit-payment-button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: .3s;
+}
+
+.submit-payment-button:hover {
+    background: var(--dark-green);
+}
+
+.submit-payment-button:disabled {
+    opacity: .7;
+    cursor: not-allowed;
+}
+
+
+/* =====================================================
+   PROCESSING
+===================================================== */
+
+.processing-card {
+    display: none;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 30px;
     text-align: center;
-
-    padding: 45px 20px;
-
-    color: var(--gray);
+    box-shadow: 0 10px 30px rgba(0,0,0,.05);
 }
 
-.empty-activity i {
+.processing-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 18px;
+    border-radius: 50%;
+    background: #fff8e8;
+    color: #d69200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 28px;
+}
 
-    color: #b8c4bd;
-
+.processing-card h2 {
+    font-size: 22px;
     margin-bottom: 8px;
 }
 
-.empty-activity p {
+.processing-card p {
+    max-width: 500px;
+    margin: auto;
+    color: var(--gray);
     font-size: 12px;
+    line-height: 1.7;
+}
+
+.processing-button {
+    display: inline-flex;
+    margin-top: 22px;
+    background: var(--green);
+    color: white;
+    padding: 11px 17px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 
@@ -3092,71 +2812,49 @@ footer {
     }
 
     .deposit-heading h1 {
-        font-size: 25px;
+        font-size: 23px;
     }
 
-    .deposit-heading > p:last-child {
-        font-size: 11px;
-    }
-
-    .deposit-card-header {
-        padding: 18px;
-    }
-
-    .generate-area {
-        padding: 45px 18px;
-    }
-
-    .account-area {
-        padding: 18px;
-    }
-
-    .bank-detail-row {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 5px;
-    }
-
-    .bank-detail-row strong {
-        text-align: left;
-    }
-
-    .account-number {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .payment-support {
-        padding: 13px;
-    }
-
-    .deposit-back {
-        font-size: 11px;
-    }
-
-}
-
-
-@media (max-width: 400px) {
-
-    .deposit-heading h1 {
-        font-size: 22px;
-    }
-
-    .dashboard-logo h2 {
-        font-size: 13px;
-    }
-
-    .deposit-back {
+    .deposit-heading span {
         font-size: 10px;
     }
 
-    .deposit-card-header h2 {
-        font-size: 15px;
+    .deposit-card {
+        padding: 20px;
+        border-radius: 13px;
     }
 
-    .generate-area h3 {
-        font-size: 16px;
+    .deposit-card-header h2 {
+        font-size: 17px;
+    }
+
+    .deposit-card-header p {
+        font-size: 10px;
+    }
+
+    .bank-detail {
+        padding: 15px;
+    }
+
+    .bank-detail strong {
+        font-size: 13px;
+    }
+
+    .account-number-row strong {
+        font-size: 17px;
+    }
+
+    .copy-button {
+        padding: 6px 8px;
+        font-size: 10px;
+    }
+
+    .deposit-back {
+        font-size: 11px;
+    }
+
+    .deposit-back i {
+        display: none;
     }
 
 }
