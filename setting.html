@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | Donkelly Swift Delivery</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5faf7;
+            color: #17221c;
+        }
+
+        .page {
+            width: 92%;
+            max-width: 850px;
+            margin: auto;
+            padding: 25px 0 60px;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .back-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid #dfe7e2;
+            background: #fff;
+            color: #079447;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background: #079447;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 21px;
+            margin-bottom: 4px;
+        }
+
+        .header p {
+            color: #66716b;
+            font-size: 11px;
+        }
+
+        .settings-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eaf8ef;
+            color: #079447;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CARDS */
+
+        .settings-card {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        .card-header {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e5ebe7;
+        }
+
+        .card-header h2 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .card-header p {
+            color: #66716b;
+            font-size: 10px;
+        }
+
+        /* SETTING ROW */
+
+        .setting-row {
+            padding: 17px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid #edf1ee;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .setting-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #eaf8ef;
+            color: #079447;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .setting-info h3 {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .setting-info p {
+            color: #66716b;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        /* TOGGLE */
+
+        .toggle {
+            position: relative;
+            width: 48px;
+            height: 26px;
+            flex-shrink: 0;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: #ccd5cf;
+            border-radius: 30px;
+            transition: .2s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            top: 3px;
+            background: #fff;
+            border-radius: 50%;
+            transition: .2s;
+        }
+
+        .toggle input:checked + .slider {
+            background: #079447;
+        }
+
+        .toggle input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+
+        /* LINKS */
+
+        .setting-link {
+            width: 100%;
+            border: none;
+            background: transparent;
+            text-align: left;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .setting-link:hover {
+            background: #f7faf8;
+        }
+
+        .arrow {
+            color: #9aa49e;
+            font-size: 12px;
+        }
+
+        /* ACCOUNT */
+
+        .account-box {
+            padding: 20px;
+        }
+
+        .account-email {
+            background: #f7faf8;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .account-email small {
+            display: block;
+            color: #66716b;
+            font-size: 9px;
+            margin-bottom: 5px;
+        }
+
+        .account-email strong {
+            font-size: 12px;
+            word-break: break-word;
+        }
+
+        /* DANGER */
+
+        .danger-button {
+            width: 100%;
+            border: 1px solid #f0d0d0;
+            background: #fff1f1;
+            color: #d93025;
+            padding: 13px;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .danger-button:hover {
+            background: #d93025;
+            color: #fff;
+        }
+
+        /* MESSAGE */
+
+        .message {
+            display: none;
+            padding: 11px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .message.success {
+            display: block;
+            background: #eaf8ef;
+            color: #079447;
+            border: 1px solid #bce8cc;
+        }
+
+        .message.error {
+            display: block;
+            background: #fff1f1;
+            color: #d93025;
+            border: 1px solid #f0d0d0;
+        }
+
+        /* LOADING */
+
+        .loading {
+            text-align: center;
+            padding: 45px;
+            color: #66716b;
+            font-size: 12px;
+        }
+
+        .loading i {
+            color: #079447;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .page {
+                width: 94%;
+                padding-top: 15px;
+            }
+
+            .header {
+                padding: 17px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .setting-row {
+                padding: 15px;
+            }
+
+            .setting-info {
+                gap: 10px;
+            }
+
+            .setting-icon {
+                width: 37px;
+                height: 37px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+
+    <section class="header">
+
+        <div class="header-left">
+
+            <button
+                class="back-button"
+                onclick="window.location.href='dashboard.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+            <div>
+
+                <h1>
+                    Settings
+                </h1>
+
+                <p>
+                    Manage your account preferences.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="settings-icon">
+
+            <i class="fa-solid fa-gear"></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         ACCOUNT SETTINGS
+    ========================================== -->
+
+    <section class="settings-card">
+
+        <div class="card-header">
+
+            <h2>
+                Account
+            </h2>
+
+            <p>
+                Manage your personal account.
+            </p>
+
+        </div>
+
+
+        <button
+            class="setting-row setting-link"
+            id="profileButton">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        My Profile
+                    </h3>
+
+                    <p>
+                        View and edit your personal information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </button>
+
+
+
+        <button
+            class="setting-row setting-link"
+            id="passwordButton">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Password & Security
+                    </h3>
+
+                    <p>
+                        Manage your account password.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         NOTIFICATIONS
+    ========================================== -->
+
+    <section class="settings-card">
+
+        <div class="card-header">
+
+            <h2>
+                Notifications
+            </h2>
+
+            <p>
+                Choose how you want to receive updates.
+            </p>
+
+        </div>
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Notifications
+                    </h3>
+
+                    <p>
+                        Receive updates about your account.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="notificationToggle"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-receipt"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Payment Updates
+                    </h3>
+
+                    <p>
+                        Receive updates when deposits are approved.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="paymentToggle"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+
+
+        <div class="setting-row">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-box"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Order Updates
+                    </h3>
+
+                    <p>
+                        Receive updates about your gift orders.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="toggle">
+
+                <input
+                    type="checkbox"
+                    id="orderToggle"
+                    checked>
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SUPPORT
+    ========================================== -->
+
+    <section class="settings-card">
+
+        <div class="card-header">
+
+            <h2>
+                Help & Support
+            </h2>
+
+            <p>
+                Get assistance with your account or orders.
+            </p>
+
+        </div>
+
+
+        <button
+            class="setting-row setting-link"
+            id="supportButton">
+
+            <div class="setting-info">
+
+                <div class="setting-icon">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Contact Support
+                    </h3>
+
+                    <p>
+                        Contact the Donkelly Swift Delivery support team.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <i class="fa-solid fa-chevron-right arrow"></i>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         ACCOUNT INFORMATION
+    ========================================== -->
+
+    <section class="settings-card">
+
+        <div class="card-header">
+
+            <h2>
+                Account Information
+            </h2>
+
+            <p>
+                Your current account email.
+            </p>
+
+        </div>
+
+
+        <div class="account-box">
+
+            <div class="account-email">
+
+                <small>
+                    EMAIL ADDRESS
+                </small>
+
+                <strong id="accountEmail">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         LOGOUT
+    ========================================== -->
+
+    <section class="settings-card">
+
+        <div class="card-header">
+
+            <h2>
+                Account Actions
+            </h2>
+
+            <p>
+                Sign out of your Donkelly account.
+            </p>
+
+        </div>
+
+
+        <div class="account-box">
+
+            <div
+                id="message"
+                class="message">
+            </div>
+
+
+            <button
+                class="danger-button"
+                id="logoutButton">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+
+<!-- ==========================================
+     FIREBASE
+========================================== -->
+
+<script type="module">
+
+
+import {
+
+    initializeApp
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+import {
+
+    getAuth,
+    onAuthStateChanged,
+    signOut
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+import {
+
+    getFirestore,
+    doc,
+    getDoc,
+    setDoc
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+/* ==========================================
+   FIREBASE CONFIG
+========================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+    authDomain:
+        "donkellyswiftdelivery.firebaseapp.com",
+
+    projectId:
+        "donkellyswiftdelivery",
+
+    storageBucket:
+        "donkellyswiftdelivery.firebasestorage.app",
+
+    messagingSenderId:
+        "547113841009",
+
+    appId:
+        "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+    measurementId:
+        "G-HFG8ENEEVB"
+
+};
+
+
+
+/* ==========================================
+   INITIALIZE FIREBASE
+========================================== */
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* ==========================================
+   ELEMENTS
+========================================== */
+
+const accountEmail =
+    document.getElementById(
+        "accountEmail"
+    );
+
+
+const notificationToggle =
+    document.getElementById(
+        "notificationToggle"
+    );
+
+
+const paymentToggle =
+    document.getElementById(
+        "paymentToggle"
+    );
+
+
+const orderToggle =
+    document.getElementById(
+        "orderToggle"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+let currentUser = null;
+
+
+
+/* ==========================================
+   SHOW MESSAGE
+========================================== */
+
+function showMessage(
+    text,
+    type
+) {
+
+    message.textContent =
+        text;
+
+    message.className =
+        "message " + type;
+
+}
+
+
+
+/* ==========================================
+   LOAD SETTINGS
+========================================== */
+
+async function loadSettings(
+    user
+) {
+
+    try {
+
+        accountEmail.textContent =
+            user.email ||
+            "No email";
+
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                user.uid
+            );
+
+
+        const snapshot =
+            await getDoc(
+                userRef
+            );
+
+
+        if (
+            snapshot.exists()
+        ) {
+
+            const data =
+                snapshot.data();
+
+
+            /*
+             * Load saved preferences.
+             */
+
+            if (
+                typeof data.notificationsEnabled ===
+                "boolean"
+            ) {
+
+                notificationToggle.checked =
+                    data.notificationsEnabled;
+
+            }
+
+
+            if (
+                typeof data.paymentNotificationsEnabled ===
+                "boolean"
+            ) {
+
+                paymentToggle.checked =
+                    data.paymentNotificationsEnabled;
+
+            }
+
+
+            if (
+                typeof data.orderNotificationsEnabled ===
+                "boolean"
+            ) {
+
+                orderToggle.checked =
+                    data.orderNotificationsEnabled;
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "SETTINGS LOAD ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   SAVE SETTING
+========================================== */
+
+async function saveSetting(
+    field,
+    value
+) {
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                currentUser.uid
+            );
+
+
+        await setDoc(
+            userRef,
+            {
+                [field]: value
+            },
+            {
+                merge: true
+            }
+        );
+
+
+        showMessage(
+            "Setting updated successfully.",
+            "success"
+        );
+
+
+        setTimeout(
+            function() {
+
+                message.className =
+                    "message";
+
+            },
+            2500
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "SAVE SETTING ERROR:",
+            error
+        );
+
+
+        showMessage(
+            "Unable to save setting: " +
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+
+/* ==========================================
+   AUTH CHECK
+========================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user) {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        await loadSettings(
+            user
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   NOTIFICATION TOGGLE
+========================================== */
+
+notificationToggle.addEventListener(
+    "change",
+    function() {
+
+        saveSetting(
+            "notificationsEnabled",
+            notificationToggle.checked
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   PAYMENT TOGGLE
+========================================== */
+
+paymentToggle.addEventListener(
+    "change",
+    function() {
+
+        saveSetting(
+            "paymentNotificationsEnabled",
+            paymentToggle.checked
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   ORDER TOGGLE
+========================================== */
+
+orderToggle.addEventListener(
+    "change",
+    function() {
+
+        saveSetting(
+            "orderNotificationsEnabled",
+            orderToggle.checked
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   PROFILE
+========================================== */
+
+document
+    .getElementById(
+        "profileButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "profile.html";
+
+        }
+    );
+
+
+
+/* ==========================================
+   PASSWORD
+========================================== */
+
+document
+    .getElementById(
+        "passwordButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "profile.html";
+
+        }
+    );
+
+
+
+/* ==========================================
+   SUPPORT
+========================================== */
+
+document
+    .getElementById(
+        "supportButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
+
+            window.location.href =
+                "support.html";
+
+        }
+    );
+
+
+
+/* ==========================================
+   LOGOUT
+========================================== */
+
+document
+    .getElementById(
+        "logoutButton"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to logout?"
+                );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            try {
+
+                await signOut(
+                    auth
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "LOGOUT ERROR:",
+                    error
+                );
+
+
+                showMessage(
+                    "Unable to logout. Please try again.",
+                    "error"
+                );
+
+            }
+
+        }
+    );
+
+
+</script>
+
+</body>
+
+</html>
