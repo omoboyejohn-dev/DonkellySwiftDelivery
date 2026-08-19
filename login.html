@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Donkelly Swift Delivery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="auth-header">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+
+            <div>
+                <h2>Donkelly <span>Swift Delivery</span></h2>
+                <p>Send gifts 🎁, share love ❤️</p>
+            </div>
+
+        </a>
+
+        <a href="index.html" class="back-home">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back Home
+        </a>
+
+    </header>
+
+
+    <!-- ================= LOGIN ================= -->
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-icon">
+                <i class="fa-solid fa-right-to-bracket"></i>
+            </div>
+
+            <h1>Welcome Back</h1>
+
+            <p class="auth-subtitle">
+                Login to your Donkelly Swift Delivery account
+                to continue sending gifts.
+            </p>
+
+
+            <form id="loginForm">
+
+                <!-- GMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Gmail
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Enter your Gmail address"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword()"
+                        >
+                            <i
+                                class="fa-regular fa-eye"
+                                id="passwordIcon"
+                            ></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONS -->
+
+                <div class="login-options">
+
+                    <label>
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+
+                    <a href="forgot-password.html">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <!-- ERROR -->
+
+                <div
+                    class="form-message error-message"
+                    id="errorMessage"
+                ></div>
+
+
+                <!-- SUCCESS -->
+
+                <div
+                    class="form-message success-message"
+                    id="successMessage"
+                ></div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+
+                    Login Account
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- REGISTER -->
+
+            <div class="auth-footer">
+
+                <p>
+                    Don't have an account?
+                    <a href="register.html">
+                        Create Account
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // =========================
+        // SHOW / HIDE PASSWORD
+        // =========================
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            const icon =
+                document.getElementById("passwordIcon");
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                icon.classList.remove(
+                    "fa-eye"
+                );
+
+                icon.classList.add(
+                    "fa-eye-slash"
+                );
+
+            } else {
+
+                password.type = "password";
+
+                icon.classList.remove(
+                    "fa-eye-slash"
+                );
+
+                icon.classList.add(
+                    "fa-eye"
+                );
+
+            }
+
+        }
+
+
+        // =========================
+        // LOGIN FORM
+        // =========================
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+
+        loginForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const errorMessage =
+                    document.getElementById("errorMessage");
+
+                const successMessage =
+                    document.getElementById("successMessage");
+
+
+                errorMessage.style.display =
+                    "none";
+
+                successMessage.style.display =
+                    "none";
+
+
+                if (!email || !password) {
+
+                    errorMessage.textContent =
+                        "Please enter your Gmail and password.";
+
+                    errorMessage.style.display =
+                        "block";
+
+                    return;
+                }
+
+
+                // TEMPORARY LOGIN
+
+                successMessage.textContent =
+                    "Login information is valid. Authentication will be connected next.";
+
+                successMessage.style.display =
+                    "block";
+
+
+                console.log({
+                    email: email
+                });
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
