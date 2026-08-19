@@ -27,9 +27,7 @@
 
 </head>
 
-
 <body class="auth-page">
-
 
 <header class="auth-header">
 
@@ -54,7 +52,6 @@
 
     </a>
 
-
     <a href="index.html" class="back-home">
 
         <i class="fa-solid fa-arrow-left"></i>
@@ -66,11 +63,9 @@
 </header>
 
 
-
 <main class="auth-container">
 
     <div class="auth-card">
-
 
         <div class="auth-icon">
 
@@ -78,11 +73,9 @@
 
         </div>
 
-
         <h1>
             Welcome Back
         </h1>
-
 
         <p class="auth-subtitle">
 
@@ -92,16 +85,13 @@
         </p>
 
 
-
         <form id="loginForm">
-
 
             <div class="form-group">
 
                 <label for="email">
                     Gmail
                 </label>
-
 
                 <div class="input-box">
 
@@ -120,18 +110,15 @@
             </div>
 
 
-
             <div class="form-group">
 
                 <label for="password">
                     Password
                 </label>
 
-
                 <div class="input-box">
 
                     <i class="fa-solid fa-lock"></i>
-
 
                     <input
                         type="password"
@@ -140,7 +127,6 @@
                         autocomplete="current-password"
                         required
                     >
-
 
                     <button
                         type="button"
@@ -160,7 +146,6 @@
             </div>
 
 
-
             <div class="login-options">
 
                 <label>
@@ -174,15 +159,11 @@
 
                 </label>
 
-
                 <a href="forgot-password.html">
-
                     Forgot Password?
-
                 </a>
 
             </div>
-
 
 
             <div
@@ -191,12 +172,10 @@
             ></div>
 
 
-
             <div
                 class="form-message success-message"
                 id="successMessage"
             ></div>
-
 
 
             <button
@@ -216,9 +195,7 @@
 
             </button>
 
-
         </form>
-
 
 
         <div class="auth-footer">
@@ -235,11 +212,9 @@
 
         </div>
 
-
     </div>
 
 </main>
-
 
 
 <script type="module">
@@ -247,7 +222,6 @@
     import {
         initializeApp
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
 
     import {
         getAuth,
@@ -257,11 +231,6 @@
         browserSessionPersistence
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
-
-
-    // =====================================================
-    // FIREBASE CONFIG
-    // =====================================================
 
     const firebaseConfig = {
 
@@ -289,32 +258,16 @@
     };
 
 
-
-    // =====================================================
-    // INITIALIZE FIREBASE
-    // =====================================================
-
     const app =
         initializeApp(firebaseConfig);
-
 
     const auth =
         getAuth(app);
 
 
-
-    // =====================================================
-    // ADMIN EMAIL
-    // =====================================================
-
     const ADMIN_EMAIL =
         "Danieloluwaseun221@gmail.com";
 
-
-
-    // =====================================================
-    // ELEMENTS
-    // =====================================================
 
     const loginForm =
         document.getElementById("loginForm");
@@ -350,22 +303,13 @@
         document.getElementById("loginButtonIcon");
 
 
-
-    // =====================================================
-    // PASSWORD SHOW / HIDE
-    // =====================================================
-
     passwordToggle.addEventListener(
         "click",
         function() {
 
-            if (
-                passwordInput.type ===
-                "password"
-            ) {
+            if (passwordInput.type === "password") {
 
-                passwordInput.type =
-                    "text";
+                passwordInput.type = "text";
 
                 passwordIcon.classList.remove(
                     "fa-eye"
@@ -377,8 +321,7 @@
 
             } else {
 
-                passwordInput.type =
-                    "password";
+                passwordInput.type = "password";
 
                 passwordIcon.classList.remove(
                     "fa-eye-slash"
@@ -394,60 +337,40 @@
     );
 
 
-
-    // =====================================================
-    // MESSAGE FUNCTIONS
-    // =====================================================
-
     function showError(message) {
 
-        errorMessage.textContent =
-            message;
+        errorMessage.textContent = message;
 
-        errorMessage.style.display =
-            "block";
+        errorMessage.style.display = "block";
 
-        successMessage.style.display =
-            "none";
+        successMessage.style.display = "none";
 
     }
 
 
     function showSuccess(message) {
 
-        successMessage.textContent =
-            message;
+        successMessage.textContent = message;
 
-        successMessage.style.display =
-            "block";
+        successMessage.style.display = "block";
 
-        errorMessage.style.display =
-            "none";
+        errorMessage.style.display = "none";
 
     }
 
 
     function clearMessages() {
 
-        errorMessage.style.display =
-            "none";
+        errorMessage.style.display = "none";
 
-        successMessage.style.display =
-            "none";
+        successMessage.style.display = "none";
 
     }
 
 
-
-    // =====================================================
-    // BUTTON LOADING
-    // =====================================================
-
     function setLoading(loading) {
 
-        loginButton.disabled =
-            loading;
-
+        loginButton.disabled = loading;
 
         if (loading) {
 
@@ -470,11 +393,6 @@
     }
 
 
-
-    // =====================================================
-    // LOGIN
-    // =====================================================
-
     loginForm.addEventListener(
         "submit",
         async function(event) {
@@ -483,12 +401,10 @@
 
             clearMessages();
 
-
             const email =
                 emailInput.value
                 .trim()
                 .toLowerCase();
-
 
             const password =
                 passwordInput.value;
@@ -521,8 +437,6 @@
                 setLoading(true);
 
 
-                // Remember user or current session
-
                 if (rememberMe.checked) {
 
                     await setPersistence(
@@ -539,8 +453,6 @@
 
                 }
 
-
-                // Firebase login
 
                 const userCredential =
                     await signInWithEmailAndPassword(
@@ -559,12 +471,14 @@
                 );
 
 
-                // =================================================
-                // ADMIN / CUSTOMER REDIRECT
-                // =================================================
-
                 setTimeout(
                     function() {
+
+                        /*
+                         * IMPORTANT:
+                         * admin-deposits.html is in the
+                         * root of the GitHub repository.
+                         */
 
                         if (
                             user.email &&
@@ -572,14 +486,10 @@
                             ADMIN_EMAIL.toLowerCase()
                         ) {
 
-                            // ADMIN
-
                             window.location.href =
-                                "admin/admin-deposits.html";
+                                "admin-deposits.html";
 
                         } else {
-
-                            // NORMAL CUSTOMER
 
                             window.location.href =
                                 "dashboard.html";
@@ -597,7 +507,6 @@
                     "Login error:",
                     error
                 );
-
 
                 setLoading(false);
 
@@ -674,7 +583,6 @@
     );
 
 </script>
-
 
 </body>
 
