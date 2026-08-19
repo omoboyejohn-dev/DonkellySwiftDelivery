@@ -12,7 +12,8 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -26,13 +27,12 @@
 
 </head>
 
-
 <body class="deposit-page">
-
 
 <header class="dashboard-header">
 
-    <a href="dashboard.html" class="dashboard-logo">
+    <a href="dashboard.html"
+       class="dashboard-logo">
 
         <div class="dashboard-logo-icon">
             <i class="fa-solid fa-bag-shopping"></i>
@@ -53,8 +53,8 @@
 
     </a>
 
-
-    <a href="dashboard.html" class="deposit-back">
+    <a href="dashboard.html"
+       class="deposit-back">
 
         <i class="fa-solid fa-arrow-left"></i>
 
@@ -65,9 +65,7 @@
 </header>
 
 
-
 <main class="deposit-container">
-
 
     <div class="deposit-heading">
 
@@ -84,14 +82,12 @@
             <h1>Deposit Funds</h1>
 
             <span>
-                Fund your Donkelly Swift Delivery wallet
-                securely.
+                Fund your Donkelly Swift Delivery wallet securely.
             </span>
 
         </div>
 
     </div>
-
 
 
     <!-- BANK DETAILS -->
@@ -125,25 +121,18 @@
 
         <div class="bank-details">
 
-
             <div class="bank-detail">
 
-                <span>
-                    Bank Name
-                </span>
+                <span>Bank Name</span>
 
-                <strong>
-                    Moniepoint
-                </strong>
+                <strong>Moniepoint</strong>
 
             </div>
 
 
             <div class="bank-detail">
 
-                <span>
-                    Account Number
-                </span>
+                <span>Account Number</span>
 
                 <div class="account-number-row">
 
@@ -169,16 +158,13 @@
 
             <div class="bank-detail">
 
-                <span>
-                    Account Name
-                </span>
+                <span>Account Name</span>
 
                 <strong>
                     Ezekiel Oluwaseun Ikuemehinlo
                 </strong>
 
             </div>
-
 
         </div>
 
@@ -188,11 +174,9 @@
             <i class="fa-solid fa-circle-info"></i>
 
             <p>
-
                 After making the bank transfer, click
-                <strong>I Have Paid</strong> below and
-                submit your payment details for verification.
-
+                <strong>I Have Paid</strong> and submit
+                your payment details.
             </p>
 
         </div>
@@ -212,13 +196,10 @@
     </section>
 
 
-
     <!-- PAYMENT FORM -->
 
-    <section
-        class="deposit-card payment-form-card"
-        id="paymentFormCard"
-        style="display:none;">
+    <section class="deposit-card payment-form-card"
+             id="paymentFormCard">
 
         <div class="deposit-card-header">
 
@@ -244,7 +225,6 @@
 
 
         <form id="paymentForm">
-
 
             <div class="deposit-form-group">
 
@@ -272,7 +252,6 @@
             </div>
 
 
-
             <div class="deposit-form-group">
 
                 <label for="senderName">
@@ -293,7 +272,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="deposit-form-group">
@@ -318,12 +296,10 @@
             </div>
 
 
-
             <div
                 class="deposit-message"
                 id="depositMessage">
             </div>
-
 
 
             <button
@@ -337,19 +313,15 @@
 
             </button>
 
-
         </form>
 
     </section>
 
 
-
     <!-- SUCCESS -->
 
-    <section
-        class="processing-card"
-        id="processingCard"
-        style="display:none;">
+    <section class="processing-card"
+             id="processingCard">
 
         <div class="processing-icon">
 
@@ -362,16 +334,13 @@
         </h2>
 
         <p>
-
             Your payment has been submitted for verification.
             Your wallet will be updated after the payment
             has been reviewed and approved.
-
         </p>
 
-        <a
-            href="dashboard.html"
-            class="processing-button">
+        <a href="dashboard.html"
+           class="processing-button">
 
             Return to Dashboard
 
@@ -379,368 +348,322 @@
 
     </section>
 
-
 </main>
-
 
 
 <script type="module">
 
-    import {
-        initializeApp
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-    import {
-        getAuth,
-        onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+    authDomain:
+        "donkellyswiftdelivery.firebaseapp.com",
+
+    projectId:
+        "donkellyswiftdelivery",
+
+    storageBucket:
+        "donkellyswiftdelivery.firebasestorage.app",
+
+    messagingSenderId:
+        "547113841009",
+
+    appId:
+        "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+    measurementId:
+        "G-HFG8ENEEVB"
+};
 
 
-    import {
-        getFirestore,
-        collection,
-        addDoc,
-        serverTimestamp
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const db = getFirestore(app);
 
 
+const bankDetailsCard =
+    document.getElementById("bankDetailsCard");
 
-    const firebaseConfig = {
+const paymentFormCard =
+    document.getElementById("paymentFormCard");
 
-        apiKey:
-            "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+const processingCard =
+    document.getElementById("processingCard");
 
-        authDomain:
-            "donkellyswiftdelivery.firebaseapp.com",
+const paidButton =
+    document.getElementById("paidButton");
 
-        projectId:
-            "donkellyswiftdelivery",
+const paymentForm =
+    document.getElementById("paymentForm");
 
-        storageBucket:
-            "donkellyswiftdelivery.firebasestorage.app",
+const depositMessage =
+    document.getElementById("depositMessage");
 
-        messagingSenderId:
-            "547113841009",
-
-        appId:
-            "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
-
-        measurementId:
-            "G-HFG8ENEEVB"
-
-    };
+const submitPaymentButton =
+    document.getElementById("submitPaymentButton");
 
 
-    const app =
-        initializeApp(firebaseConfig);
-
-    const auth =
-        getAuth(app);
-
-    const db =
-        getFirestore(app);
+let currentUser = null;
 
 
+onAuthStateChanged(
+    auth,
+    function(user) {
 
-    const bankDetailsCard =
-        document.getElementById("bankDetailsCard");
+        if (!user) {
 
-    const paymentFormCard =
-        document.getElementById("paymentFormCard");
+            window.location.href =
+                "login.html";
 
-    const processingCard =
-        document.getElementById("processingCard");
-
-    const paidButton =
-        document.getElementById("paidButton");
-
-    const paymentForm =
-        document.getElementById("paymentForm");
-
-    const depositMessage =
-        document.getElementById("depositMessage");
-
-    const submitPaymentButton =
-        document.getElementById("submitPaymentButton");
-
-
-    let currentUser = null;
-
-
-
-    // AUTH CHECK
-
-    onAuthStateChanged(
-        auth,
-        function(user) {
-
-            if (!user) {
-
-                window.location.href =
-                    "login.html";
-
-                return;
-
-            }
-
-            currentUser = user;
-
+            return;
         }
-    );
 
+        currentUser = user;
+    }
+);
 
 
-    // SHOW PAYMENT FORM
+paidButton.addEventListener(
+    "click",
+    function() {
 
-    paidButton.addEventListener(
-        "click",
-        function() {
-
-            paymentFormCard.style.display =
-                "block";
-
-            paymentFormCard.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-    );
-
-
-
-    // SUBMIT DEPOSIT
-
-    paymentForm.addEventListener(
-        "submit",
-        async function(event) {
-
-            event.preventDefault();
-
-
-            if (!currentUser) {
-
-                showMessage(
-                    "Please login to continue.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            const amount =
-                Number(
-                    document.getElementById("amount").value
-                );
-
-
-            const senderName =
-                document
-                    .getElementById("senderName")
-                    .value
-                    .trim();
-
-
-            const transactionReference =
-                document
-                    .getElementById("transactionReference")
-                    .value
-                    .trim();
-
-
-
-            if (!amount || amount <= 0) {
-
-                showMessage(
-                    "Please enter a valid payment amount.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            if (!senderName) {
-
-                showMessage(
-                    "Please enter the sender name.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-            if (!transactionReference) {
-
-                showMessage(
-                    "Please enter the transaction reference.",
-                    "error"
-                );
-
-                return;
-
-            }
-
-
-
-            submitPaymentButton.disabled = true;
-
-            submitPaymentButton.innerHTML =
-                '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
-
-
-
-            try {
-
-
-                /*
-                 * IMPORTANT
-                 *
-                 * This collection is the same collection
-                 * used by admin-deposits.html.
-                 */
-
-                await addDoc(
-                    collection(
-                        db,
-                        "depositRequests"
-                    ),
-                    {
-
-                        userId:
-                            currentUser.uid,
-
-                        customerEmail:
-                            currentUser.email || "",
-
-                        amount:
-                            amount,
-
-                        senderName:
-                            senderName,
-
-                        transactionReference:
-                            transactionReference,
-
-                        bankName:
-                            "Moniepoint",
-
-                        accountNumber:
-                            "9160815289",
-
-                        accountName:
-                            "Ezekiel Oluwaseun Ikuemehinlo",
-
-                        status:
-                            "pending",
-
-                        createdAt:
-                            serverTimestamp()
-
-                    }
-                );
-
-
-                paymentFormCard.style.display =
-                    "none";
-
-                bankDetailsCard.style.display =
-                    "none";
-
-                processingCard.style.display =
-                    "block";
-
-                processingCard.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
-
-
-            } catch (error) {
-
-                console.error(
-                    "Deposit submission error:",
-                    error
-                );
-
-
-                showMessage(
-                    "Unable to submit your payment. Please try again.",
-                    "error"
-                );
-
-
-                submitPaymentButton.disabled =
-                    false;
-
-                submitPaymentButton.innerHTML =
-                    '<i class="fa-solid fa-paper-plane"></i> Submit Payment';
-
-            }
-
-        }
-    );
-
-
-
-    function showMessage(
-        message,
-        type
-    ) {
-
-        depositMessage.textContent =
-            message;
-
-        depositMessage.className =
-            "deposit-message " + type;
-
-        depositMessage.style.display =
+        paymentFormCard.style.display =
             "block";
 
+        paymentFormCard.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
     }
+);
 
 
+paymentForm.addEventListener(
+    "submit",
+    async function(event) {
 
-    window.copyAccountNumber =
-        async function() {
-
-            const accountNumber =
-                document
-                    .getElementById("accountNumber")
-                    .textContent
-                    .trim();
+        event.preventDefault();
 
 
-            try {
+        if (!currentUser) {
 
-                await navigator.clipboard.writeText(
-                    accountNumber
-                );
+            showMessage(
+                "Please login to continue.",
+                "error"
+            );
 
-                alert(
-                    "Account number copied."
-                );
+            return;
+        }
 
-            } catch (error) {
 
-                console.error(
-                    "Copy error:",
-                    error
-                );
+        const amount =
+            Number(
+                document.getElementById("amount").value
+            );
 
-            }
+        const senderName =
+            document.getElementById("senderName")
+                .value
+                .trim();
 
-        };
+        const transactionReference =
+            document.getElementById("transactionReference")
+                .value
+                .trim();
+
+
+        if (!amount || amount <= 0) {
+
+            showMessage(
+                "Please enter a valid payment amount.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!senderName) {
+
+            showMessage(
+                "Please enter the sender name.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!transactionReference) {
+
+            showMessage(
+                "Please enter the transaction reference.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        submitPaymentButton.disabled = true;
+
+        submitPaymentButton.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+
+        try {
+
+            /*
+             * IMPORTANT:
+             * This collection MUST be the same collection
+             * used by admin-deposits.html.
+             */
+
+            await addDoc(
+                collection(
+                    db,
+                    "depositRequests"
+                ),
+                {
+
+                    userId:
+                        currentUser.uid,
+
+                    customerEmail:
+                        currentUser.email || "",
+
+                    amount:
+                        amount,
+
+                    senderName:
+                        senderName,
+
+                    transactionReference:
+                        transactionReference,
+
+                    bankName:
+                        "Moniepoint",
+
+                    accountNumber:
+                        "9160815289",
+
+                    accountName:
+                        "Ezekiel Oluwaseun Ikuemehinlo",
+
+                    status:
+                        "pending",
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
+
+
+            paymentFormCard.style.display =
+                "none";
+
+            bankDetailsCard.style.display =
+                "none";
+
+            processingCard.style.display =
+                "block";
+
+            processingCard.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Deposit submission error:",
+                error
+            );
+
+            showMessage(
+                "Unable to submit your payment: " +
+                error.message,
+                "error"
+            );
+
+            submitPaymentButton.disabled =
+                false;
+
+            submitPaymentButton.innerHTML =
+                '<i class="fa-solid fa-paper-plane"></i> Submit Payment';
+
+        }
+
+    }
+);
+
+
+function showMessage(message, type) {
+
+    depositMessage.textContent =
+        message;
+
+    depositMessage.className =
+        "deposit-message " + type;
+
+    depositMessage.style.display =
+        "block";
+}
+
+
+window.copyAccountNumber =
+    async function() {
+
+        const accountNumber =
+            document.getElementById("accountNumber")
+                .textContent
+                .trim();
+
+        try {
+
+            await navigator.clipboard.writeText(
+                accountNumber
+            );
+
+            alert(
+                "Account number copied."
+            );
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Unable to copy account number."
+            );
+        }
+    };
 
 </script>
 
-
 </body>
-
 </html>
