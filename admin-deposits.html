@@ -449,13 +449,11 @@
         initializeApp
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
-
     import {
         getAuth,
         onAuthStateChanged,
         signOut
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
 
     import {
         getFirestore,
@@ -469,10 +467,6 @@
         orderBy
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
-
-    // ==========================================
-    // FIREBASE CONFIG
-    // ==========================================
 
     const firebaseConfig = {
 
@@ -500,10 +494,6 @@
     };
 
 
-    // ==========================================
-    // INITIALIZE FIREBASE
-    // ==========================================
-
     const app =
         initializeApp(firebaseConfig);
 
@@ -514,17 +504,9 @@
         getFirestore(app);
 
 
-    // ==========================================
-    // ADMIN EMAIL
-    // ==========================================
-
     const ADMIN_EMAIL =
         "Danieloluwaseun221@gmail.com";
 
-
-    // ==========================================
-    // ELEMENTS
-    // ==========================================
 
     const depositList =
         document.getElementById("depositList");
@@ -539,10 +521,6 @@
         document.getElementById("totalAmount");
 
 
-    // ==========================================
-    // FORMAT NAIRA
-    // ==========================================
-
     function formatNaira(amount) {
 
         return "₦" +
@@ -556,10 +534,6 @@
 
     }
 
-
-    // ==========================================
-    // DATE FORMAT
-    // ==========================================
 
     function formatDate(timestamp) {
 
@@ -589,32 +563,23 @@
     }
 
 
-    // ==========================================
-    // CHECK ADMIN
-    // ==========================================
+    // =====================================================
+    // ADMIN AUTHENTICATION
+    // =====================================================
 
     onAuthStateChanged(
         auth,
         async function(user) {
 
-            /*
-             * If nobody is logged in,
-             * send them to the main login page.
-             */
-
             if (!user) {
 
                 window.location.href =
-                    "../login.html";
+                    "login.html";
 
                 return;
 
             }
 
-
-            /*
-             * Only the admin email is allowed.
-             */
 
             if (
                 !user.email ||
@@ -629,16 +594,12 @@
                 await signOut(auth);
 
                 window.location.href =
-                    "../login.html";
+                    "login.html";
 
                 return;
 
             }
 
-
-            /*
-             * Admin successfully authenticated.
-             */
 
             console.log(
                 "Admin access granted:",
@@ -652,9 +613,9 @@
     );
 
 
-    // ==========================================
+    // =====================================================
     // LOAD DEPOSITS
-    // ==========================================
+    // =====================================================
 
     async function loadDeposits() {
 
@@ -731,11 +692,7 @@
 
                 `;
 
-                updateStats(
-                    0,
-                    0,
-                    0
-                );
+                updateStats(0, 0, 0);
 
                 return;
 
@@ -748,15 +705,11 @@
                     const data =
                         depositDoc.data();
 
-
                     const depositId =
                         depositDoc.id;
 
-
                     const status =
-                        data.status ||
-                        "pending";
-
+                        data.status || "pending";
 
                     const amount =
                         Number(
@@ -792,23 +745,19 @@
                         data.customerName ||
                         "Customer";
 
-
                     const customerEmail =
                         data.email ||
                         data.customerEmail ||
                         "No email";
 
-
                     const senderName =
                         data.senderName ||
                         "Not provided";
-
 
                     const reference =
                         data.transactionReference ||
                         data.reference ||
                         "Not provided";
-
 
                     const createdAt =
                         formatDate(
@@ -936,7 +885,8 @@
                                     class="approve-button"
                                     data-id="${depositId}"
                                     data-uid="${escapeHtml(data.userId || data.uid || "")}"
-                                    data-amount="${amount}">
+                                    data-amount="${amount}"
+                                >
 
                                     <i class="fa-solid fa-check"></i>
 
@@ -947,7 +897,8 @@
 
                                 <button
                                     class="reject-button"
-                                    data-id="${depositId}">
+                                    data-id="${depositId}"
+                                >
 
                                     <i class="fa-solid fa-xmark"></i>
 
@@ -985,6 +936,7 @@
 
             attachDepositActions();
 
+
         } catch (error) {
 
             console.error(
@@ -1014,10 +966,6 @@
     }
 
 
-    // ==========================================
-    // UPDATE STATS
-    // ==========================================
-
     function updateStats(
         pending,
         approved,
@@ -1035,10 +983,6 @@
 
     }
 
-
-    // ==========================================
-    // ATTACH BUTTON ACTIONS
-    // ==========================================
 
     function attachDepositActions() {
 
@@ -1090,10 +1034,6 @@
     }
 
 
-    // ==========================================
-    // APPROVE DEPOSIT
-    // ==========================================
-
     async function approveDeposit(
         depositId,
         userId,
@@ -1127,9 +1067,7 @@
                 );
 
 
-            if (
-                !depositSnapshot.exists()
-            ) {
+            if (!depositSnapshot.exists()) {
 
                 alert(
                     "Deposit request no longer exists."
@@ -1207,6 +1145,7 @@
 
             loadDeposits();
 
+
         } catch (error) {
 
             console.error(
@@ -1223,10 +1162,6 @@
 
     }
 
-
-    // ==========================================
-    // REJECT DEPOSIT
-    // ==========================================
 
     async function rejectDeposit(
         depositId
@@ -1277,6 +1212,7 @@
 
             loadDeposits();
 
+
         } catch (error) {
 
             console.error(
@@ -1294,10 +1230,6 @@
     }
 
 
-    // ==========================================
-    // REFRESH
-    // ==========================================
-
     document
         .getElementById(
             "refreshButton"
@@ -1308,33 +1240,14 @@
         );
 
 
-    // ==========================================
-    // HTML ESCAPE
-    // ==========================================
-
     function escapeHtml(value) {
 
         return String(value ?? "")
-            .replace(
-                /&/g,
-                "&amp;"
-            )
-            .replace(
-                /</g,
-                "&lt;"
-            )
-            .replace(
-                />/g,
-                "&gt;"
-            )
-            .replace(
-                /"/g,
-                "&quot;"
-            )
-            .replace(
-                /'/g,
-                "&#039;"
-            );
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
 
     }
 
