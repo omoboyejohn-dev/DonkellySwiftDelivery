@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | Donkelly Swift Delivery</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: #f5faf7;
+
+            color: #17221c;
+
+        }
+
+
+        .page {
+
+            width: 92%;
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 25px 0 60px;
+
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .header {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+        }
+
+
+        .back-button {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 10px;
+
+            border: 1px solid #dfe7e2;
+
+            background: #fff;
+
+            color: #079447;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #079447;
+
+            color: #fff;
+
+        }
+
+
+        .header h1 {
+
+            font-size: 21px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .header p {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+        }
+
+
+        .profile-header-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 12px;
+
+            background: #eaf8ef;
+
+            color: #079447;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        /* ==========================================
+           PROFILE CARD
+        ========================================== */
+
+        .profile-card {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .profile-top {
+
+            background: #079447;
+
+            padding: 30px 20px;
+
+            text-align: center;
+
+            color: #fff;
+
+        }
+
+
+        .avatar {
+
+            width: 75px;
+
+            height: 75px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            background: #fff;
+
+            color: #079447;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .profile-top h2 {
+
+            font-size: 19px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .profile-top p {
+
+            font-size: 11px;
+
+            opacity: .9;
+
+        }
+
+
+        /* ==========================================
+           ACCOUNT DETAILS
+        ========================================== */
+
+        .account-details {
+
+            padding: 20px;
+
+        }
+
+
+        .section-title {
+
+            font-size: 14px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .detail-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 10px;
+
+        }
+
+
+        .detail-box {
+
+            background: #f7faf8;
+
+            border-radius: 10px;
+
+            padding: 13px;
+
+        }
+
+
+        .detail-box small {
+
+            display: block;
+
+            color: #66716b;
+
+            font-size: 9px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .detail-box strong {
+
+            display: block;
+
+            font-size: 12px;
+
+            word-break: break-word;
+
+        }
+
+
+        /* ==========================================
+           EDIT FORM
+        ========================================== */
+
+        .form-card {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .form-card h2 {
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .form-card > p {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .input-wrapper i {
+
+            position: absolute;
+
+            left: 13px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #079447;
+
+            font-size: 13px;
+
+        }
+
+
+        .input-wrapper input {
+
+            width: 100%;
+
+            padding: 12px 13px 12px 38px;
+
+            border: 1px solid #dfe7e2;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+        }
+
+
+        .input-wrapper input:focus {
+
+            border-color: #079447;
+
+        }
+
+
+        .input-wrapper input:disabled {
+
+            background: #f3f5f4;
+
+            color: #66716b;
+
+        }
+
+
+        .save-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #079447;
+
+            color: #fff;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+
+        .save-button:hover {
+
+            background: #056b34;
+
+        }
+
+
+        .save-button:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* ==========================================
+           PASSWORD
+        ========================================== */
+
+        .password-card {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .password-card h2 {
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .password-card > p {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .password-button {
+
+            width: 100%;
+
+            border: 1px solid #079447;
+
+            background: #fff;
+
+            color: #079447;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+
+        .password-button:hover {
+
+            background: #079447;
+
+            color: #fff;
+
+        }
+
+
+        /* ==========================================
+           MESSAGE
+        ========================================== */
+
+        .message {
+
+            display: none;
+
+            padding: 11px;
+
+            border-radius: 8px;
+
+            margin-bottom: 15px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+        }
+
+
+        .message.success {
+
+            display: block;
+
+            background: #eaf8ef;
+
+            color: #079447;
+
+            border: 1px solid #bce8cc;
+
+        }
+
+
+        .message.error {
+
+            display: block;
+
+            background: #fff1f1;
+
+            color: #d93025;
+
+            border: 1px solid #f0d0d0;
+
+        }
+
+
+        /* ==========================================
+           LOGOUT
+        ========================================== */
+
+        .logout-button {
+
+            width: 100%;
+
+            border: 1px solid #f0d0d0;
+
+            background: #fff1f1;
+
+            color: #d93025;
+
+            padding: 13px;
+
+            border-radius: 9px;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+        }
+
+
+        .logout-button:hover {
+
+            background: #d93025;
+
+            color: #fff;
+
+        }
+
+
+        /* ==========================================
+           LOADING
+        ========================================== */
+
+        .loading {
+
+            text-align: center;
+
+            padding: 50px;
+
+            color: #66716b;
+
+            font-size: 12px;
+
+        }
+
+
+        .loading i {
+
+            color: #079447;
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 650px) {
+
+            .page {
+
+                width: 94%;
+
+                padding-top: 15px;
+
+            }
+
+
+            .header {
+
+                padding: 17px;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 18px;
+
+            }
+
+
+            .detail-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .profile-top {
+
+                padding: 25px 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+
+    <section class="header">
+
+
+        <div class="header-left">
+
+
+            <button
+                class="back-button"
+                onclick="history.back()">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+
+            <div>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    Manage your account information.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="profile-header-icon">
+
+            <i class="fa-solid fa-user"></i>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         PROFILE
+    ========================================== -->
+
+    <section
+        class="profile-card"
+        id="profileCard">
+
+
+        <div class="loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <br>
+
+            Loading profile...
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         EDIT PROFILE
+    ========================================== -->
+
+    <section class="form-card">
+
+
+        <h2>
+            Personal Information
+        </h2>
+
+
+        <p>
+            Update your name below.
+        </p>
+
+
+        <div
+            id="profileMessage"
+            class="message">
+        </div>
+
+
+        <div class="form-group">
+
+
+            <label>
+                Full Name
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-user"></i>
+
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    autocomplete="name">
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+
+            <label>
+                Email Address
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-envelope"></i>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    disabled>
+
+            </div>
+
+        </div>
+
+
+
+        <button
+            class="save-button"
+            id="saveProfileButton">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Changes
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         PASSWORD
+    ========================================== -->
+
+    <section class="password-card">
+
+
+        <h2>
+            Password
+        </h2>
+
+
+        <p>
+            Change your account password.
+        </p>
+
+
+        <div
+            id="passwordMessage"
+            class="message">
+        </div>
+
+
+        <div class="form-group">
+
+
+            <label>
+                New Password
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+
+                <input
+                    type="password"
+                    id="newPassword"
+                    placeholder="Enter new password"
+                    autocomplete="new-password">
+
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+
+
+            <label>
+                Confirm New Password
+            </label>
+
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-lock"></i>
+
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm new password"
+                    autocomplete="new-password">
+
+            </div>
+
+        </div>
+
+
+
+        <button
+            class="password-button"
+            id="changePasswordButton">
+
+            <i class="fa-solid fa-key"></i>
+
+            Change Password
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         LOGOUT
+    ========================================== -->
+
+    <button
+        class="logout-button"
+        id="logoutButton">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+    </button>
+
+
+</div>
+
+
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+
+    initializeApp
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+import {
+
+    getAuth,
+
+    onAuthStateChanged,
+
+    signOut,
+
+    updatePassword
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+import {
+
+    getFirestore,
+
+    doc,
+
+    getDoc,
+
+    updateDoc
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+    authDomain:
+        "donkellyswiftdelivery.firebaseapp.com",
+
+    projectId:
+        "donkellyswiftdelivery",
+
+    storageBucket:
+        "donkellyswiftdelivery.firebasestorage.app",
+
+    messagingSenderId:
+        "547113841009",
+
+    appId:
+        "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+    measurementId:
+        "G-HFG8ENEEVB"
+
+};
+
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const profileCard =
+    document.getElementById(
+        "profileCard"
+    );
+
+
+const fullNameInput =
+    document.getElementById(
+        "fullName"
+    );
+
+
+const emailInput =
+    document.getElementById(
+        "email"
+    );
+
+
+const saveProfileButton =
+    document.getElementById(
+        "saveProfileButton"
+    );
+
+
+const newPasswordInput =
+    document.getElementById(
+        "newPassword"
+    );
+
+
+const confirmPasswordInput =
+    document.getElementById(
+        "confirmPassword"
+    );
+
+
+const changePasswordButton =
+    document.getElementById(
+        "changePasswordButton"
+    );
+
+
+const profileMessage =
+    document.getElementById(
+        "profileMessage"
+    );
+
+
+const passwordMessage =
+    document.getElementById(
+        "passwordMessage"
+    );
+
+
+let currentUser = null;
+
+
+
+/* =====================================================
+   FORMAT NAIRA
+===================================================== */
+
+function formatNaira(amount) {
+
+    return "₦" +
+
+        Number(
+            amount || 0
+        ).toLocaleString(
+            "en-NG",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(timestamp) {
+
+    if (!timestamp) {
+
+        return "Not available";
+
+    }
+
+
+    try {
+
+        if (
+            typeof timestamp.toDate ===
+            "function"
+        ) {
+
+            return timestamp
+                .toDate()
+                .toLocaleDateString(
+                    "en-NG",
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric"
+                    }
+                );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Date error:",
+            error
+        );
+
+    }
+
+
+    return "Not available";
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+
+/* =====================================================
+   SHOW MESSAGE
+===================================================== */
+
+function showMessage(
+    element,
+    message,
+    type
+) {
+
+    element.textContent =
+        message;
+
+    element.className =
+        "message " + type;
+
+}
+
+
+
+/* =====================================================
+   LOAD PROFILE
+===================================================== */
+
+async function loadProfile(
+    user
+) {
+
+    try {
+
+        const userRef =
+            doc(
+                db,
+                "users",
+                user.uid
+            );
+
+
+        const userSnapshot =
+            await getDoc(
+                userRef
+            );
+
+
+        let userData = {};
+
+
+        if (
+            userSnapshot.exists()
+        ) {
+
+            userData =
+                userSnapshot.data();
+
+        }
+
+
+        const fullName =
+            userData.fullName ||
+            user.displayName ||
+            "Customer";
+
+
+        const email =
+            userData.email ||
+            user.email ||
+            "";
+
+
+        const walletBalance =
+            Number(
+                userData.walletBalance ||
+                0
+            );
+
+
+        const createdAt =
+            userData.createdAt;
+
+
+
+        /*
+         * Avatar initial
+         */
+
+        const firstLetter =
+            fullName
+                .trim()
+                .charAt(0)
+                .toUpperCase() ||
+            "C";
+
+
+
+        profileCard.innerHTML = `
+
+            <div class="profile-top">
+
+                <div class="avatar">
+
+                    ${escapeHtml(
+                        firstLetter
+                    )}
+
+                </div>
+
+
+                <h2>
+
+                    ${escapeHtml(
+                        fullName
+                    )}
+
+                </h2>
+
+
+                <p>
+
+                    ${escapeHtml(
+                        email
+                    )}
+
+                </p>
+
+            </div>
+
+
+            <div class="account-details">
+
+
+                <h3 class="section-title">
+
+                    Account Information
+
+                </h3>
+
+
+                <div class="detail-grid">
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            Full Name
+                        </small>
+
+                        <strong>
+
+                            ${escapeHtml(
+                                fullName
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            Email Address
+                        </small>
+
+                        <strong>
+
+                            ${escapeHtml(
+                                email
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            Wallet Balance
+                        </small>
+
+                        <strong>
+
+                            ${formatNaira(
+                                walletBalance
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            Account Created
+                        </small>
+
+                        <strong>
+
+                            ${escapeHtml(
+                                formatDate(
+                                    createdAt
+                                )
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-box">
+
+                        <small>
+                            Account UID
+                        </small>
+
+                        <strong>
+
+                            ${escapeHtml(
+                                user.uid
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        `;
+
+
+
+        /*
+         * Fill form
+         */
+
+        fullNameInput.value =
+            fullName;
+
+
+        emailInput.value =
+            email;
+
+
+    } catch (error) {
+
+        console.error(
+            "PROFILE ERROR:",
+            error
+        );
+
+
+        profileCard.innerHTML = `
+
+            <div class="loading">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <br><br>
+
+                Unable to load profile.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   AUTH CHECK
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user) {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        await loadProfile(
+            user
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   SAVE PROFILE
+===================================================== */
+
+saveProfileButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+        const fullName =
+            fullNameInput.value.trim();
+
+
+        if (!fullName) {
+
+            showMessage(
+                profileMessage,
+                "Please enter your full name.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (fullName.length < 2) {
+
+            showMessage(
+                profileMessage,
+                "Your name must contain at least 2 characters.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        saveProfileButton.disabled =
+            true;
+
+
+        saveProfileButton.innerHTML = `
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Saving...
+
+        `;
+
+
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid
+                );
+
+
+            await updateDoc(
+                userRef,
+                {
+
+                    fullName:
+                        fullName
+
+                }
+            );
+
+
+            showMessage(
+                profileMessage,
+                "Your profile has been updated successfully.",
+                "success"
+            );
+
+
+            await loadProfile(
+                currentUser
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "SAVE PROFILE ERROR:",
+                error
+            );
+
+
+            showMessage(
+                profileMessage,
+                error.message,
+                "error"
+            );
+
+        }
+
+
+        saveProfileButton.disabled =
+            false;
+
+
+        saveProfileButton.innerHTML = `
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Changes
+
+        `;
+
+    }
+);
+
+
+
+/* =====================================================
+   CHANGE PASSWORD
+===================================================== */
+
+changePasswordButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+        const newPassword =
+            newPasswordInput.value;
+
+
+        const confirmPassword =
+            confirmPasswordInput.value;
+
+
+        if (!newPassword) {
+
+            showMessage(
+                passwordMessage,
+                "Please enter a new password.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (newPassword.length < 6) {
+
+            showMessage(
+                passwordMessage,
+                "Password must contain at least 6 characters.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        if (
+            newPassword !==
+            confirmPassword
+        ) {
+
+            showMessage(
+                passwordMessage,
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        changePasswordButton.disabled =
+            true;
+
+
+        changePasswordButton.innerHTML = `
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Updating Password...
+
+        `;
+
+
+        try {
+
+            await updatePassword(
+                currentUser,
+                newPassword
+            );
+
+
+            newPasswordInput.value =
+                "";
+
+            confirmPasswordInput.value =
+                "";
+
+
+            showMessage(
+                passwordMessage,
+                "Your password has been changed successfully.",
+                "success"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "PASSWORD ERROR:",
+                error
+            );
+
+
+            let message =
+                error.message;
+
+
+            /*
+             * Firebase may require the user
+             * to login again before changing
+             * the password.
+             */
+
+            if (
+                error.code ===
+                "auth/requires-recent-login"
+            ) {
+
+                message =
+                    "For security, please logout and login again before changing your password.";
+
+            }
+
+
+            showMessage(
+                passwordMessage,
+                message,
+                "error"
+            );
+
+        }
+
+
+        changePasswordButton.disabled =
+            false;
+
+
+        changePasswordButton.innerHTML = `
+
+            <i class="fa-solid fa-key"></i>
+
+            Change Password
+
+        `;
+
+    }
+);
+
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+document
+    .getElementById(
+        "logoutButton"
+    )
+    .addEventListener(
+        "click",
+        async function() {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to logout?"
+                );
+
+
+            if (!confirmed) {
+
+                return;
+
+            }
+
+
+            try {
+
+                await signOut(
+                    auth
+                );
+
+
+                window.location.href =
+                    "login.html";
+
+
+            } catch (error) {
+
+                console.error(
+                    "LOGOUT ERROR:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
