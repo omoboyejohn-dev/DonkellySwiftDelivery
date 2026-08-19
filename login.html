@@ -31,10 +31,6 @@
 <body class="auth-page">
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="auth-header">
 
     <a href="index.html" class="logo">
@@ -71,10 +67,6 @@
 
 
 
-<!-- =====================================================
-     LOGIN
-===================================================== -->
-
 <main class="auth-container">
 
     <div class="auth-card">
@@ -104,8 +96,6 @@
         <form id="loginForm">
 
 
-            <!-- EMAIL -->
-
             <div class="form-group">
 
                 <label for="email">
@@ -130,8 +120,6 @@
             </div>
 
 
-
-            <!-- PASSWORD -->
 
             <div class="form-group">
 
@@ -173,8 +161,6 @@
 
 
 
-            <!-- OPTIONS -->
-
             <div class="login-options">
 
                 <label>
@@ -199,8 +185,6 @@
 
 
 
-            <!-- ERROR -->
-
             <div
                 class="form-message error-message"
                 id="errorMessage"
@@ -208,16 +192,12 @@
 
 
 
-            <!-- SUCCESS -->
-
             <div
                 class="form-message success-message"
                 id="successMessage"
             ></div>
 
 
-
-            <!-- BUTTON -->
 
             <button
                 type="submit"
@@ -241,8 +221,6 @@
 
 
 
-        <!-- REGISTER -->
-
         <div class="auth-footer">
 
             <p>
@@ -263,10 +241,6 @@
 </main>
 
 
-
-<!-- =====================================================
-     FIREBASE LOGIN
-===================================================== -->
 
 <script type="module">
 
@@ -326,6 +300,15 @@
 
     const auth =
         getAuth(app);
+
+
+
+    // =====================================================
+    // ADMIN EMAIL
+    // =====================================================
+
+    const ADMIN_EMAIL =
+        "Danieloluwaseun221@gmail.com";
 
 
 
@@ -538,8 +521,7 @@
                 setLoading(true);
 
 
-                // Remember user or only keep
-                // login for current session
+                // Remember user or current session
 
                 if (rememberMe.checked) {
 
@@ -560,11 +542,16 @@
 
                 // Firebase login
 
-                await signInWithEmailAndPassword(
-                    auth,
-                    email,
-                    password
-                );
+                const userCredential =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
 
 
                 showSuccess(
@@ -572,13 +559,32 @@
                 );
 
 
-                // Go to dashboard
+                // =================================================
+                // ADMIN / CUSTOMER REDIRECT
+                // =================================================
 
                 setTimeout(
                     function() {
 
-                        window.location.href =
-                            "dashboard.html";
+                        if (
+                            user.email &&
+                            user.email.toLowerCase() ===
+                            ADMIN_EMAIL.toLowerCase()
+                        ) {
+
+                            // ADMIN
+
+                            window.location.href =
+                                "admin/admin-deposits.html";
+
+                        } else {
+
+                            // NORMAL CUSTOMER
+
+                            window.location.href =
+                                "dashboard.html";
+
+                        }
 
                     },
                     700
