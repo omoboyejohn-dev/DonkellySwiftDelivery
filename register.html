@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,13 +13,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
+
 <body class="auth-page">
+
 
     <!-- ================= HEADER ================= -->
 
@@ -30,18 +36,31 @@
             </div>
 
             <div>
-                <h2>Donkelly <span>Swift Delivery</span></h2>
-                <p>Send gifts 🎁, share love ❤️</p>
+
+                <h2>
+                    Donkelly
+                    <span>Swift Delivery</span>
+                </h2>
+
+                <p>
+                    Send gifts 🎁, share love ❤️
+                </p>
+
             </div>
 
         </a>
 
+
         <a href="index.html" class="back-home">
+
             <i class="fa-solid fa-arrow-left"></i>
+
             Back Home
+
         </a>
 
     </header>
+
 
 
     <!-- ================= REGISTER ================= -->
@@ -50,19 +69,36 @@
 
         <div class="auth-card">
 
+
+            <!-- ICON -->
+
             <div class="auth-icon">
+
                 <i class="fa-solid fa-user-plus"></i>
+
             </div>
 
-            <h1>Create Account</h1>
+
+            <!-- TITLE -->
+
+            <h1>
+                Create Account
+            </h1>
+
 
             <p class="auth-subtitle">
+
                 Create your Donkelly Swift Delivery account
                 and start sending gifts to your loved ones.
+
             </p>
 
 
+
+            <!-- REGISTER FORM -->
+
             <form id="registerForm">
+
 
                 <!-- FULL NAME -->
 
@@ -86,6 +122,7 @@
                     </div>
 
                 </div>
+
 
 
                 <!-- GMAIL -->
@@ -112,7 +149,8 @@
                 </div>
 
 
-                <!-- NUMBER -->
+
+                <!-- PHONE -->
 
                 <div class="form-group">
 
@@ -134,6 +172,7 @@
                     </div>
 
                 </div>
+
 
 
                 <!-- PASSWORD -->
@@ -160,12 +199,15 @@
                             class="password-toggle"
                             onclick="togglePassword('password', this)"
                         >
+
                             <i class="fa-regular fa-eye"></i>
+
                         </button>
 
                     </div>
 
                 </div>
+
 
 
                 <!-- CONFIRM PASSWORD -->
@@ -192,12 +234,15 @@
                             class="password-toggle"
                             onclick="togglePassword('confirmPassword', this)"
                         >
+
                             <i class="fa-regular fa-eye"></i>
+
                         </button>
 
                     </div>
 
                 </div>
+
 
 
                 <!-- TERMS -->
@@ -213,15 +258,25 @@
                         >
 
                         <span>
+
                             I agree to the
-                            <a href="#">Terms & Conditions</a>
+
+                            <a href="#">
+                                Terms & Conditions
+                            </a>
+
                             and
-                            <a href="#">Privacy Policy</a>.
+
+                            <a href="#">
+                                Privacy Policy
+                            </a>.
+
                         </span>
 
                     </label>
 
                 </div>
+
 
 
                 <!-- ERROR -->
@@ -232,6 +287,7 @@
                 ></div>
 
 
+
                 <!-- SUCCESS -->
 
                 <div
@@ -240,20 +296,29 @@
                 ></div>
 
 
+
                 <!-- CREATE ACCOUNT -->
 
                 <button
                     type="submit"
                     class="auth-submit"
+                    id="registerButton"
                 >
 
-                    Create Account
+                    <span id="buttonText">
+                        Create Account
+                    </span>
 
-                    <i class="fa-solid fa-arrow-right"></i>
+                    <i
+                        class="fa-solid fa-arrow-right"
+                        id="buttonIcon"
+                    ></i>
 
                 </button>
 
+
             </form>
+
 
 
             <!-- LOGIN -->
@@ -261,111 +326,240 @@
             <div class="auth-footer">
 
                 <p>
+
                     Already have an account?
+
                     <a href="login.html">
                         Login Account
                     </a>
+
                 </p>
 
             </div>
+
 
         </div>
 
     </main>
 
 
-    <!-- ================= JAVASCRIPT ================= -->
 
-    <script>
+    <!-- ================= FIREBASE ================= -->
 
-        // =========================
-        // SHOW / HIDE PASSWORD
-        // =========================
+    <script type="module">
 
-        function togglePassword(inputId, button) {
-
-            const input =
-                document.getElementById(inputId);
-
-            const icon =
-                button.querySelector("i");
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
 
-            if (input.type === "password") {
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            updateProfile
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
-                input.type = "text";
 
-                icon.classList.remove(
-                    "fa-eye"
-                );
+        import {
+            getFirestore,
+            doc,
+            setDoc,
+            serverTimestamp
+        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
-                icon.classList.add(
-                    "fa-eye-slash"
-                );
-
-            } else {
-
-                input.type = "password";
-
-                icon.classList.remove(
-                    "fa-eye-slash"
-                );
-
-                icon.classList.add(
-                    "fa-eye"
-                );
-
-            }
-
-        }
 
 
         // =========================
-        // REGISTER FORM
+        // FIREBASE CONFIGURATION
+        // =========================
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+            authDomain:
+                "donkellyswiftdelivery.firebaseapp.com",
+
+            projectId:
+                "donkellyswiftdelivery",
+
+            storageBucket:
+                "donkellyswiftdelivery.firebasestorage.app",
+
+            messagingSenderId:
+                "547113841009",
+
+            appId:
+                "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+            measurementId:
+                "G-HFG8ENEEVB"
+
+        };
+
+
+
+        // =========================
+        // INITIALIZE FIREBASE
+        // =========================
+
+        const app =
+            initializeApp(firebaseConfig);
+
+
+        // Firebase Authentication
+
+        const auth =
+            getAuth(app);
+
+
+        // Firestore Database
+
+        const db =
+            getFirestore(app);
+
+
+
+        // =========================
+        // PASSWORD TOGGLE
+        // =========================
+
+        window.togglePassword =
+            function(inputId, button) {
+
+                const input =
+                    document.getElementById(inputId);
+
+                const icon =
+                    button.querySelector("i");
+
+
+                if (input.type === "password") {
+
+                    input.type = "text";
+
+                    icon.classList.remove(
+                        "fa-eye"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye-slash"
+                    );
+
+                } else {
+
+                    input.type = "password";
+
+                    icon.classList.remove(
+                        "fa-eye-slash"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye"
+                    );
+
+                }
+
+            };
+
+
+
+        // =========================
+        // FORM ELEMENTS
         // =========================
 
         const registerForm =
             document.getElementById("registerForm");
 
 
+        const errorMessage =
+            document.getElementById("errorMessage");
+
+
+        const successMessage =
+            document.getElementById("successMessage");
+
+
+        const registerButton =
+            document.getElementById("registerButton");
+
+
+        const buttonText =
+            document.getElementById("buttonText");
+
+
+        const buttonIcon =
+            document.getElementById("buttonIcon");
+
+
+
+        // =========================
+        // REGISTER USER
+        // =========================
+
         registerForm.addEventListener(
             "submit",
-            function(event) {
+            async function(event) {
 
                 event.preventDefault();
 
 
+                // Clear messages
+
+                errorMessage.style.display =
+                    "none";
+
+                successMessage.style.display =
+                    "none";
+
+
+
+                // Get form values
+
                 const fullName =
-                    document.getElementById("fullName").value.trim();
+                    document
+                        .getElementById("fullName")
+                        .value
+                        .trim();
+
 
                 const email =
-                    document.getElementById("email").value.trim();
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
 
                 const phone =
-                    document.getElementById("phone").value.trim();
+                    document
+                        .getElementById("phone")
+                        .value
+                        .trim();
+
 
                 const password =
-                    document.getElementById("password").value;
+                    document
+                        .getElementById("password")
+                        .value;
+
 
                 const confirmPassword =
-                    document.getElementById("confirmPassword").value;
+                    document
+                        .getElementById("confirmPassword")
+                        .value;
+
 
                 const terms =
-                    document.getElementById("terms").checked;
+                    document
+                        .getElementById("terms")
+                        .checked;
 
 
-                const errorMessage =
-                    document.getElementById("errorMessage");
 
-                const successMessage =
-                    document.getElementById("successMessage");
-
-
-                errorMessage.style.display = "none";
-                successMessage.style.display = "none";
-
-
-                // PASSWORD LENGTH
+                // =========================
+                // VALIDATION
+                // =========================
 
                 if (password.length < 8) {
 
@@ -376,10 +570,10 @@
                         "block";
 
                     return;
+
                 }
 
 
-                // PASSWORD MATCH
 
                 if (password !== confirmPassword) {
 
@@ -390,10 +584,10 @@
                         "block";
 
                     return;
+
                 }
 
 
-                // TERMS
 
                 if (!terms) {
 
@@ -404,23 +598,219 @@
                         "block";
 
                     return;
+
                 }
 
 
-                // TEMPORARY SUCCESS
 
-                successMessage.textContent =
-                    "Account information is valid.";
+                // =========================
+                // LOADING
+                // =========================
 
-                successMessage.style.display =
-                    "block";
+                registerButton.disabled =
+                    true;
+
+                buttonText.textContent =
+                    "Creating Account...";
+
+                buttonIcon.className =
+                    "fa-solid fa-spinner fa-spin";
 
 
-                console.log({
-                    fullName: fullName,
-                    email: email,
-                    phone: phone
-                });
+
+                try {
+
+
+                    // =========================
+                    // CREATE AUTH ACCOUNT
+                    // =========================
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    const user =
+                        userCredential.user;
+
+
+
+                    // =========================
+                    // SAVE DISPLAY NAME
+                    // =========================
+
+                    await updateProfile(
+                        user,
+                        {
+                            displayName:
+                                fullName
+                        }
+                    );
+
+
+
+                    // =========================
+                    // CREATE FIRESTORE USER
+                    // =========================
+
+                    await setDoc(
+                        doc(
+                            db,
+                            "users",
+                            user.uid
+                        ),
+                        {
+
+                            uid:
+                                user.uid,
+
+                            fullName:
+                                fullName,
+
+                            email:
+                                email,
+
+                            phone:
+                                phone,
+
+                            walletBalance:
+                                0,
+
+                            accountStatus:
+                                "active",
+
+                            role:
+                                "customer",
+
+                            createdAt:
+                                serverTimestamp()
+
+                        }
+                    );
+
+
+
+                    // =========================
+                    // SUCCESS
+                    // =========================
+
+                    successMessage.textContent =
+                        "Account created successfully! Redirecting...";
+
+                    successMessage.style.display =
+                        "block";
+
+
+                    buttonText.textContent =
+                        "Account Created";
+
+                    buttonIcon.className =
+                        "fa-solid fa-check";
+
+
+
+                    // =========================
+                    // REDIRECT
+                    // =========================
+
+                    setTimeout(
+                        function() {
+
+                            window.location.href =
+                                "dashboard.html";
+
+                        },
+                        1500
+                    );
+
+
+                } catch (error) {
+
+
+                    console.error(
+                        "Firebase Registration Error:",
+                        error
+                    );
+
+
+
+                    // =========================
+                    // FIREBASE ERROR MESSAGES
+                    // =========================
+
+                    let message =
+                        "Unable to create your account. Please try again.";
+
+
+                    if (
+                        error.code ===
+                        "auth/email-already-in-use"
+                    ) {
+
+                        message =
+                            "This Gmail is already registered.";
+
+                    }
+
+
+                    else if (
+                        error.code ===
+                        "auth/invalid-email"
+                    ) {
+
+                        message =
+                            "Please enter a valid email address.";
+
+                    }
+
+
+                    else if (
+                        error.code ===
+                        "auth/weak-password"
+                    ) {
+
+                        message =
+                            "Password is too weak. Use at least 8 characters.";
+
+                    }
+
+
+                    else if (
+                        error.code ===
+                        "auth/network-request-failed"
+                    ) {
+
+                        message =
+                            "Network error. Please check your internet connection.";
+
+                    }
+
+
+
+                    errorMessage.textContent =
+                        message;
+
+
+                    errorMessage.style.display =
+                        "block";
+
+
+
+                    // Reset button
+
+                    registerButton.disabled =
+                        false;
+
+                    buttonText.textContent =
+                        "Create Account";
+
+                    buttonIcon.className =
+                        "fa-solid fa-arrow-right";
+
+                }
 
             }
         );
@@ -428,4 +818,5 @@
     </script>
 
 </body>
+
 </html>
