@@ -30,19 +30,12 @@
 <body class="deposit-page">
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="dashboard-header">
 
-    <a href="dashboard.html"
-       class="dashboard-logo">
+    <a href="dashboard.html" class="dashboard-logo">
 
         <div class="dashboard-logo-icon">
-
             <i class="fa-solid fa-bag-shopping"></i>
-
         </div>
 
         <div>
@@ -61,8 +54,7 @@
     </a>
 
 
-    <a href="dashboard.html"
-       class="deposit-back">
+    <a href="dashboard.html" class="deposit-back">
 
         <i class="fa-solid fa-arrow-left"></i>
 
@@ -74,16 +66,8 @@
 
 
 
-<!-- =====================================================
-     DEPOSIT CONTAINER
-===================================================== -->
-
 <main class="deposit-container">
 
-
-    <!-- =================================================
-         PAGE TITLE
-    ================================================== -->
 
     <div class="deposit-heading">
 
@@ -95,13 +79,9 @@
 
         <div>
 
-            <p>
-                WALLET
-            </p>
+            <p>WALLET</p>
 
-            <h1>
-                Deposit Funds
-            </h1>
+            <h1>Deposit Funds</h1>
 
             <span>
                 Fund your Donkelly Swift Delivery wallet
@@ -114,13 +94,10 @@
 
 
 
-    <!-- =================================================
-         BANK PAYMENT CARD
-    ================================================== -->
+    <!-- BANK DETAILS -->
 
     <section class="deposit-card"
              id="bankDetailsCard">
-
 
         <div class="deposit-card-header">
 
@@ -145,9 +122,6 @@
 
         </div>
 
-
-
-        <!-- BANK DETAILS -->
 
         <div class="bank-details">
 
@@ -209,24 +183,20 @@
         </div>
 
 
-
-        <!-- IMPORTANT NOTICE -->
-
         <div class="deposit-notice">
 
             <i class="fa-solid fa-circle-info"></i>
 
             <p>
+
                 After making the bank transfer, click
                 <strong>I Have Paid</strong> below and
                 submit your payment details for verification.
+
             </p>
 
         </div>
 
-
-
-        <!-- I HAVE PAID -->
 
         <button
             type="button"
@@ -239,18 +209,16 @@
 
         </button>
 
-
     </section>
 
 
 
-    <!-- =================================================
-         PAYMENT FORM
-    ================================================== -->
+    <!-- PAYMENT FORM -->
 
-    <section class="deposit-card payment-form-card"
-             id="paymentFormCard">
-
+    <section
+        class="deposit-card payment-form-card"
+        id="paymentFormCard"
+        style="display:none;">
 
         <div class="deposit-card-header">
 
@@ -275,11 +243,8 @@
         </div>
 
 
-
         <form id="paymentForm">
 
-
-            <!-- AMOUNT -->
 
             <div class="deposit-form-group">
 
@@ -308,8 +273,6 @@
 
 
 
-            <!-- SENDER NAME -->
-
             <div class="deposit-form-group">
 
                 <label for="senderName">
@@ -332,8 +295,6 @@
             </div>
 
 
-
-            <!-- TRANSACTION REFERENCE -->
 
             <div class="deposit-form-group">
 
@@ -358,16 +319,12 @@
 
 
 
-            <!-- MESSAGE -->
-
             <div
                 class="deposit-message"
                 id="depositMessage">
             </div>
 
 
-
-            <!-- SUBMIT -->
 
             <button
                 type="submit"
@@ -383,17 +340,16 @@
 
         </form>
 
-
     </section>
 
 
 
-    <!-- =================================================
-         PROCESSING MESSAGE
-    ================================================== -->
+    <!-- SUCCESS -->
 
-    <section class="processing-card"
-             id="processingCard">
+    <section
+        class="processing-card"
+        id="processingCard"
+        style="display:none;">
 
         <div class="processing-icon">
 
@@ -406,13 +362,16 @@
         </h2>
 
         <p>
+
             Your payment has been submitted for verification.
             Your wallet will be updated after the payment
             has been reviewed and approved.
+
         </p>
 
-        <a href="dashboard.html"
-           class="processing-button">
+        <a
+            href="dashboard.html"
+            class="processing-button">
 
             Return to Dashboard
 
@@ -424,10 +383,6 @@
 </main>
 
 
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
 
 <script type="module">
 
@@ -450,10 +405,6 @@
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-
-    // =================================================
-    // FIREBASE CONFIG
-    // =================================================
 
     const firebaseConfig = {
 
@@ -481,11 +432,6 @@
     };
 
 
-
-    // =================================================
-    // INITIALIZE FIREBASE
-    // =================================================
-
     const app =
         initializeApp(firebaseConfig);
 
@@ -496,10 +442,6 @@
         getFirestore(app);
 
 
-
-    // =================================================
-    // ELEMENTS
-    // =================================================
 
     const bankDetailsCard =
         document.getElementById("bankDetailsCard");
@@ -523,14 +465,11 @@
         document.getElementById("submitPaymentButton");
 
 
-
     let currentUser = null;
 
 
 
-    // =================================================
-    // CHECK AUTHENTICATION
-    // =================================================
+    // AUTH CHECK
 
     onAuthStateChanged(
         auth,
@@ -552,9 +491,7 @@
 
 
 
-    // =================================================
     // SHOW PAYMENT FORM
-    // =================================================
 
     paidButton.addEventListener(
         "click",
@@ -573,9 +510,7 @@
 
 
 
-    // =================================================
-    // SUBMIT PAYMENT
-    // =================================================
+    // SUBMIT DEPOSIT
 
     paymentForm.addEventListener(
         "submit",
@@ -617,8 +552,6 @@
 
 
 
-            // VALIDATION
-
             if (!amount || amount <= 0) {
 
                 showMessage(
@@ -656,8 +589,6 @@
 
 
 
-            // DISABLE BUTTON
-
             submitPaymentButton.disabled = true;
 
             submitPaymentButton.innerHTML =
@@ -668,9 +599,12 @@
             try {
 
 
-                // =================================================
-                // SAVE PAYMENT REQUEST
-                // =================================================
+                /*
+                 * IMPORTANT
+                 *
+                 * This collection is the same collection
+                 * used by admin-deposits.html.
+                 */
 
                 await addDoc(
                     collection(
@@ -712,11 +646,6 @@
                     }
                 );
 
-
-
-                // =================================================
-                // SHOW SUCCESS
-                // =================================================
 
                 paymentFormCard.style.display =
                     "none";
@@ -760,11 +689,10 @@
 
 
 
-    // =================================================
-    // MESSAGE
-    // =================================================
-
-    function showMessage(message, type) {
+    function showMessage(
+        message,
+        type
+    ) {
 
         depositMessage.textContent =
             message;
@@ -778,10 +706,6 @@
     }
 
 
-
-    // =================================================
-    // COPY ACCOUNT NUMBER
-    // =================================================
 
     window.copyAccountNumber =
         async function() {
@@ -805,7 +729,10 @@
 
             } catch (error) {
 
-                console.error(error);
+                console.error(
+                    "Copy error:",
+                    error
+                );
 
             }
 
