@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Deposits | Donkelly Swift Delivery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="admin-page">
+
+
+<!-- =====================================================
+     ADMIN HEADER
+===================================================== -->
+
+<header class="admin-header">
+
+    <div class="admin-logo">
+
+        <div class="admin-logo-icon">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Donkelly
+                <span>Swift Delivery</span>
+            </h2>
+
+            <p>
+                Administration Panel
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="admin-logout"
+        id="adminLogout">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        Logout
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     ADMIN CONTAINER
+===================================================== -->
+
+<main class="admin-container">
+
+
+    <!-- =================================================
+         PAGE HEADER
+    ================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <p class="admin-label">
+                PAYMENT MANAGEMENT
+            </p>
+
+            <h1>
+                Deposit Requests
+            </h1>
+
+            <p>
+                Review customer payment submissions
+                and manage wallet deposits.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="refresh-button"
+            id="refreshButton">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Refresh
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =================================================
+         STATISTICS
+    ================================================== -->
+
+    <section class="admin-stats">
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon pending">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon approved">
+
+                <i class="fa-solid fa-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Approved
+                </span>
+
+                <strong id="approvedCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon rejected">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Rejected
+                </span>
+
+                <strong id="rejectedCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="admin-stat-card">
+
+            <div class="admin-stat-icon money">
+
+                <i class="fa-solid fa-naira-sign"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Approved Amount
+                </span>
+
+                <strong id="approvedAmount">
+                    ₦0.00
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================== -->
+
+    <section class="admin-filter">
+
+        <div class="admin-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search email, sender name or reference..."
+            >
+
+        </div>
+
+
+        <select
+            id="statusFilter"
+            class="status-filter">
+
+            <option value="all">
+                All Payments
+            </option>
+
+            <option value="pending">
+                Pending
+            </option>
+
+            <option value="approved">
+                Approved
+            </option>
+
+            <option value="rejected">
+                Rejected
+            </option>
+
+        </select>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MESSAGE
+    ================================================== -->
+
+    <div
+        class="admin-message"
+        id="adminMessage">
+    </div>
+
+
+
+    <!-- =================================================
+         LOADING
+    ================================================== -->
+
+    <div
+        class="admin-loading"
+        id="loading">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        Loading deposit requests...
+
+    </div>
+
+
+
+    <!-- =================================================
+         EMPTY
+    ================================================== -->
+
+    <div
+        class="admin-empty"
+        id="emptyState">
+
+        <div>
+
+            <i class="fa-solid fa-receipt"></i>
+
+        </div>
+
+        <h2>
+            No Deposit Requests
+        </h2>
+
+        <p>
+            Customer payment submissions will appear here.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         DEPOSIT REQUESTS
+    ================================================== -->
+
+    <section
+        class="deposit-requests"
+        id="depositRequests">
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     PAYMENT DETAILS MODAL
+===================================================== -->
+
+<div
+    class="admin-modal"
+    id="paymentModal">
+
+    <div class="admin-modal-card">
+
+
+        <button
+            type="button"
+            class="modal-close"
+            id="modalClose">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-receipt"></i>
+
+        </div>
+
+
+        <h2>
+            Payment Details
+        </h2>
+
+        <p class="modal-subtitle">
+            Review the customer's submitted payment.
+        </p>
+
+
+        <div class="modal-details">
+
+
+            <div>
+
+                <span>
+                    Customer Email
+                </span>
+
+                <strong id="modalEmail">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Amount
+                </span>
+
+                <strong id="modalAmount">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Sender Name
+                </span>
+
+                <strong id="modalSender">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Transaction Reference
+                </span>
+
+                <strong id="modalReference">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Bank
+                </span>
+
+                <strong>
+                    Moniepoint
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Account Number
+                </span>
+
+                <strong>
+                    9160815289
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Status
+                </span>
+
+                <strong id="modalStatus">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Submitted
+                </span>
+
+                <strong id="modalDate">
+                    -
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div
+            class="modal-actions"
+            id="modalActions">
+
+            <button
+                type="button"
+                class="reject-button"
+                id="modalReject">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                Reject
+
+            </button>
+
+
+            <button
+                type="button"
+                class="approve-button"
+                id="modalApprove">
+
+                <i class="fa-solid fa-check"></i>
+
+                Approve Payment
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+    import {
+        getAuth,
+        onAuthStateChanged,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+    import {
+        getFirestore,
+        collection,
+        getDocs,
+        doc,
+        getDoc,
+        updateDoc,
+        runTransaction,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+    // =================================================
+    // FIREBASE CONFIG
+    // =================================================
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+        authDomain:
+            "donkellyswiftdelivery.firebaseapp.com",
+
+        projectId:
+            "donkellyswiftdelivery",
+
+        storageBucket:
+            "donkellyswiftdelivery.firebasestorage.app",
+
+        messagingSenderId:
+            "547113841009",
+
+        appId:
+            "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+        measurementId:
+            "G-HFG8ENEEVB"
+
+    };
+
+
+
+    // =================================================
+    // INITIALIZE
+    // =================================================
+
+    const app =
+        initializeApp(firebaseConfig);
+
+    const auth =
+        getAuth(app);
+
+    const db =
+        getFirestore(app);
+
+
+
+    // =================================================
+    // ELEMENTS
+    // =================================================
+
+    const loading =
+        document.getElementById("loading");
+
+    const emptyState =
+        document.getElementById("emptyState");
+
+    const depositRequests =
+        document.getElementById("depositRequests");
+
+    const pendingCount =
+        document.getElementById("pendingCount");
+
+    const approvedCount =
+        document.getElementById("approvedCount");
+
+    const rejectedCount =
+        document.getElementById("rejectedCount");
+
+    const approvedAmount =
+        document.getElementById("approvedAmount");
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+    const statusFilter =
+        document.getElementById("statusFilter");
+
+    const refreshButton =
+        document.getElementById("refreshButton");
+
+    const adminMessage =
+        document.getElementById("adminMessage");
+
+    const paymentModal =
+        document.getElementById("paymentModal");
+
+    const modalClose =
+        document.getElementById("modalClose");
+
+    const modalApprove =
+        document.getElementById("modalApprove");
+
+    const modalReject =
+        document.getElementById("modalReject");
+
+
+
+    let allRequests = [];
+
+    let selectedRequest = null;
+
+
+
+    // =================================================
+    // ADMIN EMAIL
+    // =================================================
+    //
+    // CHANGE THIS TO YOUR ADMIN GMAIL
+    //
+    // =================================================
+
+    const ADMIN_EMAIL =
+        "YOUR-ADMIN-GMAIL@gmail.com";
+
+
+
+    // =================================================
+    // CHECK ADMIN LOGIN
+    // =================================================
+
+    onAuthStateChanged(
+        auth,
+        async function(user) {
+
+            if (!user) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            /*
+             * IMPORTANT:
+             *
+             * Replace the ADMIN_EMAIL above
+             * with your actual admin Gmail.
+             */
+
+            if (
+                user.email &&
+                user.email.toLowerCase() !==
+                ADMIN_EMAIL.toLowerCase()
+            ) {
+
+                alert(
+                    "Access denied. Admin account required."
+                );
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            await loadDepositRequests();
+
+        }
+    );
+
+
+
+    // =================================================
+    // LOAD DEPOSIT REQUESTS
+    // =================================================
+
+    async function loadDepositRequests() {
+
+        loading.style.display =
+            "flex";
+
+        emptyState.style.display =
+            "none";
+
+        depositRequests.innerHTML =
+            "";
+
+
+        try {
+
+            const snapshot =
+                await getDocs(
+                    collection(
+                        db,
+                        "depositRequests"
+                    )
+                );
+
+
+            allRequests = [];
+
+
+            snapshot.forEach(
+                function(documentSnapshot) {
+
+                    allRequests.push({
+
+                        id:
+                            documentSnapshot.id,
+
+                        ...documentSnapshot.data()
+
+                    });
+
+                }
+            );
+
+
+            // Newest first
+
+            allRequests.sort(
+                function(a, b) {
+
+                    const aTime =
+                        a.createdAt?.seconds || 0;
+
+                    const bTime =
+                        b.createdAt?.seconds || 0;
+
+                    return bTime - aTime;
+
+                }
+            );
+
+
+            updateStatistics();
+
+            renderRequests();
+
+
+        } catch (error) {
+
+            console.error(
+                "Loading deposits failed:",
+                error
+            );
+
+            showMessage(
+                "Unable to load deposit requests.",
+                "error"
+            );
+
+        } finally {
+
+            loading.style.display =
+                "none";
+
+        }
+
+    }
+
+
+
+    // =================================================
+    // STATISTICS
+    // =================================================
+
+    function updateStatistics() {
+
+        let pending =
+            0;
+
+        let approved =
+            0;
+
+        let rejected =
+            0;
+
+        let totalApproved =
+            0;
+
+
+        allRequests.forEach(
+            function(request) {
+
+                const status =
+                    request.status || "pending";
+
+
+                if (status === "pending") {
+
+                    pending++;
+
+                }
+
+
+                if (status === "approved") {
+
+                    approved++;
+
+                    totalApproved +=
+                        Number(
+                            request.amount || 0
+                        );
+
+                }
+
+
+                if (status === "rejected") {
+
+                    rejected++;
+
+                }
+
+            }
+        );
+
+
+        pendingCount.textContent =
+            pending;
+
+        approvedCount.textContent =
+            approved;
+
+        rejectedCount.textContent =
+            rejected;
+
+
+        approvedAmount.textContent =
+            formatMoney(
+                totalApproved
+            );
+
+    }
+
+
+
+    // =================================================
+    // RENDER REQUESTS
+    // =================================================
+
+    function renderRequests() {
+
+        const search =
+            searchInput
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        const filter =
+            statusFilter.value;
+
+
+        const filtered =
+            allRequests.filter(
+                function(request) {
+
+                    const status =
+                        request.status ||
+                        "pending";
+
+
+                    const matchesStatus =
+                        filter === "all" ||
+                        status === filter;
+
+
+                    const searchableText =
+                        (
+                            request.customerEmail ||
+                            ""
+                        ) +
+                        " " +
+                        (
+                            request.senderName ||
+                            ""
+                        ) +
+                        " " +
+                        (
+                            request.transactionReference ||
+                            ""
+                        );
+
+
+                    const matchesSearch =
+                        searchableText
+                            .toLowerCase()
+                            .includes(search);
+
+
+                    return (
+                        matchesStatus &&
+                        matchesSearch
+                    );
+
+                }
+            );
+
+
+        depositRequests.innerHTML =
+            "";
+
+
+        if (filtered.length === 0) {
+
+            emptyState.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        emptyState.style.display =
+            "none";
+
+
+        filtered.forEach(
+            function(request) {
+
+                depositRequests.appendChild(
+                    createRequestCard(
+                        request
+                    )
+                );
+
+            }
+        );
+
+    }
+
+
+
+    // =================================================
+    // CREATE REQUEST CARD
+    // =================================================
+
+    function createRequestCard(request) {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "deposit-request-card";
+
+
+        const status =
+            request.status ||
+            "pending";
+
+
+        const statusText =
+            status.charAt(0).toUpperCase() +
+            status.slice(1);
+
+
+        card.innerHTML = `
+
+            <div class="request-top">
+
+                <div class="request-icon">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                </div>
+
+                <div class="request-main">
+
+                    <h3>
+                        ${escapeHTML(
+                            request.customerEmail ||
+                            "Unknown Customer"
+                        )}
+                    </h3>
+
+                    <span>
+                        ${formatDate(
+                            request.createdAt
+                        )}
+                    </span>
+
+                </div>
+
+                <span class="request-status ${status}">
+                    ${statusText}
+                </span>
+
+            </div>
+
+
+            <div class="request-details">
+
+                <div>
+
+                    <span>
+                        Amount
+                    </span>
+
+                    <strong>
+                        ${formatMoney(
+                            request.amount
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Sender Name
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(
+                            request.senderName ||
+                            "-"
+                        )}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        Reference
+                    </span>
+
+                    <strong>
+                        ${escapeHTML(
+                            request.transactionReference ||
+                            "-"
+                        )}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="request-actions">
+
+                <button
+                    type="button"
+                    class="view-button"
+                    data-action="view">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    View Details
+
+                </button>
+
+
+                ${
+                    status === "pending"
+                    ?
+
+                    `
+
+                    <button
+                        type="button"
+                        class="small-reject"
+                        data-action="reject">
+
+                        <i class="fa-solid fa-xmark"></i>
+
+                        Reject
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="small-approve"
+                        data-action="approve">
+
+                        <i class="fa-solid fa-check"></i>
+
+                        Approve
+
+                    </button>
+
+                    `
+
+                    :
+
+                    ""
+
+                }
+
+            </div>
+
+        `;
+
+
+        card
+            .querySelector(
+                '[data-action="view"]'
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    openModal(request);
+
+                }
+            );
+
+
+        const approveButton =
+            card.querySelector(
+                '[data-action="approve"]'
+            );
+
+
+        if (approveButton) {
+
+            approveButton.addEventListener(
+                "click",
+                function() {
+
+                    approvePayment(
+                        request
+                    );
+
+                }
+            );
+
+        }
+
+
+        const rejectButton =
+            card.querySelector(
+                '[data-action="reject"]'
+            );
+
+
+        if (rejectButton) {
+
+            rejectButton.addEventListener(
+                "click",
+                function() {
+
+                    rejectPayment(
+                        request
+                    );
+
+                }
+            );
+
+        }
+
+
+        return card;
+
+    }
+
+
+
+    // =================================================
+    // OPEN MODAL
+    // =================================================
+
+    function openModal(request) {
+
+        selectedRequest =
+            request;
+
+
+        document.getElementById(
+            "modalEmail"
+        ).textContent =
+            request.customerEmail || "-";
+
+
+        document.getElementById(
+            "modalAmount"
+        ).textContent =
+            formatMoney(
+                request.amount
+            );
+
+
+        document.getElementById(
+            "modalSender"
+        ).textContent =
+            request.senderName || "-";
+
+
+        document.getElementById(
+            "modalReference"
+        ).textContent =
+            request.transactionReference || "-";
+
+
+        document.getElementById(
+            "modalStatus"
+        ).textContent =
+            request.status || "pending";
+
+
+        document.getElementById(
+            "modalDate"
+        ).textContent =
+            formatDate(
+                request.createdAt
+            );
+
+
+        const isPending =
+            (
+                request.status ||
+                "pending"
+            ) === "pending";
+
+
+        modalApprove.style.display =
+            isPending
+            ? "flex"
+            : "none";
+
+
+        modalReject.style.display =
+            isPending
+            ? "flex"
+            : "none";
+
+
+        paymentModal.classList.add(
+            "show"
+        );
+
+    }
+
+
+
+    // =================================================
+    // CLOSE MODAL
+    // =================================================
+
+    function closeModal() {
+
+        paymentModal.classList.remove(
+            "show"
+        );
+
+        selectedRequest =
+            null;
+
+    }
+
+
+    modalClose.addEventListener(
+        "click",
+        closeModal
+    );
+
+
+    paymentModal.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                paymentModal
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+
+    // =================================================
+    // APPROVE PAYMENT
+    // =================================================
+
+    async function approvePayment(request) {
+
+        if (
+            !confirm(
+                "Are you sure you want to approve this payment? The amount will be added to the customer's wallet."
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    request.userId
+                );
+
+
+            const depositRef =
+                doc(
+                    db,
+                    "depositRequests",
+                    request.id
+                );
+
+
+            await runTransaction(
+                db,
+                async function(transaction) {
+
+                    const depositSnapshot =
+                        await transaction.get(
+                            depositRef
+                        );
+
+
+                    if (
+                        !depositSnapshot.exists()
+                    ) {
+
+                        throw new Error(
+                            "Deposit request no longer exists."
+                        );
+
+                    }
+
+
+                    const depositData =
+                        depositSnapshot.data();
+
+
+                    if (
+                        depositData.status ===
+                        "approved"
+                    ) {
+
+                        throw new Error(
+                            "This payment has already been approved."
+                        );
+
+                    }
+
+
+                    if (
+                        depositData.status ===
+                        "rejected"
+                    ) {
+
+                        throw new Error(
+                            "This payment has already been rejected."
+                        );
+
+                    }
+
+
+                    const userSnapshot =
+                        await transaction.get(
+                            userRef
+                        );
+
+
+                    if (
+                        !userSnapshot.exists()
+                    ) {
+
+                        throw new Error(
+                            "Customer account was not found."
+                        );
+
+                    }
+
+
+                    const userData =
+                        userSnapshot.data();
+
+
+                    const oldBalance =
+                        Number(
+                            userData.walletBalance ||
+                            0
+                        );
+
+
+                    const paymentAmount =
+                        Number(
+                            depositData.amount ||
+                            0
+                        );
+
+
+                    const newBalance =
+                        oldBalance +
+                        paymentAmount;
+
+
+                    transaction.update(
+                        userRef,
+                        {
+
+                            walletBalance:
+                                newBalance
+
+                        }
+                    );
+
+
+                    transaction.update(
+                        depositRef,
+                        {
+
+                            status:
+                                "approved",
+
+                            approvedAt:
+                                serverTimestamp(),
+
+                            approvedBy:
+                                auth.currentUser.email
+
+                        }
+                    );
+
+                }
+            );
+
+
+            showMessage(
+                "Payment approved and wallet updated successfully.",
+                "success"
+            );
+
+
+            closeModal();
+
+            await loadDepositRequests();
+
+
+        } catch (error) {
+
+            console.error(
+                "Approval error:",
+                error
+            );
+
+            showMessage(
+                error.message ||
+                "Unable to approve payment.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+
+    // =================================================
+    // REJECT PAYMENT
+    // =================================================
+
+    async function rejectPayment(request) {
+
+        const reason =
+            prompt(
+                "Enter rejection reason:"
+            );
+
+
+        if (reason === null) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const depositRef =
+                doc(
+                    db,
+                    "depositRequests",
+                    request.id
+                );
+
+
+            await updateDoc(
+                depositRef,
+                {
+
+                    status:
+                        "rejected",
+
+                    rejectionReason:
+                        reason.trim(),
+
+                    rejectedAt:
+                        serverTimestamp(),
+
+                    rejectedBy:
+                        auth.currentUser.email
+
+                }
+            );
+
+
+            showMessage(
+                "Payment request rejected.",
+                "success"
+            );
+
+
+            closeModal();
+
+            await loadDepositRequests();
+
+
+        } catch (error) {
+
+            console.error(
+                "Rejection error:",
+                error
+            );
+
+            showMessage(
+                "Unable to reject this payment.",
+                "error"
+            );
+
+        }
+
+    }
+
+
+
+    // =================================================
+    // MODAL BUTTONS
+    // =================================================
+
+    modalApprove.addEventListener(
+        "click",
+        function() {
+
+            if (selectedRequest) {
+
+                approvePayment(
+                    selectedRequest
+                );
+
+            }
+
+        }
+    );
+
+
+    modalReject.addEventListener(
+        "click",
+        function() {
+
+            if (selectedRequest) {
+
+                rejectPayment(
+                    selectedRequest
+                );
+
+            }
+
+        }
+    );
+
+
+
+    // =================================================
+    // SEARCH
+    // =================================================
+
+    searchInput.addEventListener(
+        "input",
+        renderRequests
+    );
+
+
+    statusFilter.addEventListener(
+        "change",
+        renderRequests
+    );
+
+
+
+    // =================================================
+    // REFRESH
+    // =================================================
+
+    refreshButton.addEventListener(
+        "click",
+        async function() {
+
+            refreshButton.disabled =
+                true;
+
+            refreshButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
+
+
+            await loadDepositRequests();
+
+
+            refreshButton.disabled =
+                false;
+
+            refreshButton.innerHTML =
+                '<i class="fa-solid fa-rotate"></i> Refresh';
+
+        }
+    );
+
+
+
+    // =================================================
+    // LOGOUT
+    // =================================================
+
+    document
+        .getElementById("adminLogout")
+        .addEventListener(
+            "click",
+            async function() {
+
+                await signOut(auth);
+
+                window.location.href =
+                    "login.html";
+
+            }
+        );
+
+
+
+    // =================================================
+    // MESSAGE
+    // =================================================
+
+    function showMessage(
+        message,
+        type
+    ) {
+
+        adminMessage.textContent =
+            message;
+
+        adminMessage.className =
+            "admin-message " + type;
+
+        adminMessage.style.display =
+            "block";
+
+
+        setTimeout(
+            function() {
+
+                adminMessage.style.display =
+                    "none";
+
+            },
+            5000
+        );
+
+    }
+
+
+
+    // =================================================
+    // MONEY FORMAT
+    // =================================================
+
+    function formatMoney(amount) {
+
+        return "₦" +
+            Number(
+                amount || 0
+            ).toLocaleString(
+                "en-NG",
+                {
+
+                    minimumFractionDigits: 2,
+
+                    maximumFractionDigits: 2
+
+                }
+            );
+
+    }
+
+
+
+    // =================================================
+    // DATE FORMAT
+    // =================================================
+
+    function formatDate(timestamp) {
+
+        if (
+            !timestamp ||
+            !timestamp.seconds
+        ) {
+
+            return "Just now";
+
+        }
+
+
+        const date =
+            new Date(
+                timestamp.seconds * 1000
+            );
+
+
+        return date.toLocaleString(
+            "en-NG",
+            {
+
+                day: "2-digit",
+
+                month: "short",
+
+                year: "numeric",
+
+                hour: "2-digit",
+
+                minute: "2-digit"
+
+            }
+        );
+
+    }
+
+
+
+    // =================================================
+    // SECURITY: ESCAPE HTML
+    // =================================================
+
+    function escapeHTML(value) {
+
+        return String(value || "")
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+</script>
+
+</body>
+
+</html>
