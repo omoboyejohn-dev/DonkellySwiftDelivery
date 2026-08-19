@@ -10,12 +10,9 @@
 
     <title>Deposit | Donkelly Swift Delivery</title>
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Font -->
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -24,14 +21,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 
-<body class="dashboard-page">
+<body class="deposit-page">
 
 
 <!-- =====================================================
@@ -85,197 +81,194 @@
 <main class="deposit-container">
 
 
-    <!-- PAGE TITLE -->
+    <!-- =================================================
+         PAGE TITLE
+    ================================================== -->
 
-    <section class="deposit-heading">
+    <div class="deposit-heading">
 
-        <p class="section-label">
-            WALLET
-        </p>
+        <div class="deposit-heading-icon">
 
-        <h1>
-            Deposit Money
-        </h1>
+            <i class="fa-solid fa-wallet"></i>
 
-        <p>
-            Fund your Donkelly Swift Delivery wallet
-            securely to pay for your gifts and orders.
-        </p>
+        </div>
 
-    </section>
+        <div>
+
+            <p>
+                WALLET
+            </p>
+
+            <h1>
+                Deposit Funds
+            </h1>
+
+            <span>
+                Fund your Donkelly Swift Delivery wallet
+                securely.
+            </span>
+
+        </div>
+
+    </div>
 
 
 
     <!-- =================================================
-         BANK TRANSFER CARD
+         BANK PAYMENT CARD
     ================================================== -->
 
-    <section class="bank-transfer-card">
+    <section class="deposit-card"
+             id="bankDetailsCard">
 
 
-        <div class="deposit-card-icon">
+        <div class="deposit-card-header">
 
-            <i class="fa-solid fa-building-columns"></i>
+            <div>
+
+                <h2>
+                    Make Bank Transfer
+                </h2>
+
+                <p>
+                    Transfer the amount you want to deposit
+                    to the account below.
+                </p>
+
+            </div>
+
+            <div class="bank-icon">
+
+                <i class="fa-solid fa-building-columns"></i>
+
+            </div>
 
         </div>
 
 
-        <h2>
-            Bank Transfer
-        </h2>
+
+        <!-- BANK DETAILS -->
+
+        <div class="bank-details">
 
 
-        <p class="deposit-description">
-
-            Click below to generate your virtual bank
-            account for deposits always.
-
-        </p>
-
-
-        <!-- GENERATE BUTTON -->
-
-        <button
-            type="button"
-            class="generate-account-button"
-            id="generateAccountButton">
-
-            <i class="fa-solid fa-plus"></i>
-
-            Generate Virtual Account
-
-        </button>
-
-
-        <!-- =================================================
-             VIRTUAL ACCOUNT AREA
-        ================================================== -->
-
-        <div
-            class="virtual-account-box"
-            id="virtualAccountBox">
-
-
-            <div class="account-status">
-
-                <span class="status-dot"></span>
-
-                Virtual Account
-
-            </div>
-
-
-            <div class="account-detail">
+            <div class="bank-detail">
 
                 <span>
                     Bank Name
                 </span>
 
-                <strong id="bankName">
-                    —
+                <strong>
+                    Moniepoint
                 </strong>
 
             </div>
 
 
-            <div class="account-detail">
-
-                <span>
-                    Account Name
-                </span>
-
-                <strong id="accountName">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="account-detail">
+            <div class="bank-detail">
 
                 <span>
                     Account Number
                 </span>
 
-                <strong id="accountNumber">
-                    —
+                <div class="account-number-row">
+
+                    <strong id="accountNumber">
+                        9160815289
+                    </strong>
+
+                    <button
+                        type="button"
+                        onclick="copyAccountNumber()"
+                        class="copy-button">
+
+                        <i class="fa-regular fa-copy"></i>
+
+                        Copy
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="bank-detail">
+
+                <span>
+                    Account Name
+                </span>
+
+                <strong>
+                    Ezekiel Oluwaseun Ikuemehinlo
                 </strong>
 
             </div>
 
 
-            <p class="account-note">
-
-                Use this account for your deposit.
-                Your payment will be credited to your
-                wallet after successful confirmation.
-
-            </p>
-
         </div>
 
 
-    </section>
 
+        <!-- IMPORTANT NOTICE -->
 
+        <div class="deposit-notice">
 
-    <!-- =================================================
-         SUPPORT
-    ================================================== -->
-
-    <section class="deposit-support">
-
-        <div class="support-icon">
-
-            <i class="fa-solid fa-headset"></i>
-
-        </div>
-
-
-        <div>
-
-            <h3>
-                Payment not reflecting?
-            </h3>
+            <i class="fa-solid fa-circle-info"></i>
 
             <p>
-                If you have completed your bank transfer
-                and your wallet has not been updated,
-                contact our support team.
+                After making the bank transfer, click
+                <strong>I Have Paid</strong> below and
+                submit your payment details for verification.
             </p>
 
         </div>
 
 
-        <a href="support.html"
-           class="support-button">
 
-            Contact Support
+        <!-- I HAVE PAID -->
 
-        </a>
+        <button
+            type="button"
+            class="paid-button"
+            id="paidButton">
+
+            <i class="fa-solid fa-check"></i>
+
+            I Have Paid
+
+        </button>
+
 
     </section>
 
 
 
     <!-- =================================================
-         RECENT ACTIVITY
+         PAYMENT FORM
     ================================================== -->
 
-    <section class="deposit-history-section">
+    <section class="deposit-card payment-form-card"
+             id="paymentFormCard">
 
 
-        <div class="deposit-section-header">
+        <div class="deposit-card-header">
 
             <div>
 
-                <p class="section-label">
-                    TRANSACTIONS
+                <h2>
+                    Payment Verification
+                </h2>
+
+                <p>
+                    Enter the details of the transfer you made.
                 </p>
 
-                <h2>
-                    Recent Activity History
-                </h2>
+            </div>
+
+            <div class="bank-icon">
+
+                <i class="fa-solid fa-receipt"></i>
 
             </div>
 
@@ -283,54 +276,147 @@
 
 
 
-        <!-- TABLE -->
-
-        <div class="deposit-history-table">
+        <form id="paymentForm">
 
 
-            <div class="history-table-header">
+            <!-- AMOUNT -->
 
-                <span>
-                    Type
-                </span>
+            <div class="deposit-form-group">
 
-                <span>
-                    Detail
-                </span>
+                <label for="amount">
+                    Amount Paid
+                </label>
 
-                <span>
-                    Amount
-                </span>
+                <div class="deposit-input">
 
-                <span>
-                    Status
-                </span>
+                    <span class="currency">
+                        ₦
+                    </span>
 
-            </div>
-
-
-            <div
-                id="depositHistory"
-                class="history-table-body">
-
-
-                <!-- EMPTY STATE -->
-
-                <div class="history-empty">
-
-                    <i class="fa-solid fa-receipt"></i>
-
-                    <p>
-                        No recent deposit activity.
-                    </p>
+                    <input
+                        type="number"
+                        id="amount"
+                        placeholder="Enter amount paid"
+                        min="1"
+                        step="0.01"
+                        required
+                    >
 
                 </div>
 
+            </div>
+
+
+
+            <!-- SENDER NAME -->
+
+            <div class="deposit-form-group">
+
+                <label for="senderName">
+                    Sender Name
+                </label>
+
+                <div class="deposit-input">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="senderName"
+                        placeholder="Enter the name used for payment"
+                        required
+                    >
+
+                </div>
 
             </div>
 
+
+
+            <!-- TRANSACTION REFERENCE -->
+
+            <div class="deposit-form-group">
+
+                <label for="transactionReference">
+                    Transaction Reference
+                </label>
+
+                <div class="deposit-input">
+
+                    <i class="fa-solid fa-hashtag"></i>
+
+                    <input
+                        type="text"
+                        id="transactionReference"
+                        placeholder="Enter transaction reference"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                class="deposit-message"
+                id="depositMessage">
+            </div>
+
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="submit-payment-button"
+                id="submitPaymentButton">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Submit Payment
+
+            </button>
+
+
+        </form>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         PROCESSING MESSAGE
+    ================================================== -->
+
+    <section class="processing-card"
+             id="processingCard">
+
+        <div class="processing-icon">
+
+            <i class="fa-solid fa-clock"></i>
+
         </div>
 
+        <h2>
+            Payment Submitted
+        </h2>
+
+        <p>
+            Your payment has been submitted for verification.
+            Your wallet will be updated after the payment
+            has been reviewed and approved.
+        </p>
+
+        <a href="dashboard.html"
+           class="processing-button">
+
+            Return to Dashboard
+
+        </a>
 
     </section>
 
@@ -345,11 +431,6 @@
 
 <script type="module">
 
-
-    // =====================================================
-    // FIREBASE IMPORTS
-    // =====================================================
-
     import {
         initializeApp
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
@@ -363,21 +444,16 @@
 
     import {
         getFirestore,
-        doc,
-        getDoc,
         collection,
-        query,
-        where,
-        orderBy,
-        limit,
-        getDocs
+        addDoc,
+        serverTimestamp
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
 
-    // =====================================================
+    // =================================================
     // FIREBASE CONFIG
-    // =====================================================
+    // =================================================
 
     const firebaseConfig = {
 
@@ -406,71 +482,59 @@
 
 
 
-    // =====================================================
+    // =================================================
     // INITIALIZE FIREBASE
-    // =====================================================
+    // =================================================
 
     const app =
         initializeApp(firebaseConfig);
 
-
     const auth =
         getAuth(app);
-
 
     const db =
         getFirestore(app);
 
 
 
-    // =====================================================
+    // =================================================
     // ELEMENTS
-    // =====================================================
+    // =================================================
 
-    const generateAccountButton =
-        document.getElementById(
-            "generateAccountButton"
-        );
+    const bankDetailsCard =
+        document.getElementById("bankDetailsCard");
 
+    const paymentFormCard =
+        document.getElementById("paymentFormCard");
 
-    const virtualAccountBox =
-        document.getElementById(
-            "virtualAccountBox"
-        );
+    const processingCard =
+        document.getElementById("processingCard");
 
+    const paidButton =
+        document.getElementById("paidButton");
 
-    const bankName =
-        document.getElementById(
-            "bankName"
-        );
+    const paymentForm =
+        document.getElementById("paymentForm");
 
+    const depositMessage =
+        document.getElementById("depositMessage");
 
-    const accountName =
-        document.getElementById(
-            "accountName"
-        );
-
-
-    const accountNumber =
-        document.getElementById(
-            "accountNumber"
-        );
-
-
-    const depositHistory =
-        document.getElementById(
-            "depositHistory"
-        );
+    const submitPaymentButton =
+        document.getElementById("submitPaymentButton");
 
 
 
-    // =====================================================
+    let currentUser = null;
+
+
+
+    // =================================================
     // CHECK AUTHENTICATION
-    // =====================================================
+    // =================================================
 
     onAuthStateChanged(
         auth,
-        async function(user) {
+        function(user) {
 
             if (!user) {
 
@@ -481,358 +545,275 @@
 
             }
 
-
-            // Load existing virtual account
-            // if one has already been saved.
-
-            await loadVirtualAccount(user.uid);
-
-
-            // Load deposit history
-
-            await loadDepositHistory(user.uid);
+            currentUser = user;
 
         }
     );
 
 
 
-    // =====================================================
-    // LOAD VIRTUAL ACCOUNT
-    // =====================================================
+    // =================================================
+    // SHOW PAYMENT FORM
+    // =================================================
 
-    async function loadVirtualAccount(uid) {
+    paidButton.addEventListener(
+        "click",
+        function() {
 
-        try {
+            paymentFormCard.style.display =
+                "block";
 
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    uid
+            paymentFormCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+    );
+
+
+
+    // =================================================
+    // SUBMIT PAYMENT
+    // =================================================
+
+    paymentForm.addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            if (!currentUser) {
+
+                showMessage(
+                    "Please login to continue.",
+                    "error"
                 );
-
-
-            const userSnapshot =
-                await getDoc(userRef);
-
-
-            if (!userSnapshot.exists()) {
 
                 return;
 
             }
 
 
-            const userData =
-                userSnapshot.data();
-
-
-            /*
-             * These fields will be populated by the
-             * real virtual-account/payment provider.
-             */
-
-            if (
-                userData.virtualAccount &&
-                userData.virtualAccount.accountNumber
-            ) {
-
-                bankName.textContent =
-                    userData.virtualAccount.bankName || "—";
-
-
-                accountName.textContent =
-                    userData.virtualAccount.accountName || "—";
-
-
-                accountNumber.textContent =
-                    userData.virtualAccount.accountNumber || "—";
-
-
-                virtualAccountBox.classList.add(
-                    "show"
+            const amount =
+                Number(
+                    document.getElementById("amount").value
                 );
 
 
-                generateAccountButton.innerHTML = `
+            const senderName =
+                document
+                    .getElementById("senderName")
+                    .value
+                    .trim();
 
-                    <i class="fa-solid fa-building-columns"></i>
 
-                    Virtual Account Available
+            const transactionReference =
+                document
+                    .getElementById("transactionReference")
+                    .value
+                    .trim();
 
-                `;
+
+
+            // VALIDATION
+
+            if (!amount || amount <= 0) {
+
+                showMessage(
+                    "Please enter a valid payment amount.",
+                    "error"
+                );
+
+                return;
 
             }
 
-        } catch (error) {
 
-            console.error(
-                "Virtual account error:",
-                error
-            );
+            if (!senderName) {
+
+                showMessage(
+                    "Please enter the sender name.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (!transactionReference) {
+
+                showMessage(
+                    "Please enter the transaction reference.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+
+            // DISABLE BUTTON
+
+            submitPaymentButton.disabled = true;
+
+            submitPaymentButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+
+
+
+            try {
+
+
+                // =================================================
+                // SAVE PAYMENT REQUEST
+                // =================================================
+
+                await addDoc(
+                    collection(
+                        db,
+                        "depositRequests"
+                    ),
+                    {
+
+                        userId:
+                            currentUser.uid,
+
+                        customerEmail:
+                            currentUser.email || "",
+
+                        amount:
+                            amount,
+
+                        senderName:
+                            senderName,
+
+                        transactionReference:
+                            transactionReference,
+
+                        bankName:
+                            "Moniepoint",
+
+                        accountNumber:
+                            "9160815289",
+
+                        accountName:
+                            "Ezekiel Oluwaseun Ikuemehinlo",
+
+                        status:
+                            "pending",
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+
+
+                // =================================================
+                // SHOW SUCCESS
+                // =================================================
+
+                paymentFormCard.style.display =
+                    "none";
+
+                bankDetailsCard.style.display =
+                    "none";
+
+                processingCard.style.display =
+                    "block";
+
+                processingCard.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+
+            } catch (error) {
+
+                console.error(
+                    "Deposit submission error:",
+                    error
+                );
+
+
+                showMessage(
+                    "Unable to submit your payment. Please try again.",
+                    "error"
+                );
+
+
+                submitPaymentButton.disabled =
+                    false;
+
+                submitPaymentButton.innerHTML =
+                    '<i class="fa-solid fa-paper-plane"></i> Submit Payment';
+
+            }
 
         }
+    );
+
+
+
+    // =================================================
+    // MESSAGE
+    // =================================================
+
+    function showMessage(message, type) {
+
+        depositMessage.textContent =
+            message;
+
+        depositMessage.className =
+            "deposit-message " + type;
+
+        depositMessage.style.display =
+            "block";
 
     }
 
 
 
-    // =====================================================
-    // GENERATE VIRTUAL ACCOUNT
-    // =====================================================
+    // =================================================
+    // COPY ACCOUNT NUMBER
+    // =================================================
 
-    generateAccountButton.addEventListener(
-        "click",
+    window.copyAccountNumber =
         async function() {
 
-
-            /*
-             * IMPORTANT:
-             *
-             * A real virtual bank account must be created
-             * through a payment provider such as Paystack,
-             * Moniepoint, Flutterwave, etc.
-             *
-             * We will connect the provider in the next step.
-             *
-             * Do NOT put fake bank details here.
-             */
+            const accountNumber =
+                document
+                    .getElementById("accountNumber")
+                    .textContent
+                    .trim();
 
 
-            generateAccountButton.disabled =
-                true;
+            try {
 
-
-            generateAccountButton.innerHTML = `
-
-                <i class="fa-solid fa-spinner fa-spin"></i>
-
-                Preparing Account...
-
-            `;
-
-
-            setTimeout(
-                function() {
-
-                    generateAccountButton.disabled =
-                        false;
-
-
-                    generateAccountButton.innerHTML = `
-
-                        <i class="fa-solid fa-plus"></i>
-
-                        Generate Virtual Account
-
-                    `;
-
-
-                    alert(
-                        "Virtual account generation will be connected to the payment provider next."
-                    );
-
-                },
-                800
-            );
-
-        }
-    );
-
-
-
-    // =====================================================
-    // LOAD DEPOSIT HISTORY
-    // =====================================================
-
-    async function loadDepositHistory(uid) {
-
-        try {
-
-            const transactionsRef =
-                collection(
-                    db,
-                    "transactions"
+                await navigator.clipboard.writeText(
+                    accountNumber
                 );
 
-
-            const transactionsQuery =
-                query(
-
-                    transactionsRef,
-
-                    where(
-                        "userId",
-                        "==",
-                        uid
-                    ),
-
-                    where(
-                        "type",
-                        "==",
-                        "deposit"
-                    ),
-
-                    orderBy(
-                        "createdAt",
-                        "desc"
-                    ),
-
-                    limit(10)
-
+                alert(
+                    "Account number copied."
                 );
 
+            } catch (error) {
 
-            const snapshot =
-                await getDocs(
-                    transactionsQuery
-                );
-
-
-            if (snapshot.empty) {
-
-                return;
+                console.error(error);
 
             }
 
-
-            depositHistory.innerHTML = "";
-
-
-            snapshot.forEach(
-                function(transaction) {
-
-                    const data =
-                        transaction.data();
-
-
-                    const amount =
-                        Number(
-                            data.amount || 0
-                        );
-
-
-                    const status =
-                        data.status || "pending";
-
-
-                    const date =
-                        data.createdAt
-                        ? formatDate(
-                            data.createdAt.toDate()
-                        )
-                        : "—";
-
-
-                    const row =
-                        document.createElement(
-                            "div"
-                        );
-
-
-                    row.className =
-                        "history-row";
-
-
-                    row.innerHTML = `
-
-                        <span>
-
-                            <i class="fa-solid fa-arrow-down"></i>
-
-                            Deposit
-
-                        </span>
-
-
-                        <span>
-
-                            ${date}
-
-                        </span>
-
-
-                        <span>
-
-                            ₦${amount.toLocaleString(
-                                "en-NG",
-                                {
-                                    minimumFractionDigits: 2,
-                                    maximumFractionDigits: 2
-                                }
-                            )}
-
-                        </span>
-
-
-                        <span>
-
-                            <b class="status-${status}">
-
-                                ${capitalize(status)}
-
-                            </b>
-
-                        </span>
-
-                    `;
-
-
-                    depositHistory.appendChild(
-                        row
-                    );
-
-                }
-            );
-
-        } catch (error) {
-
-            console.error(
-                "Deposit history error:",
-                error
-            );
-
-        }
-
-    }
-
-
-
-    // =====================================================
-    // FORMAT DATE
-    // =====================================================
-
-    function formatDate(date) {
-
-        return date.toLocaleDateString(
-            "en-NG",
-            {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            }
-        );
-
-    }
-
-
-
-    // =====================================================
-    // CAPITALIZE
-    // =====================================================
-
-    function capitalize(text) {
-
-        return text.charAt(0).toUpperCase()
-            + text.slice(1);
-
-    }
-
+        };
 
 </script>
 
 
 </body>
 
-  </html>
+</html>
