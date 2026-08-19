@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment History | Donkelly Swift Delivery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #f5faf7;
+            color: #17221c;
+        }
+
+        .page {
+            width: 92%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 0 60px;
+        }
+
+        /* HEADER */
+
+        .header {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .back-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid #dfe7e2;
+            background: #fff;
+            color: #079447;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background: #079447;
+            color: #fff;
+        }
+
+        .header h1 {
+            font-size: 21px;
+            margin-bottom: 4px;
+        }
+
+        .header p {
+            font-size: 12px;
+            color: #66716b;
+        }
+
+        .history-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            background: #eaf8ef;
+            color: #079447;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* SUMMARY */
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .summary-card i {
+            color: #079447;
+            font-size: 17px;
+            margin-bottom: 12px;
+        }
+
+        .summary-card h2 {
+            font-size: 21px;
+            margin-bottom: 4px;
+        }
+
+        .summary-card p {
+            color: #66716b;
+            font-size: 11px;
+        }
+
+        /* HISTORY CARD */
+
+        .history-card {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .history-title {
+            padding: 20px;
+            border-bottom: 1px solid #e5ebe7;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-title h2 {
+            font-size: 17px;
+        }
+
+        .refresh-button {
+            border: 1px solid #079447;
+            background: #fff;
+            color: #079447;
+            padding: 9px 13px;
+            border-radius: 7px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .refresh-button:hover {
+            background: #079447;
+            color: #fff;
+        }
+
+        /* PAYMENT LIST */
+
+        .payment-list {
+            padding: 18px;
+        }
+
+        .payment-item {
+            border: 1px solid #e5ebe7;
+            border-radius: 12px;
+            padding: 17px;
+            margin-bottom: 12px;
+        }
+
+        .payment-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .payment-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .payment-name {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #eaf8ef;
+            color: #079447;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-name h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .payment-name p {
+            color: #66716b;
+            font-size: 10px;
+        }
+
+        .amount {
+            font-size: 16px;
+            font-weight: 800;
+            color: #079447;
+            white-space: nowrap;
+        }
+
+        /* STATUS */
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .status-pending {
+            background: #fff7e6;
+            color: #b76e00;
+            border: 1px solid #ffe0a3;
+        }
+
+        .status-approved {
+            background: #eaf8ef;
+            color: #079447;
+            border: 1px solid #bce8cc;
+        }
+
+        .status-rejected {
+            background: #fff1f1;
+            color: #d93025;
+            border: 1px solid #f0d0d0;
+        }
+
+        /* DETAILS */
+
+        .payment-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .detail {
+            background: #f7faf8;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .detail small {
+            display: block;
+            color: #66716b;
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .detail strong {
+            display: block;
+            font-size: 11px;
+            word-break: break-word;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            padding: 55px 20px;
+            text-align: center;
+            color: #66716b;
+        }
+
+        .empty i {
+            display: block;
+            font-size: 40px;
+            color: #079447;
+            margin-bottom: 12px;
+        }
+
+        .empty h3 {
+            color: #17221c;
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .empty p {
+            font-size: 11px;
+        }
+
+        /* LOADING */
+
+        .loading {
+            padding: 55px 20px;
+            text-align: center;
+            color: #66716b;
+            font-size: 12px;
+        }
+
+        .loading i {
+            color: #079447;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* ERROR */
+
+        .error {
+            padding: 40px 20px;
+            text-align: center;
+            color: #d93025;
+            font-size: 12px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .page {
+                width: 94%;
+                padding-top: 15px;
+            }
+
+            .header {
+                padding: 17px;
+            }
+
+            .header h1 {
+                font-size: 18px;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-top {
+                flex-direction: column;
+            }
+
+            .amount {
+                font-size: 15px;
+            }
+
+            .payment-details {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- HEADER -->
+
+    <section class="header">
+
+        <div class="header-left">
+
+            <button
+                class="back-button"
+                onclick="history.back()">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+
+            <div>
+
+                <h1>Payment History</h1>
+
+                <p>
+                    View all your deposit transactions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="history-icon">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SUMMARY -->
+
+    <section class="summary">
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-receipt"></i>
+
+            <h2 id="totalPayments">
+                0
+            </h2>
+
+            <p>
+                Total Payments
+            </p>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h2 id="approvedPayments">
+                0
+            </h2>
+
+            <p>
+                Approved Payments
+            </p>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-naira-sign"></i>
+
+            <h2 id="totalDeposited">
+                ₦0.00
+            </h2>
+
+            <p>
+                Total Approved
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- HISTORY -->
+
+    <section class="history-card">
+
+
+        <div class="history-title">
+
+            <h2>
+                Transaction History
+            </h2>
+
+
+            <button
+                class="refresh-button"
+                id="refreshButton">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            class="payment-list"
+            id="paymentList">
+
+            <div class="loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <br>
+
+                Loading payment history...
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+import {
+    getAuth,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    orderBy
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+    authDomain:
+        "donkellyswiftdelivery.firebaseapp.com",
+
+    projectId:
+        "donkellyswiftdelivery",
+
+    storageBucket:
+        "donkellyswiftdelivery.firebasestorage.app",
+
+    messagingSenderId:
+        "547113841009",
+
+    appId:
+        "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+    measurementId:
+        "G-HFG8ENEEVB"
+
+};
+
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
+const app =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const paymentList =
+    document.getElementById(
+        "paymentList"
+    );
+
+
+const totalPayments =
+    document.getElementById(
+        "totalPayments"
+    );
+
+
+const approvedPayments =
+    document.getElementById(
+        "approvedPayments"
+    );
+
+
+const totalDeposited =
+    document.getElementById(
+        "totalDeposited"
+    );
+
+
+const refreshButton =
+    document.getElementById(
+        "refreshButton"
+    );
+
+
+
+/* =====================================================
+   FORMAT NAIRA
+===================================================== */
+
+function formatNaira(amount) {
+
+    return "₦" +
+        Number(
+            amount || 0
+        ).toLocaleString(
+            "en-NG",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+}
+
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(timestamp) {
+
+    if (!timestamp) {
+
+        return "Date unavailable";
+
+    }
+
+
+    try {
+
+        if (
+            typeof timestamp.toDate ===
+            "function"
+        ) {
+
+            return timestamp
+                .toDate()
+                .toLocaleString(
+                    "en-NG",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Date error:",
+            error
+        );
+
+    }
+
+
+    return "Date unavailable";
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+
+/* =====================================================
+   LOAD PAYMENT HISTORY
+===================================================== */
+
+async function loadPaymentHistory(
+    user
+) {
+
+    paymentList.innerHTML = `
+
+        <div class="loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <br>
+
+            Loading payment history...
+
+        </div>
+
+    `;
+
+
+    try {
+
+        const depositsRef =
+            collection(
+                db,
+                "depositRequests"
+            );
+
+
+        let snapshot;
+
+
+        /*
+         * Try to load newest payments first.
+         */
+
+        try {
+
+            const paymentsQuery =
+                query(
+                    depositsRef,
+
+                    where(
+                        "userId",
+                        "==",
+                        user.uid
+                    ),
+
+                    orderBy(
+                        "createdAt",
+                        "desc"
+                    )
+                );
+
+
+            snapshot =
+                await getDocs(
+                    paymentsQuery
+                );
+
+        } catch (firstError) {
+
+            console.warn(
+                "Ordered payment query failed.",
+                firstError
+            );
+
+
+            /*
+             * Fallback without orderBy.
+             */
+
+            const paymentsQuery =
+                query(
+                    depositsRef,
+
+                    where(
+                        "userId",
+                        "==",
+                        user.uid
+                    )
+                );
+
+
+            snapshot =
+                await getDocs(
+                    paymentsQuery
+                );
+
+        }
+
+
+
+        let total =
+            0;
+
+
+        let approved =
+            0;
+
+
+        let approvedAmount =
+            0;
+
+
+
+        if (snapshot.empty) {
+
+            paymentList.innerHTML = `
+
+                <div class="empty">
+
+                    <i class="fa-solid fa-receipt"></i>
+
+                    <h3>
+                        No payment history
+                    </h3>
+
+                    <p>
+                        Your deposit transactions will appear here.
+                    </p>
+
+                </div>
+
+            `;
+
+
+            updateSummary(
+                0,
+                0,
+                0
+            );
+
+
+            return;
+
+        }
+
+
+
+        /*
+         * Convert documents to array.
+         */
+
+        const payments =
+            [];
+
+
+        snapshot.forEach(
+            function(paymentDoc) {
+
+                payments.push({
+
+                    id:
+                        paymentDoc.id,
+
+                    data:
+                        paymentDoc.data()
+
+                });
+
+            }
+        );
+
+
+
+        /*
+         * Sort newest first.
+         */
+
+        payments.sort(
+            function(a, b) {
+
+                const dateA =
+                    a.data.createdAt?.toMillis
+                    ? a.data.createdAt.toMillis()
+                    : 0;
+
+
+                const dateB =
+                    b.data.createdAt?.toMillis
+                    ? b.data.createdAt.toMillis()
+                    : 0;
+
+
+                return dateB - dateA;
+
+            }
+        );
+
+
+
+        paymentList.innerHTML = "";
+
+
+
+        payments.forEach(
+            function(payment) {
+
+                const data =
+                    payment.data;
+
+
+                total++;
+
+
+                const status =
+                    String(
+                        data.status ||
+                        "pending"
+                    ).toLowerCase();
+
+
+                const amount =
+                    Number(
+                        data.amount ||
+                        0
+                    );
+
+
+
+                if (
+                    status ===
+                    "approved"
+                ) {
+
+                    approved++;
+
+                    approvedAmount +=
+                        amount;
+
+                }
+
+
+
+                let statusClass =
+                    "status-pending";
+
+
+                if (
+                    status ===
+                    "approved"
+                ) {
+
+                    statusClass =
+                        "status-approved";
+
+                }
+
+
+                if (
+                    status ===
+                    "rejected"
+                ) {
+
+                    statusClass =
+                        "status-rejected";
+
+                }
+
+
+
+                const reference =
+                    data.transactionReference ||
+                    data.reference ||
+                    "Not provided";
+
+
+                const senderName =
+                    data.senderName ||
+                    "Not provided";
+
+
+
+                const paymentItem =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                paymentItem.className =
+                    "payment-item";
+
+
+
+                paymentItem.innerHTML = `
+
+                    <div class="payment-top">
+
+
+                        <div class="payment-name">
+
+
+                            <div class="payment-icon">
+
+                                <i class="fa-solid fa-money-bill-transfer"></i>
+
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Deposit Payment
+                                </h3>
+
+                                <p>
+                                    ${escapeHtml(
+                                        formatDate(
+                                            data.createdAt
+                                        )
+                                    )}
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div>
+
+                            <div class="amount">
+
+                                ${formatNaira(amount)}
+
+                            </div>
+
+
+                            <span class="status ${statusClass}">
+
+                                ${escapeHtml(
+                                    status.toUpperCase()
+                                )}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="payment-details">
+
+
+                        <div class="detail">
+
+                            <small>
+                                Transaction Reference
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    reference
+                                )}
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <small>
+                                Sender Name
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    senderName
+                                )}
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <small>
+                                Amount
+                            </small>
+
+                            <strong>
+                                ${formatNaira(
+                                    amount
+                                )}
+                            </strong>
+
+                        </div>
+
+
+
+                        <div class="detail">
+
+                            <small>
+                                Status
+                            </small>
+
+                            <strong>
+                                ${escapeHtml(
+                                    status
+                                        .charAt(0)
+                                        .toUpperCase() +
+                                    status.slice(1)
+                                )}
+                            </strong>
+
+                        </div>
+
+
+
+                        ${
+                            status ===
+                            "approved"
+                            ?
+                            `
+
+                            <div class="detail">
+
+                                <small>
+                                    Credited Amount
+                                </small>
+
+                                <strong>
+                                    ${formatNaira(
+                                        data.creditedAmount ||
+                                        amount
+                                    )}
+                                </strong>
+
+                            </div>
+
+                            `
+                            :
+                            ""
+                        }
+
+
+                    </div>
+
+                `;
+
+
+                paymentList.appendChild(
+                    paymentItem
+                );
+
+            }
+        );
+
+
+
+        updateSummary(
+            total,
+            approved,
+            approvedAmount
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "PAYMENT HISTORY ERROR:",
+            error
+        );
+
+
+        paymentList.innerHTML = `
+
+            <div class="error">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <br><br>
+
+                Unable to load payment history.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =====================================================
+   UPDATE SUMMARY
+===================================================== */
+
+function updateSummary(
+    total,
+    approved,
+    amount
+) {
+
+    totalPayments.textContent =
+        total;
+
+
+    approvedPayments.textContent =
+        approved;
+
+
+    totalDeposited.textContent =
+        formatNaira(amount);
+
+}
+
+
+
+/* =====================================================
+   AUTHENTICATION
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    function(user) {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        loadPaymentHistory(
+            user
+        );
+
+    }
+);
+
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+refreshButton.addEventListener(
+    "click",
+    function() {
+
+        const user =
+            auth.currentUser;
+
+
+        if (user) {
+
+            loadPaymentHistory(
+                user
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
