@@ -4,14 +4,20 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Create Account | Donkelly Swift Delivery</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
@@ -25,337 +31,422 @@
 <body class="auth-page">
 
 
-    <!-- ================= HEADER ================= -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <header class="auth-header">
+<header class="auth-header">
 
-        <a href="index.html" class="logo">
+    <a href="index.html" class="logo">
 
-            <div class="logo-icon">
-                <i class="fa-solid fa-bag-shopping"></i>
-            </div>
+        <div class="logo-icon">
+            <i class="fa-solid fa-bag-shopping"></i>
+        </div>
 
-            <div>
+        <div>
 
-                <h2>
-                    Donkelly
-                    <span>Swift Delivery</span>
-                </h2>
+            <h2>
+                Donkelly
+                <span>Swift Delivery</span>
+            </h2>
 
-                <p>
-                    Send gifts 🎁, share love ❤️
-                </p>
-
-            </div>
-
-        </a>
-
-
-        <a href="index.html" class="back-home">
-
-            <i class="fa-solid fa-arrow-left"></i>
-
-            Back Home
-
-        </a>
-
-    </header>
-
-
-
-    <!-- ================= REGISTER ================= -->
-
-    <main class="auth-container">
-
-        <div class="auth-card">
-
-
-            <!-- ICON -->
-
-            <div class="auth-icon">
-
-                <i class="fa-solid fa-user-plus"></i>
-
-            </div>
-
-
-            <!-- TITLE -->
-
-            <h1>
-                Create Account
-            </h1>
-
-
-            <p class="auth-subtitle">
-
-                Create your Donkelly Swift Delivery account
-                and start sending gifts to your loved ones.
-
+            <p>
+                Send gifts 🎁, share love ❤️
             </p>
-
-
-
-            <!-- REGISTER FORM -->
-
-            <form id="registerForm">
-
-
-                <!-- FULL NAME -->
-
-                <div class="form-group">
-
-                    <label for="fullName">
-                        Full Name
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-regular fa-user"></i>
-
-                        <input
-                            type="text"
-                            id="fullName"
-                            placeholder="Enter your full name"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- GMAIL -->
-
-                <div class="form-group">
-
-                    <label for="email">
-                        Gmail
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-regular fa-envelope"></i>
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="Enter your Gmail address"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PHONE -->
-
-                <div class="form-group">
-
-                    <label for="phone">
-                        Number
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-phone"></i>
-
-                        <input
-                            type="tel"
-                            id="phone"
-                            placeholder="Enter your phone number"
-                            required
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- PASSWORD -->
-
-                <div class="form-group">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-lock"></i>
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Create a password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            class="password-toggle"
-                            onclick="togglePassword('password', this)"
-                        >
-
-                            <i class="fa-regular fa-eye"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- CONFIRM PASSWORD -->
-
-                <div class="form-group">
-
-                    <label for="confirmPassword">
-                        Confirm Password
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-lock"></i>
-
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            placeholder="Confirm your password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            class="password-toggle"
-                            onclick="togglePassword('confirmPassword', this)"
-                        >
-
-                            <i class="fa-regular fa-eye"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- TERMS -->
-
-                <div class="terms">
-
-                    <label>
-
-                        <input
-                            type="checkbox"
-                            id="terms"
-                            required
-                        >
-
-                        <span>
-
-                            I agree to the
-
-                            <a href="#">
-                                Terms & Conditions
-                            </a>
-
-                            and
-
-                            <a href="#">
-                                Privacy Policy
-                            </a>.
-
-                        </span>
-
-                    </label>
-
-                </div>
-
-
-
-                <!-- ERROR -->
-
-                <div
-                    class="form-message error-message"
-                    id="errorMessage"
-                ></div>
-
-
-
-                <!-- SUCCESS -->
-
-                <div
-                    class="form-message success-message"
-                    id="successMessage"
-                ></div>
-
-
-
-                <!-- CREATE ACCOUNT -->
-
-                <button
-                    type="submit"
-                    class="auth-submit"
-                    id="registerButton"
-                >
-
-                    <span id="buttonText">
-                        Create Account
-                    </span>
-
-                    <i
-                        class="fa-solid fa-arrow-right"
-                        id="buttonIcon"
-                    ></i>
-
-                </button>
-
-
-            </form>
-
-
-
-            <!-- LOGIN -->
-
-            <div class="auth-footer">
-
-                <p>
-
-                    Already have an account?
-
-                    <a href="login.html">
-                        Login Account
-                    </a>
-
-                </p>
-
-            </div>
-
 
         </div>
 
-    </main>
+    </a>
+
+
+    <a href="index.html" class="back-home">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back Home
+
+    </a>
+
+</header>
 
 
 
-    <!-- ================= FIREBASE ================= -->
+<!-- =====================================================
+     REGISTER
+===================================================== -->
 
-    <script type="module">
+<main class="auth-container">
+
+    <div class="auth-card">
+
+
+        <div class="auth-icon">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+        </div>
+
+
+        <h1>
+            Create Account
+        </h1>
+
+
+        <p class="auth-subtitle">
+
+            Create your Donkelly Swift Delivery account
+            and start sending gifts to people you love.
+
+        </p>
+
+
+
+        <form id="registerForm">
+
+
+            <!-- FULL NAME -->
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-regular fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Gmail
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your Gmail address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        autocomplete="tel"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- COUNTRY -->
+
+            <div class="form-group">
+
+                <label for="country">
+                    Country
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <select id="country" required>
+
+                        <option value="">
+                            Select your country
+                        </option>
+
+                        <option value="Nigeria">
+                            Nigeria
+                        </option>
+
+                        <option value="United States">
+                            United States
+                        </option>
+
+                        <option value="United Kingdom">
+                            United Kingdom
+                        </option>
+
+                        <option value="Canada">
+                            Canada
+                        </option>
+
+                        <option value="Australia">
+                            Australia
+                        </option>
+
+                        <option value="Ghana">
+                            Ghana
+                        </option>
+
+                        <option value="South Africa">
+                            South Africa
+                        </option>
+
+                        <option value="Kenya">
+                            Kenya
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="passwordToggle"
+                    >
+
+                        <i
+                            class="fa-regular fa-eye"
+                            id="passwordIcon"
+                        ></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm your password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="confirmPasswordToggle"
+                    >
+
+                        <i
+                            class="fa-regular fa-eye"
+                            id="confirmPasswordIcon"
+                        ></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TERMS -->
+
+            <div class="terms">
+
+                <label>
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <span>
+
+                        I agree to the
+                        <a href="terms.html">
+                            Terms & Conditions
+                        </a>
+                        and
+                        <a href="privacy.html">
+                            Privacy Policy
+                        </a>.
+
+                    </span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- ERROR -->
+
+            <div
+                class="form-message error-message"
+                id="errorMessage"
+            ></div>
+
+
+
+            <!-- SUCCESS -->
+
+            <div
+                class="form-message success-message"
+                id="successMessage"
+            ></div>
+
+
+
+            <!-- REGISTER BUTTON -->
+
+            <button
+                type="submit"
+                class="auth-submit"
+                id="registerButton"
+            >
+
+                <span id="registerButtonText">
+                    Create Account
+                </span>
+
+                <i
+                    class="fa-solid fa-arrow-right"
+                    id="registerButtonIcon"
+                ></i>
+
+            </button>
+
+
+        </form>
+
+
+
+        <!-- LOGIN -->
+
+        <div class="auth-footer">
+
+            <p>
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login Account
+                </a>
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
 
     import {
         initializeApp
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
+
     import {
         getAuth,
-        createUserWithEmailAndPassword
+        createUserWithEmailAndPassword,
+        updateProfile
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
 
     import {
         getFirestore,
@@ -365,9 +456,10 @@
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-    // ================================
+
+    // =====================================================
     // FIREBASE CONFIG
-    // ================================
+    // =====================================================
 
     const firebaseConfig = {
 
@@ -391,64 +483,235 @@
 
         measurementId:
             "G-HFG8ENEEVB"
+
     };
 
 
-    // ================================
+
+    // =====================================================
     // INITIALIZE FIREBASE
-    // ================================
+    // =====================================================
 
     const app =
         initializeApp(firebaseConfig);
 
+
     const auth =
         getAuth(app);
+
 
     const db =
         getFirestore(app);
 
 
-    // ================================
-    // PASSWORD TOGGLE
-    // ================================
 
-    window.togglePassword = function(inputId, button) {
-
-        const input =
-            document.getElementById(inputId);
-
-        const icon =
-            button.querySelector("i");
-
-
-        if (input.type === "password") {
-
-            input.type = "text";
-
-            icon.classList.remove("fa-eye");
-
-            icon.classList.add("fa-eye-slash");
-
-        } else {
-
-            input.type = "password";
-
-            icon.classList.remove("fa-eye-slash");
-
-            icon.classList.add("fa-eye");
-
-        }
-
-    };
-
-
-    // ================================
-    // REGISTER FORM
-    // ================================
+    // =====================================================
+    // ELEMENTS
+    // =====================================================
 
     const registerForm =
         document.getElementById("registerForm");
 
+    const fullName =
+        document.getElementById("fullName");
+
+    const email =
+        document.getElementById("email");
+
+    const phone =
+        document.getElementById("phone");
+
+    const country =
+        document.getElementById("country");
+
+    const password =
+        document.getElementById("password");
+
+    const confirmPassword =
+        document.getElementById("confirmPassword");
+
+    const terms =
+        document.getElementById("terms");
+
+    const errorMessage =
+        document.getElementById("errorMessage");
+
+    const successMessage =
+        document.getElementById("successMessage");
+
+    const registerButton =
+        document.getElementById("registerButton");
+
+    const registerButtonText =
+        document.getElementById("registerButtonText");
+
+    const registerButtonIcon =
+        document.getElementById("registerButtonIcon");
+
+
+
+    // =====================================================
+    // PASSWORD TOGGLE FUNCTION
+    // =====================================================
+
+    function createPasswordToggle(
+        button,
+        input,
+        icon
+    ) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    input.type ===
+                    "password"
+                ) {
+
+                    input.type =
+                        "text";
+
+                    icon.classList.remove(
+                        "fa-eye"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye-slash"
+                    );
+
+                } else {
+
+                    input.type =
+                        "password";
+
+                    icon.classList.remove(
+                        "fa-eye-slash"
+                    );
+
+                    icon.classList.add(
+                        "fa-eye"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+
+    createPasswordToggle(
+
+        document.getElementById(
+            "passwordToggle"
+        ),
+
+        password,
+
+        document.getElementById(
+            "passwordIcon"
+        )
+
+    );
+
+
+    createPasswordToggle(
+
+        document.getElementById(
+            "confirmPasswordToggle"
+        ),
+
+        confirmPassword,
+
+        document.getElementById(
+            "confirmPasswordIcon"
+        )
+
+    );
+
+
+
+    // =====================================================
+    // MESSAGES
+    // =====================================================
+
+    function showError(message) {
+
+        errorMessage.textContent =
+            message;
+
+        errorMessage.style.display =
+            "block";
+
+        successMessage.style.display =
+            "none";
+
+    }
+
+
+    function showSuccess(message) {
+
+        successMessage.textContent =
+            message;
+
+        successMessage.style.display =
+            "block";
+
+        errorMessage.style.display =
+            "none";
+
+    }
+
+
+    function clearMessages() {
+
+        errorMessage.style.display =
+            "none";
+
+        successMessage.style.display =
+            "none";
+
+    }
+
+
+
+    // =====================================================
+    // BUTTON LOADING
+    // =====================================================
+
+    function setLoading(loading) {
+
+        registerButton.disabled =
+            loading;
+
+
+        if (loading) {
+
+            registerButtonText.textContent =
+                "Creating Account...";
+
+            registerButtonIcon.className =
+                "fa-solid fa-spinner fa-spin";
+
+        } else {
+
+            registerButtonText.textContent =
+                "Create Account";
+
+            registerButtonIcon.className =
+                "fa-solid fa-arrow-right";
+
+        }
+
+    }
+
+
+
+    // =====================================================
+    // REGISTER
+    // =====================================================
 
     registerForm.addEventListener(
         "submit",
@@ -456,128 +719,144 @@
 
             event.preventDefault();
 
-
-            // Get values
-
-            const fullName =
-                document
-                    .getElementById("fullName")
-                    .value
-                    .trim();
-
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
-
-            const phone =
-                document
-                    .getElementById("phone")
-                    .value
-                    .trim();
-
-            const password =
-                document
-                    .getElementById("password")
-                    .value;
-
-            const confirmPassword =
-                document
-                    .getElementById("confirmPassword")
-                    .value;
-
-            const terms =
-                document
-                    .getElementById("terms")
-                    .checked;
+            clearMessages();
 
 
-            const errorMessage =
-                document.getElementById(
-                    "errorMessage"
-                );
-
-            const successMessage =
-                document.getElementById(
-                    "successMessage"
-                );
+            const nameValue =
+                fullName.value.trim();
 
 
-            // Reset messages
-
-            errorMessage.style.display = "none";
-
-            successMessage.style.display = "none";
+            const emailValue =
+                email.value.trim().toLowerCase();
 
 
-            // ================================
+            const phoneValue =
+                phone.value.trim();
+
+
+            const countryValue =
+                country.value;
+
+
+            const passwordValue =
+                password.value;
+
+
+            const confirmPasswordValue =
+                confirmPassword.value;
+
+
+
+            // =================================================
             // VALIDATION
-            // ================================
+            // =================================================
 
-            if (password.length < 8) {
+            if (!nameValue) {
 
-                errorMessage.textContent =
-                    "Password must contain at least 8 characters.";
-
-                errorMessage.style.display =
-                    "block";
-
-                return;
-            }
-
-
-            if (password !== confirmPassword) {
-
-                errorMessage.textContent =
-                    "Passwords do not match.";
-
-                errorMessage.style.display =
-                    "block";
-
-                return;
-            }
-
-
-            if (!terms) {
-
-                errorMessage.textContent =
-                    "Please agree to the Terms & Conditions.";
-
-                errorMessage.style.display =
-                    "block";
-
-                return;
-            }
-
-
-            // ================================
-            // DISABLE BUTTON
-            // ================================
-
-            const submitButton =
-                registerForm.querySelector(
-                    ".auth-submit"
+                showError(
+                    "Please enter your full name."
                 );
 
+                return;
 
-            submitButton.disabled = true;
+            }
 
-            submitButton.innerHTML =
-                '<i class="fa-solid fa-spinner fa-spin"></i> Creating Account...';
 
+            if (nameValue.length < 2) {
+
+                showError(
+                    "Please enter a valid full name."
+                );
+
+                return;
+
+            }
+
+
+            if (!emailValue) {
+
+                showError(
+                    "Please enter your Gmail address."
+                );
+
+                return;
+
+            }
+
+
+            if (!phoneValue) {
+
+                showError(
+                    "Please enter your phone number."
+                );
+
+                return;
+
+            }
+
+
+            if (!countryValue) {
+
+                showError(
+                    "Please select your country."
+                );
+
+                return;
+
+            }
+
+
+            if (passwordValue.length < 6) {
+
+                showError(
+                    "Password must contain at least 6 characters."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                passwordValue !==
+                confirmPasswordValue
+            ) {
+
+                showError(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            if (!terms.checked) {
+
+                showError(
+                    "Please agree to the Terms & Conditions and Privacy Policy."
+                );
+
+                return;
+
+            }
+
+
+
+            // =================================================
+            // CREATE ACCOUNT
+            // =================================================
 
             try {
 
-                // ================================
-                // CREATE FIREBASE AUTH ACCOUNT
-                // ================================
+                setLoading(true);
+
 
                 const userCredential =
                     await createUserWithEmailAndPassword(
                         auth,
-                        email,
-                        password
+                        emailValue,
+                        passwordValue
                     );
 
 
@@ -585,47 +864,82 @@
                     userCredential.user;
 
 
-                // ================================
-                // SAVE CUSTOMER TO FIRESTORE
-                // ================================
 
-                await setDoc(
-                    doc(db, "users", user.uid),
+                // =================================================
+                // UPDATE FIREBASE AUTH PROFILE
+                // =================================================
+
+                await updateProfile(
+                    user,
                     {
-
-                        uid: user.uid,
-
-                        fullName: fullName,
-
-                        email: email,
-
-                        phone: phone,
-
-                        walletBalance: 0,
-
-                        role: "customer",
-
-                        createdAt:
-                            serverTimestamp()
-
+                        displayName:
+                            nameValue
                     }
                 );
 
 
-                // ================================
+
+                // =================================================
+                // SAVE USER TO FIRESTORE
+                // =================================================
+
+                await setDoc(
+
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    ),
+
+                    {
+
+                        uid:
+                            user.uid,
+
+                        fullName:
+                            nameValue,
+
+                        email:
+                            emailValue,
+
+                        phone:
+                            phoneValue,
+
+                        country:
+                            countryValue,
+
+                        walletBalance:
+                            0,
+
+                        totalDeposits:
+                            0,
+
+                        totalOrders:
+                            0,
+
+                        createdAt:
+                            serverTimestamp(),
+
+                        updatedAt:
+                            serverTimestamp(),
+
+                        accountStatus:
+                            "active"
+
+                    }
+
+                );
+
+
+
+                // =================================================
                 // SUCCESS
-                // ================================
+                // =================================================
 
-                successMessage.textContent =
-                    "Account created successfully. Redirecting...";
+                showSuccess(
+                    "Account created successfully. Redirecting..."
+                );
 
-                successMessage.style.display =
-                    "block";
-
-
-                // ================================
-                // GO TO DASHBOARD
-                // ================================
 
                 setTimeout(
                     function() {
@@ -646,75 +960,66 @@
                 );
 
 
-                // ================================
-                // FIREBASE ERRORS
-                // ================================
+                setLoading(false);
+
 
                 let message =
                     "Unable to create your account. Please try again.";
 
 
-                if (
-                    error.code ===
-                    "auth/email-already-in-use"
-                ) {
+                switch (error.code) {
 
-                    message =
-                        "This Gmail is already registered. Please login instead.";
+                    case "auth/email-already-in-use":
+
+                        message =
+                            "An account already exists with this Gmail.";
+
+                        break;
+
+
+                    case "auth/invalid-email":
+
+                        message =
+                            "Please enter a valid Gmail address.";
+
+                        break;
+
+
+                    case "auth/weak-password":
+
+                        message =
+                            "Your password is too weak. Use at least 6 characters.";
+
+                        break;
+
+
+                    case "auth/network-request-failed":
+
+                        message =
+                            "Network error. Please check your internet connection.";
+
+                        break;
+
+
+                    case "auth/operation-not-allowed":
+
+                        message =
+                            "Email/password registration is not enabled in Firebase.";
+
+                        break;
 
                 }
 
-                else if (
-                    error.code ===
-                    "auth/invalid-email"
-                ) {
 
-                    message =
-                        "Please enter a valid Gmail address.";
-
-                }
-
-                else if (
-                    error.code ===
-                    "auth/weak-password"
-                ) {
-
-                    message =
-                        "Your password is too weak. Use at least 8 characters.";
-
-                }
-
-                else if (
-                    error.code ===
-                    "auth/network-request-failed"
-                ) {
-
-                    message =
-                        "Network error. Please check your internet connection.";
-
-                }
-
-
-                errorMessage.textContent =
-                    message;
-
-                errorMessage.style.display =
-                    "block";
-
-
-                // Enable button again
-
-                submitButton.disabled = false;
-
-                submitButton.innerHTML =
-                    'Create Account <i class="fa-solid fa-arrow-right"></i>';
+                showError(message);
 
             }
 
         }
     );
 
-    </script>
+</script>
+
 
 </body>
 
