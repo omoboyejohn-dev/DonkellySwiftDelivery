@@ -32,327 +32,694 @@
             padding: 0;
         }
 
+
         body {
+
             font-family: "Inter", sans-serif;
+
             background: #f5faf7;
+
             color: #17221c;
+
         }
+
 
         .page {
+
             width: 92%;
+
             max-width: 850px;
+
             margin: auto;
+
             padding: 25px 0 60px;
+
         }
 
-        /* HEADER */
+
+        /* ==========================================
+           HEADER
+        ========================================== */
 
         .header {
+
             background: #fff;
+
             border: 1px solid #e5ebe7;
+
             border-radius: 16px;
+
             padding: 20px;
+
             margin-bottom: 20px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: space-between;
-            gap: 15px;
+
         }
+
 
         .header-left {
+
             display: flex;
+
             align-items: center;
+
             gap: 13px;
+
         }
+
 
         .back-button {
+
             width: 40px;
+
             height: 40px;
+
             border-radius: 10px;
+
             border: 1px solid #dfe7e2;
+
             background: #fff;
+
             color: #079447;
+
             cursor: pointer;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
 
         .back-button:hover {
+
             background: #079447;
+
             color: #fff;
+
         }
+
 
         .header h1 {
+
             font-size: 21px;
+
             margin-bottom: 4px;
+
         }
+
 
         .header p {
+
             color: #66716b;
+
             font-size: 11px;
+
         }
+
 
         .settings-icon {
+
             width: 45px;
+
             height: 45px;
+
             border-radius: 12px;
+
             background: #eaf8ef;
+
             color: #079447;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
 
-        /* CARDS */
+
+        /* ==========================================
+           SETTINGS CARD
+        ========================================== */
 
         .settings-card {
+
             background: #fff;
+
             border: 1px solid #e5ebe7;
+
             border-radius: 16px;
+
             overflow: hidden;
+
             margin-bottom: 18px;
+
         }
 
-        .card-header {
-            padding: 18px 20px;
-            border-bottom: 1px solid #e5ebe7;
+
+        .settings-title {
+
+            padding: 18px;
+
+            border-bottom: 1px solid #edf1ee;
+
         }
 
-        .card-header h2 {
+
+        .settings-title h2 {
+
             font-size: 15px;
+
             margin-bottom: 4px;
+
         }
 
-        .card-header p {
+
+        .settings-title p {
+
             color: #66716b;
+
             font-size: 10px;
+
         }
 
-        /* SETTING ROW */
+
+        /* ==========================================
+           SETTING ROW
+        ========================================== */
 
         .setting-row {
-            padding: 17px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
+
+            padding: 17px;
+
             border-bottom: 1px solid #edf1ee;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
         }
+
 
         .setting-row:last-child {
+
             border-bottom: none;
+
         }
 
-        .setting-info {
+
+        .setting-left {
+
             display: flex;
+
             align-items: center;
+
             gap: 13px;
+
         }
+
 
         .setting-icon {
+
             width: 40px;
+
             height: 40px;
-            flex-shrink: 0;
+
+            min-width: 40px;
+
             border-radius: 10px;
+
             background: #eaf8ef;
+
             color: #079447;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
 
-        .setting-info h3 {
+
+        .setting-text h3 {
+
             font-size: 12px;
+
             margin-bottom: 4px;
+
         }
 
-        .setting-info p {
+
+        .setting-text p {
+
             color: #66716b;
-            font-size: 10px;
-            line-height: 1.4;
-        }
 
-        /* TOGGLE */
-
-        .toggle {
-            position: relative;
-            width: 48px;
-            height: 26px;
-            flex-shrink: 0;
-        }
-
-        .toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            inset: 0;
-            background: #ccd5cf;
-            border-radius: 30px;
-            transition: .2s;
-        }
-
-        .slider:before {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            left: 3px;
-            top: 3px;
-            background: #fff;
-            border-radius: 50%;
-            transition: .2s;
-        }
-
-        .toggle input:checked + .slider {
-            background: #079447;
-        }
-
-        .toggle input:checked + .slider:before {
-            transform: translateX(22px);
-        }
-
-        /* LINKS */
-
-        .setting-link {
-            width: 100%;
-            border: none;
-            background: transparent;
-            text-align: left;
-            font-family: inherit;
-            cursor: pointer;
-        }
-
-        .setting-link:hover {
-            background: #f7faf8;
-        }
-
-        .arrow {
-            color: #9aa49e;
-            font-size: 12px;
-        }
-
-        /* ACCOUNT */
-
-        .account-box {
-            padding: 20px;
-        }
-
-        .account-email {
-            background: #f7faf8;
-            border-radius: 10px;
-            padding: 14px;
-        }
-
-        .account-email small {
-            display: block;
-            color: #66716b;
             font-size: 9px;
-            margin-bottom: 5px;
+
+            line-height: 1.5;
+
         }
 
-        .account-email strong {
-            font-size: 12px;
-            word-break: break-word;
+
+        .setting-button {
+
+            border: 1px solid #079447;
+
+            background: #fff;
+
+            color: #079447;
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
         }
 
-        /* DANGER */
+
+        .setting-button:hover {
+
+            background: #079447;
+
+            color: #fff;
+
+        }
+
 
         .danger-button {
-            width: 100%;
-            border: 1px solid #f0d0d0;
-            background: #fff1f1;
+
+            border-color: #d93025;
+
             color: #d93025;
-            padding: 13px;
-            border-radius: 9px;
-            font-family: inherit;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
+
         }
+
 
         .danger-button:hover {
+
             background: #d93025;
+
             color: #fff;
+
         }
 
-        /* MESSAGE */
+
+        /* ==========================================
+           TOGGLE
+        ========================================== */
+
+        .toggle {
+
+            position: relative;
+
+            width: 44px;
+
+            height: 24px;
+
+            flex-shrink: 0;
+
+        }
+
+
+        .toggle input {
+
+            display: none;
+
+        }
+
+
+        .slider {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: #d8dfdb;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            transition: .2s;
+
+        }
+
+
+        .slider::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+
+            height: 18px;
+
+            left: 3px;
+
+            top: 3px;
+
+            background: #fff;
+
+            border-radius: 50%;
+
+            transition: .2s;
+
+        }
+
+
+        .toggle input:checked + .slider {
+
+            background: #079447;
+
+        }
+
+
+        .toggle input:checked + .slider::before {
+
+            transform: translateX(20px);
+
+        }
+
+
+        /* ==========================================
+           ACCOUNT INFO
+        ========================================== */
+
+        .account-box {
+
+            background: #f7faf8;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin: 15px;
+
+        }
+
+
+        .account-box small {
+
+            display: block;
+
+            color: #66716b;
+
+            font-size: 9px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .account-box strong {
+
+            font-size: 11px;
+
+            word-break: break-word;
+
+        }
+
+
+        /* ==========================================
+           MODAL
+        ========================================== */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.45);
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 9999;
+
+        }
+
+
+        .modal.show {
+
+            display: flex;
+
+        }
+
+
+        .modal-box {
+
+            width: 100%;
+
+            max-width: 400px;
+
+            background: #fff;
+
+            border-radius: 16px;
+
+            padding: 22px;
+
+        }
+
+
+        .modal-box h2 {
+
+            font-size: 17px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .modal-box p {
+
+            color: #66716b;
+
+            font-size: 10px;
+
+            margin-bottom: 18px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .input-group {
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .input-group label {
+
+            display: block;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .input-group input {
+
+            width: 100%;
+
+            padding: 11px;
+
+            border: 1px solid #dfe7e2;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+        }
+
+
+        .input-group input:focus {
+
+            border-color: #079447;
+
+        }
+
+
+        .modal-actions {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .modal-actions button {
+
+            flex: 1;
+
+            padding: 11px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+        }
+
+
+        .cancel-button {
+
+            background: #f1f4f2;
+
+            border: none;
+
+            color: #333;
+
+        }
+
+
+        .save-button {
+
+            background: #079447;
+
+            border: none;
+
+            color: #fff;
+
+        }
+
+
+        .save-button:disabled {
+
+            opacity: .6;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* ==========================================
+           MESSAGE
+        ========================================== */
 
         .message {
-            display: none;
-            padding: 11px;
+
+            padding: 10px;
+
             border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 11px;
-            font-weight: 600;
+
+            font-size: 10px;
+
+            margin-bottom: 10px;
+
+            display: none;
+
         }
+
 
         .message.success {
+
             display: block;
+
             background: #eaf8ef;
-            color: #079447;
-            border: 1px solid #bce8cc;
+
+            color: #087a3c;
+
         }
+
 
         .message.error {
+
             display: block;
+
             background: #fff1f1;
+
             color: #d93025;
-            border: 1px solid #f0d0d0;
+
         }
 
-        /* LOADING */
 
-        .loading {
-            text-align: center;
-            padding: 45px;
-            color: #66716b;
-            font-size: 12px;
-        }
+        /* ==========================================
+           MOBILE
+        ========================================== */
 
-        .loading i {
-            color: #079447;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 650px) {
+        @media (max-width: 600px) {
 
             .page {
+
                 width: 94%;
+
                 padding-top: 15px;
+
             }
+
 
             .header {
+
                 padding: 17px;
+
             }
+
 
             .header h1 {
+
                 font-size: 18px;
+
             }
+
 
             .setting-row {
-                padding: 15px;
+
+                align-items: flex-start;
+
             }
 
-            .setting-info {
-                gap: 10px;
-            }
 
-            .setting-icon {
-                width: 37px;
-                height: 37px;
+            .setting-button {
+
+                margin-top: 3px;
+
             }
 
         }
@@ -374,15 +741,18 @@
 
     <section class="header">
 
+
         <div class="header-left">
+
 
             <button
                 class="back-button"
-                onclick="window.location.href='dashboard.html'">
+                id="backButton">
 
                 <i class="fa-solid fa-arrow-left"></i>
 
             </button>
+
 
             <div>
 
@@ -391,10 +761,11 @@
                 </h1>
 
                 <p>
-                    Manage your account preferences.
+                    Manage your account and preferences.
                 </p>
 
             </div>
+
 
         </div>
 
@@ -405,34 +776,49 @@
 
         </div>
 
+
     </section>
 
 
 
     <!-- ==========================================
-         ACCOUNT SETTINGS
+         ACCOUNT
     ========================================== -->
 
     <section class="settings-card">
 
-        <div class="card-header">
+
+        <div class="settings-title">
 
             <h2>
                 Account
             </h2>
 
             <p>
-                Manage your personal account.
+                Your Donkelly Swift Delivery account.
             </p>
 
         </div>
 
 
-        <button
-            class="setting-row setting-link"
-            id="profileButton">
+        <div class="account-box">
 
-            <div class="setting-info">
+            <small>
+                Logged in email
+            </small>
+
+            <strong id="userEmail">
+                Loading...
+            </strong>
+
+        </div>
+
+
+        <div class="setting-row">
+
+
+            <div class="setting-left">
+
 
                 <div class="setting-icon">
 
@@ -440,32 +826,40 @@
 
                 </div>
 
-                <div>
+
+                <div class="setting-text">
 
                     <h3>
-                        My Profile
+                        Profile
                     </h3>
 
                     <p>
-                        View and edit your personal information.
+                        View and update your profile information.
                     </p>
 
                 </div>
 
+
             </div>
 
 
-            <i class="fa-solid fa-chevron-right arrow"></i>
+            <button
+                class="setting-button"
+                id="profileButton">
 
-        </button>
+                Open
+
+            </button>
 
 
+        </div>
 
-        <button
-            class="setting-row setting-link"
-            id="passwordButton">
 
-            <div class="setting-info">
+        <div class="setting-row">
+
+
+            <div class="setting-left">
+
 
                 <div class="setting-icon">
 
@@ -473,24 +867,34 @@
 
                 </div>
 
-                <div>
+
+                <div class="setting-text">
 
                     <h3>
-                        Password & Security
+                        Password
                     </h3>
 
                     <p>
-                        Manage your account password.
+                        Change your account password.
                     </p>
 
                 </div>
 
+
             </div>
 
 
-            <i class="fa-solid fa-chevron-right arrow"></i>
+            <button
+                class="setting-button"
+                id="passwordButton">
 
-        </button>
+                Change
+
+            </button>
+
+
+        </div>
+
 
     </section>
 
@@ -502,14 +906,15 @@
 
     <section class="settings-card">
 
-        <div class="card-header">
+
+        <div class="settings-title">
 
             <h2>
                 Notifications
             </h2>
 
             <p>
-                Choose how you want to receive updates.
+                Choose how you receive account updates.
             </p>
 
         </div>
@@ -517,7 +922,9 @@
 
         <div class="setting-row">
 
-            <div class="setting-info">
+
+            <div class="setting-left">
+
 
                 <div class="setting-icon">
 
@@ -525,17 +932,19 @@
 
                 </div>
 
-                <div>
+
+                <div class="setting-text">
 
                     <h3>
                         Notifications
                     </h3>
 
                     <p>
-                        Receive updates about your account.
+                        Receive important account notifications.
                     </p>
 
                 </div>
+
 
             </div>
 
@@ -551,223 +960,74 @@
 
             </label>
 
+
         </div>
 
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SECURITY
+    ========================================== -->
+
+    <section class="settings-card">
+
+
+        <div class="settings-title">
+
+            <h2>
+                Security
+            </h2>
+
+            <p>
+                Protect your Donkelly account.
+            </p>
+
+        </div>
 
 
         <div class="setting-row">
 
-            <div class="setting-info">
+
+            <div class="setting-left">
+
 
                 <div class="setting-icon">
 
-                    <i class="fa-solid fa-receipt"></i>
+                    <i class="fa-solid fa-right-from-bracket"></i>
 
                 </div>
 
-                <div>
+
+                <div class="setting-text">
 
                     <h3>
-                        Payment Updates
+                        Logout
                     </h3>
 
                     <p>
-                        Receive updates when deposits are approved.
+                        Sign out of your Donkelly account.
                     </p>
 
                 </div>
 
-            </div>
 
-
-            <label class="toggle">
-
-                <input
-                    type="checkbox"
-                    id="paymentToggle"
-                    checked>
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-
-
-        <div class="setting-row">
-
-            <div class="setting-info">
-
-                <div class="setting-icon">
-
-                    <i class="fa-solid fa-box"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Order Updates
-                    </h3>
-
-                    <p>
-                        Receive updates about your gift orders.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <label class="toggle">
-
-                <input
-                    type="checkbox"
-                    id="orderToggle"
-                    checked>
-
-                <span class="slider"></span>
-
-            </label>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==========================================
-         SUPPORT
-    ========================================== -->
-
-    <section class="settings-card">
-
-        <div class="card-header">
-
-            <h2>
-                Help & Support
-            </h2>
-
-            <p>
-                Get assistance with your account or orders.
-            </p>
-
-        </div>
-
-
-        <button
-            class="setting-row setting-link"
-            id="supportButton">
-
-            <div class="setting-info">
-
-                <div class="setting-icon">
-
-                    <i class="fa-solid fa-headset"></i>
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Contact Support
-                    </h3>
-
-                    <p>
-                        Contact the Donkelly Swift Delivery support team.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <i class="fa-solid fa-chevron-right arrow"></i>
-
-        </button>
-
-    </section>
-
-
-
-    <!-- ==========================================
-         ACCOUNT INFORMATION
-    ========================================== -->
-
-    <section class="settings-card">
-
-        <div class="card-header">
-
-            <h2>
-                Account Information
-            </h2>
-
-            <p>
-                Your current account email.
-            </p>
-
-        </div>
-
-
-        <div class="account-box">
-
-            <div class="account-email">
-
-                <small>
-                    EMAIL ADDRESS
-                </small>
-
-                <strong id="accountEmail">
-                    Loading...
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ==========================================
-         LOGOUT
-    ========================================== -->
-
-    <section class="settings-card">
-
-        <div class="card-header">
-
-            <h2>
-                Account Actions
-            </h2>
-
-            <p>
-                Sign out of your Donkelly account.
-            </p>
-
-        </div>
-
-
-        <div class="account-box">
-
-            <div
-                id="message"
-                class="message">
             </div>
 
 
             <button
-                class="danger-button"
+                class="setting-button danger-button"
                 id="logoutButton">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
 
                 Logout
 
             </button>
 
+
         </div>
+
 
     </section>
 
@@ -777,11 +1037,95 @@
 
 
 <!-- ==========================================
-     FIREBASE
+     PASSWORD MODAL
 ========================================== -->
+
+<div
+    class="modal"
+    id="passwordModal">
+
+
+    <div class="modal-box">
+
+
+        <h2>
+            Change Password
+        </h2>
+
+
+        <p>
+            Enter your new password below.
+        </p>
+
+
+        <div
+            class="message"
+            id="passwordMessage">
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                New Password
+            </label>
+
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="Enter new password">
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm new password">
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="cancel-button"
+                id="cancelPassword">
+
+                Cancel
+
+            </button>
+
+
+            <button
+                class="save-button"
+                id="savePassword">
+
+                Update Password
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
 
 <script type="module">
 
+
+/* =====================================================
+   FIREBASE
+===================================================== */
 
 import {
 
@@ -794,7 +1138,8 @@ import {
 
     getAuth,
     onAuthStateChanged,
-    signOut
+    signOut,
+    updatePassword
 
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
@@ -810,9 +1155,9 @@ import {
 
 
 
-/* ==========================================
+/* =====================================================
    FIREBASE CONFIG
-========================================== */
+===================================================== */
 
 const firebaseConfig = {
 
@@ -841,10 +1186,6 @@ const firebaseConfig = {
 
 
 
-/* ==========================================
-   INITIALIZE FIREBASE
-========================================== */
-
 const app =
     initializeApp(
         firebaseConfig
@@ -860,13 +1201,43 @@ const db =
 
 
 
-/* ==========================================
+/* =====================================================
    ELEMENTS
-========================================== */
+===================================================== */
 
-const accountEmail =
+const userEmail =
     document.getElementById(
-        "accountEmail"
+        "userEmail"
+    );
+
+
+const passwordModal =
+    document.getElementById(
+        "passwordModal"
+    );
+
+
+const passwordMessage =
+    document.getElementById(
+        "passwordMessage"
+    );
+
+
+const newPassword =
+    document.getElementById(
+        "newPassword"
+    );
+
+
+const confirmPassword =
+    document.getElementById(
+        "confirmPassword"
+    );
+
+
+const savePassword =
+    document.getElementById(
+        "savePassword"
     );
 
 
@@ -876,63 +1247,20 @@ const notificationToggle =
     );
 
 
-const paymentToggle =
-    document.getElementById(
-        "paymentToggle"
-    );
-
-
-const orderToggle =
-    document.getElementById(
-        "orderToggle"
-    );
-
-
-const message =
-    document.getElementById(
-        "message"
-    );
-
 
 let currentUser = null;
 
 
 
-/* ==========================================
-   SHOW MESSAGE
-========================================== */
-
-function showMessage(
-    text,
-    type
-) {
-
-    message.textContent =
-        text;
-
-    message.className =
-        "message " + type;
-
-}
-
-
-
-/* ==========================================
+/* =====================================================
    LOAD SETTINGS
-========================================== */
+===================================================== */
 
-async function loadSettings(
-    user
-) {
+async function loadSettings(user) {
 
     try {
 
-        accountEmail.textContent =
-            user.email ||
-            "No email";
-
-
-        const userRef =
+        const settingsRef =
             doc(
                 db,
                 "users",
@@ -942,25 +1270,19 @@ async function loadSettings(
 
         const snapshot =
             await getDoc(
-                userRef
+                settingsRef
             );
 
 
-        if (
-            snapshot.exists()
-        ) {
+        if (snapshot.exists()) {
 
             const data =
                 snapshot.data();
 
 
-            /*
-             * Load saved preferences.
-             */
-
             if (
-                typeof data.notificationsEnabled ===
-                "boolean"
+                typeof data.notificationsEnabled
+                === "boolean"
             ) {
 
                 notificationToggle.checked =
@@ -968,34 +1290,13 @@ async function loadSettings(
 
             }
 
-
-            if (
-                typeof data.paymentNotificationsEnabled ===
-                "boolean"
-            ) {
-
-                paymentToggle.checked =
-                    data.paymentNotificationsEnabled;
-
-            }
-
-
-            if (
-                typeof data.orderNotificationsEnabled ===
-                "boolean"
-            ) {
-
-                orderToggle.checked =
-                    data.orderNotificationsEnabled;
-
-            }
-
         }
 
+
     } catch (error) {
 
         console.error(
-            "SETTINGS LOAD ERROR:",
+            "LOAD SETTINGS ERROR:",
             error
         );
 
@@ -1005,83 +1306,9 @@ async function loadSettings(
 
 
 
-/* ==========================================
-   SAVE SETTING
-========================================== */
-
-async function saveSetting(
-    field,
-    value
-) {
-
-    if (!currentUser) {
-
-        return;
-
-    }
-
-
-    try {
-
-        const userRef =
-            doc(
-                db,
-                "users",
-                currentUser.uid
-            );
-
-
-        await setDoc(
-            userRef,
-            {
-                [field]: value
-            },
-            {
-                merge: true
-            }
-        );
-
-
-        showMessage(
-            "Setting updated successfully.",
-            "success"
-        );
-
-
-        setTimeout(
-            function() {
-
-                message.className =
-                    "message";
-
-            },
-            2500
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "SAVE SETTING ERROR:",
-            error
-        );
-
-
-        showMessage(
-            "Unable to save setting: " +
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-
-/* ==========================================
+/* =====================================================
    AUTH CHECK
-========================================== */
+===================================================== */
 
 onAuthStateChanged(
     auth,
@@ -1101,72 +1328,41 @@ onAuthStateChanged(
             user;
 
 
-        await loadSettings(
-            user
-        );
+        userEmail.textContent =
+            user.email ||
+            "No email";
+
+
+        await loadSettings(user);
 
     }
 );
 
 
 
-/* ==========================================
-   NOTIFICATION TOGGLE
-========================================== */
+/* =====================================================
+   BACK
+===================================================== */
 
-notificationToggle.addEventListener(
-    "change",
-    function() {
+document
+    .getElementById(
+        "backButton"
+    )
+    .addEventListener(
+        "click",
+        function() {
 
-        saveSetting(
-            "notificationsEnabled",
-            notificationToggle.checked
-        );
+            window.location.href =
+                "dashboard.html";
 
-    }
-);
-
-
-
-/* ==========================================
-   PAYMENT TOGGLE
-========================================== */
-
-paymentToggle.addEventListener(
-    "change",
-    function() {
-
-        saveSetting(
-            "paymentNotificationsEnabled",
-            paymentToggle.checked
-        );
-
-    }
-);
+        }
+    );
 
 
 
-/* ==========================================
-   ORDER TOGGLE
-========================================== */
-
-orderToggle.addEventListener(
-    "change",
-    function() {
-
-        saveSetting(
-            "orderNotificationsEnabled",
-            orderToggle.checked
-        );
-
-    }
-);
-
-
-
-/* ==========================================
+/* =====================================================
    PROFILE
-========================================== */
+===================================================== */
 
 document
     .getElementById(
@@ -1184,9 +1380,74 @@ document
 
 
 
-/* ==========================================
-   PASSWORD
-========================================== */
+/* =====================================================
+   NOTIFICATION TOGGLE
+===================================================== */
+
+notificationToggle.addEventListener(
+    "change",
+    async function() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    currentUser.uid
+                );
+
+
+            await setDoc(
+                userRef,
+                {
+
+                    notificationsEnabled:
+                        notificationToggle.checked
+
+                },
+
+                {
+                    merge: true
+                }
+
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "SAVE NOTIFICATION SETTING ERROR:",
+                error
+            );
+
+
+            notificationToggle.checked =
+                !notificationToggle.checked;
+
+
+            alert(
+                "Unable to save notification setting.\n\n" +
+                error.message
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   OPEN PASSWORD MODAL
+===================================================== */
 
 document
     .getElementById(
@@ -1196,37 +1457,225 @@ document
         "click",
         function() {
 
-            window.location.href =
-                "profile.html";
+            passwordModal.classList.add(
+                "show"
+            );
+
+            passwordMessage.className =
+                "message";
+
+            passwordMessage.textContent =
+                "";
+
+            newPassword.value =
+                "";
+
+            confirmPassword.value =
+                "";
 
         }
     );
 
 
 
-/* ==========================================
-   SUPPORT
-========================================== */
+/* =====================================================
+   CLOSE PASSWORD MODAL
+===================================================== */
 
 document
     .getElementById(
-        "supportButton"
+        "cancelPassword"
     )
     .addEventListener(
         "click",
         function() {
 
-            window.location.href =
-                "support.html";
+            passwordModal.classList.remove(
+                "show"
+            );
 
         }
     );
 
 
 
-/* ==========================================
+/* =====================================================
+   UPDATE PASSWORD
+===================================================== */
+
+savePassword.addEventListener(
+    "click",
+    async function() {
+
+        const password =
+            newPassword.value.trim();
+
+
+        const confirmation =
+            confirmPassword.value.trim();
+
+
+        passwordMessage.className =
+            "message";
+
+
+        passwordMessage.textContent =
+            "";
+
+
+        if (!password) {
+
+            showPasswordError(
+                "Please enter a new password."
+            );
+
+            return;
+
+        }
+
+
+        if (password.length < 6) {
+
+            showPasswordError(
+                "Password must be at least 6 characters."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            password !==
+            confirmation
+        ) {
+
+            showPasswordError(
+                "Passwords do not match."
+            );
+
+            return;
+
+        }
+
+
+        if (!currentUser) {
+
+            showPasswordError(
+                "You are not logged in."
+            );
+
+            return;
+
+        }
+
+
+        savePassword.disabled =
+            true;
+
+
+        savePassword.textContent =
+            "Updating...";
+
+
+        try {
+
+            await updatePassword(
+                currentUser,
+                password
+            );
+
+
+            passwordMessage.className =
+                "message success";
+
+
+            passwordMessage.textContent =
+                "Password updated successfully.";
+
+
+            newPassword.value =
+                "";
+
+            confirmPassword.value =
+                "";
+
+
+            setTimeout(
+                function() {
+
+                    passwordModal.classList.remove(
+                        "show"
+                    );
+
+                },
+                1500
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "PASSWORD UPDATE ERROR:",
+                error
+            );
+
+
+            let message =
+                error.message;
+
+
+            if (
+                error.code ===
+                "auth/requires-recent-login"
+            ) {
+
+                message =
+                    "For security, please log out and log in again before changing your password.";
+
+            }
+
+
+            showPasswordError(
+                message
+            );
+
+        }
+
+
+        savePassword.disabled =
+            false;
+
+
+        savePassword.textContent =
+            "Update Password";
+
+    }
+);
+
+
+
+/* =====================================================
+   PASSWORD ERROR
+===================================================== */
+
+function showPasswordError(
+    message
+) {
+
+    passwordMessage.className =
+        "message error";
+
+    passwordMessage.textContent =
+        message;
+
+}
+
+
+
+/* =====================================================
    LOGOUT
-========================================== */
+===================================================== */
 
 document
     .getElementById(
@@ -1268,9 +1717,9 @@ document
                 );
 
 
-                showMessage(
-                    "Unable to logout. Please try again.",
-                    "error"
+                alert(
+                    "Unable to logout.\n\n" +
+                    error.message
                 );
 
             }
@@ -1278,8 +1727,8 @@ document
         }
     );
 
-
 </script>
+
 
 </body>
 
