@@ -318,16 +318,9 @@
 
 </head>
 
-
 <body>
 
-
 <main class="admin-page">
-
-
-    <!-- ================================
-         ADMIN HEADER
-    ================================= -->
 
     <section class="admin-header">
 
@@ -353,11 +346,6 @@
 
     </section>
 
-
-
-    <!-- ================================
-         STATISTICS
-    ================================= -->
 
     <section class="deposit-stats">
 
@@ -408,11 +396,6 @@
     </section>
 
 
-
-    <!-- ================================
-         DEPOSITS
-    ================================= -->
-
     <section class="deposits-card">
 
         <div class="deposits-title">
@@ -457,14 +440,8 @@
 
     </div>
 
-
 </main>
 
-
-
-<!-- =====================================================
-     FIREBASE
-===================================================== -->
 
 <script type="module">
 
@@ -475,7 +452,8 @@
 
     import {
         getAuth,
-        onAuthStateChanged
+        onAuthStateChanged,
+        signOut
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 
@@ -490,7 +468,6 @@
         query,
         orderBy
     } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
-
 
 
     // ==========================================
@@ -523,7 +500,6 @@
     };
 
 
-
     // ==========================================
     // INITIALIZE FIREBASE
     // ==========================================
@@ -538,14 +514,12 @@
         getFirestore(app);
 
 
-
     // ==========================================
     // ADMIN EMAIL
     // ==========================================
 
     const ADMIN_EMAIL =
         "Danieloluwaseun221@gmail.com";
-
 
 
     // ==========================================
@@ -565,7 +539,6 @@
         document.getElementById("totalAmount");
 
 
-
     // ==========================================
     // FORMAT NAIRA
     // ==========================================
@@ -582,7 +555,6 @@
             );
 
     }
-
 
 
     // ==========================================
@@ -617,7 +589,6 @@
     }
 
 
-
     // ==========================================
     // CHECK ADMIN
     // ==========================================
@@ -626,17 +597,27 @@
         auth,
         async function(user) {
 
+            /*
+             * If nobody is logged in,
+             * send them to the main login page.
+             */
+
             if (!user) {
 
                 window.location.href =
-                    "login.html";
+                    "../login.html";
 
                 return;
 
             }
 
 
+            /*
+             * Only the admin email is allowed.
+             */
+
             if (
+                !user.email ||
                 user.email.toLowerCase() !==
                 ADMIN_EMAIL.toLowerCase()
             ) {
@@ -645,19 +626,30 @@
                     "Access denied. Admin account required."
                 );
 
+                await signOut(auth);
+
                 window.location.href =
-                    "dashboard.html";
+                    "../login.html";
 
                 return;
 
             }
 
 
+            /*
+             * Admin successfully authenticated.
+             */
+
+            console.log(
+                "Admin access granted:",
+                user.email
+            );
+
+
             loadDeposits();
 
         }
     );
-
 
 
     // ==========================================
@@ -863,7 +855,6 @@
 
                         <div class="deposit-details">
 
-
                             <div class="detail-box">
 
                                 <small>
@@ -928,7 +919,6 @@
 
                             </div>
 
-
                         </div>
 
 
@@ -945,7 +935,7 @@
                                 <button
                                     class="approve-button"
                                     data-id="${depositId}"
-                                    data-uid="${data.userId || data.uid || ""}"
+                                    data-uid="${escapeHtml(data.userId || data.uid || "")}"
                                     data-amount="${amount}">
 
                                     <i class="fa-solid fa-check"></i>
@@ -1024,7 +1014,6 @@
     }
 
 
-
     // ==========================================
     // UPDATE STATS
     // ==========================================
@@ -1045,7 +1034,6 @@
             formatNaira(amount);
 
     }
-
 
 
     // ==========================================
@@ -1100,7 +1088,6 @@
             );
 
     }
-
 
 
     // ==========================================
@@ -1171,8 +1158,6 @@
             }
 
 
-            // Update deposit status
-
             await updateDoc(
                 depositRef,
                 {
@@ -1189,8 +1174,6 @@
                 }
             );
 
-
-            // Add money to customer wallet
 
             if (userId) {
 
@@ -1239,7 +1222,6 @@
         }
 
     }
-
 
 
     // ==========================================
@@ -1312,7 +1294,6 @@
     }
 
 
-
     // ==========================================
     // REFRESH
     // ==========================================
@@ -1325,7 +1306,6 @@
             "click",
             loadDeposits
         );
-
 
 
     // ==========================================
@@ -1359,7 +1339,6 @@
     }
 
 </script>
-
 
 </body>
 
