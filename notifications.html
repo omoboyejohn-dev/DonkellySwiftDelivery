@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | Donkelly Swift Delivery</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            font-family: "Inter", sans-serif;
+
+            background: #f5faf7;
+
+            color: #17221c;
+
+        }
+
+
+        .page {
+
+            width: 92%;
+
+            max-width: 850px;
+
+            margin: auto;
+
+            padding: 25px 0 60px;
+
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .header {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+        }
+
+
+        .back-button {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 10px;
+
+            border: 1px solid #dfe7e2;
+
+            background: #fff;
+
+            color: #079447;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .back-button:hover {
+
+            background: #079447;
+
+            color: #fff;
+
+        }
+
+
+        .header h1 {
+
+            font-size: 21px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .header p {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+        }
+
+
+        .notification-icon {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 12px;
+
+            background: #eaf8ef;
+
+            color: #079447;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        /* ==========================================
+           ACTION BAR
+        ========================================== */
+
+        .action-bar {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 12px;
+
+            padding: 12px 15px;
+
+            margin-bottom: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+        }
+
+
+        .notification-count {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+        }
+
+
+        .mark-button {
+
+            border: 1px solid #079447;
+
+            background: #fff;
+
+            color: #079447;
+
+            padding: 8px 12px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .mark-button:hover {
+
+            background: #079447;
+
+            color: #fff;
+
+        }
+
+
+        /* ==========================================
+           NOTIFICATION LIST
+        ========================================== */
+
+        .notifications-card {
+
+            background: #fff;
+
+            border: 1px solid #e5ebe7;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+        }
+
+
+        .notification-item {
+
+            padding: 18px;
+
+            border-bottom: 1px solid #edf1ee;
+
+            display: flex;
+
+            gap: 13px;
+
+            transition: .2s;
+
+        }
+
+
+        .notification-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .notification-item:hover {
+
+            background: #fbfdfc;
+
+        }
+
+
+        .notification-item.unread {
+
+            background: #f4fbf7;
+
+        }
+
+
+        .notification-item.read {
+
+            opacity: .75;
+
+        }
+
+
+        .notification-item-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            min-width: 43px;
+
+            border-radius: 11px;
+
+            background: #eaf8ef;
+
+            color: #079447;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .notification-content {
+
+            flex: 1;
+
+        }
+
+
+        .notification-top {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .notification-title {
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+        }
+
+
+        .unread-dot {
+
+            width: 7px;
+
+            height: 7px;
+
+            min-width: 7px;
+
+            background: #079447;
+
+            border-radius: 50%;
+
+            margin-top: 5px;
+
+        }
+
+
+        .notification-message {
+
+            color: #66716b;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .notification-time {
+
+            color: #9aa49e;
+
+            font-size: 9px;
+
+        }
+
+
+        /* ==========================================
+           EMPTY
+        ========================================== */
+
+        .empty {
+
+            padding: 55px 20px;
+
+            text-align: center;
+
+            color: #66716b;
+
+        }
+
+
+        .empty i {
+
+            font-size: 38px;
+
+            color: #079447;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        .empty h3 {
+
+            font-size: 14px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .empty p {
+
+            font-size: 11px;
+
+        }
+
+
+        /* ==========================================
+           LOADING
+        ========================================== */
+
+        .loading {
+
+            padding: 50px 20px;
+
+            text-align: center;
+
+            color: #66716b;
+
+            font-size: 11px;
+
+        }
+
+
+        .loading i {
+
+            color: #079447;
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* ==========================================
+           ERROR
+        ========================================== */
+
+        .error {
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            color: #d93025;
+
+            font-size: 11px;
+
+        }
+
+
+        .error i {
+
+            font-size: 30px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 650px) {
+
+            .page {
+
+                width: 94%;
+
+                padding-top: 15px;
+
+            }
+
+
+            .header {
+
+                padding: 17px;
+
+            }
+
+
+            .header h1 {
+
+                font-size: 18px;
+
+            }
+
+
+            .notification-item {
+
+                padding: 15px;
+
+            }
+
+
+            .notification-top {
+
+                align-items: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ==========================================
+         HEADER
+    ========================================== -->
+
+    <section class="header">
+
+
+        <div class="header-left">
+
+
+            <button
+                class="back-button"
+                onclick="window.location.href='dashboard.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+
+            <div>
+
+                <h1>
+                    Notifications
+                </h1>
+
+                <p>
+                    Stay updated about your account.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="notification-icon">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         ACTION BAR
+    ========================================== -->
+
+    <section class="action-bar">
+
+
+        <span
+            class="notification-count"
+            id="notificationCount">
+
+            Loading notifications...
+
+        </span>
+
+
+        <button
+            class="mark-button"
+            id="markAllButton">
+
+            <i class="fa-solid fa-check-double"></i>
+
+            Mark all as read
+
+        </button>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         NOTIFICATIONS
+    ========================================== -->
+
+    <section
+        class="notifications-card"
+        id="notificationList">
+
+
+        <div class="loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <br>
+
+            Loading notifications...
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
+
+import {
+
+    initializeApp
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+import {
+
+    getAuth,
+    onAuthStateChanged
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+import {
+
+    getFirestore,
+    collection,
+    query,
+    where,
+    orderBy,
+    getDocs,
+    doc,
+    updateDoc,
+    writeBatch
+
+} from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+    authDomain:
+        "donkellyswiftdelivery.firebaseapp.com",
+
+    projectId:
+        "donkellyswiftdelivery",
+
+    storageBucket:
+        "donkellyswiftdelivery.firebasestorage.app",
+
+    messagingSenderId:
+        "547113841009",
+
+    appId:
+        "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+    measurementId:
+        "G-HFG8ENEEVB"
+
+};
+
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+const app =
+    initializeApp(
+        firebaseConfig
+    );
+
+
+const auth =
+    getAuth(app);
+
+
+const db =
+    getFirestore(app);
+
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const notificationList =
+    document.getElementById(
+        "notificationList"
+    );
+
+
+const notificationCount =
+    document.getElementById(
+        "notificationCount"
+    );
+
+
+const markAllButton =
+    document.getElementById(
+        "markAllButton"
+    );
+
+
+let currentUser = null;
+
+let notificationDocs = [];
+
+
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
+function formatDate(
+    timestamp
+) {
+
+    if (!timestamp) {
+
+        return "Date unavailable";
+
+    }
+
+
+    try {
+
+        if (
+            typeof timestamp.toDate ===
+            "function"
+        ) {
+
+            return timestamp
+                .toDate()
+                .toLocaleString(
+                    "en-NG",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                );
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "DATE ERROR:",
+            error
+        );
+
+    }
+
+
+    return "Date unavailable";
+
+}
+
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
+}
+
+
+
+/* =====================================================
+   GET ICON
+===================================================== */
+
+function getNotificationIcon(
+    type
+) {
+
+    const notificationType =
+        String(
+            type || ""
+        ).toLowerCase();
+
+
+    if (
+        notificationType ===
+        "deposit"
+    ) {
+
+        return "fa-wallet";
+
+    }
+
+
+    if (
+        notificationType ===
+        "payment"
+    ) {
+
+        return "fa-credit-card";
+
+    }
+
+
+    if (
+        notificationType ===
+        "order"
+    ) {
+
+        return "fa-box";
+
+    }
+
+
+    if (
+        notificationType ===
+        "success"
+    ) {
+
+        return "fa-circle-check";
+
+    }
+
+
+    if (
+        notificationType ===
+        "warning"
+    ) {
+
+        return "fa-triangle-exclamation";
+
+    }
+
+
+    return "fa-bell";
+
+}
+
+
+
+/* =====================================================
+   LOAD NOTIFICATIONS
+===================================================== */
+
+async function loadNotifications() {
+
+    if (!currentUser) {
+
+        return;
+
+    }
+
+
+    notificationList.innerHTML = `
+
+        <div class="loading">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <br>
+
+            Loading notifications...
+
+        </div>
+
+    `;
+
+
+    try {
+
+        const notificationsRef =
+            collection(
+                db,
+                "notifications"
+            );
+
+
+        /*
+         * First try the ordered query.
+         */
+
+        let snapshot;
+
+
+        try {
+
+            const notificationsQuery =
+                query(
+                    notificationsRef,
+                    where(
+                        "userId",
+                        "==",
+                        currentUser.uid
+                    ),
+                    orderBy(
+                        "createdAt",
+                        "desc"
+                    )
+                );
+
+
+            snapshot =
+                await getDocs(
+                    notificationsQuery
+                );
+
+
+        } catch (queryError) {
+
+            console.warn(
+                "Ordered notification query failed. Trying simple query.",
+                queryError
+            );
+
+
+            const simpleQuery =
+                query(
+                    notificationsRef,
+                    where(
+                        "userId",
+                        "==",
+                        currentUser.uid
+                    )
+                );
+
+
+            snapshot =
+                await getDocs(
+                    simpleQuery
+                );
+
+        }
+
+
+        notificationDocs = [];
+
+
+        snapshot.forEach(
+            function(notificationDoc) {
+
+                notificationDocs.push({
+                    id:
+                        notificationDoc.id,
+
+                    data:
+                        notificationDoc.data()
+
+                });
+
+            }
+        );
+
+
+        /*
+         * Sort locally when necessary.
+         */
+
+        notificationDocs.sort(
+            function(a, b) {
+
+                const aTime =
+                    a.data.createdAt?.toMillis?.() ||
+                    0;
+
+                const bTime =
+                    b.data.createdAt?.toMillis?.() ||
+                    0;
+
+                return bTime - aTime;
+
+            }
+        );
+
+
+        renderNotifications();
+
+
+    } catch (error) {
+
+        console.error(
+            "LOAD NOTIFICATIONS ERROR:",
+            error
+        );
+
+
+        notificationList.innerHTML = `
+
+            <div class="error">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <br>
+
+                Unable to load notifications.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
+            </div>
+
+        `;
+
+
+        notificationCount.textContent =
+            "Unable to load notifications.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   RENDER NOTIFICATIONS
+===================================================== */
+
+function renderNotifications() {
+
+    if (
+        notificationDocs.length ===
+        0
+    ) {
+
+        notificationList.innerHTML = `
+
+            <div class="empty">
+
+                <i class="fa-regular fa-bell-slash"></i>
+
+                <h3>
+                    No notifications
+                </h3>
+
+                <p>
+                    You don't have any notifications yet.
+                </p>
+
+            </div>
+
+        `;
+
+
+        notificationCount.textContent =
+            "0 notifications";
+
+
+        return;
+
+    }
+
+
+    let unreadCount = 0;
+
+
+    notificationList.innerHTML = "";
+
+
+    notificationDocs.forEach(
+        function(notification) {
+
+            const data =
+                notification.data;
+
+
+            const isRead =
+                data.read === true;
+
+
+            if (!isRead) {
+
+                unreadCount++;
+
+            }
+
+
+            const title =
+                data.title ||
+                "Notification";
+
+
+            const message =
+                data.message ||
+                data.body ||
+                "You have a new notification.";
+
+
+            const type =
+                data.type ||
+                "general";
+
+
+            const icon =
+                getNotificationIcon(
+                    type
+                );
+
+
+            const time =
+                formatDate(
+                    data.createdAt
+                );
+
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "notification-item " +
+                (
+                    isRead
+                    ? "read"
+                    : "unread"
+                );
+
+
+            item.innerHTML = `
+
+                <div class="notification-item-icon">
+
+                    <i class="fa-solid ${icon}"></i>
+
+                </div>
+
+
+                <div class="notification-content">
+
+                    <div class="notification-top">
+
+                        <strong class="notification-title">
+
+                            ${escapeHtml(
+                                title
+                            )}
+
+                        </strong>
+
+
+                        ${
+                            !isRead
+                            ?
+                            `
+                            <span
+                                class="unread-dot">
+                            </span>
+                            `
+                            :
+                            ""
+                        }
+
+                    </div>
+
+
+                    <p class="notification-message">
+
+                        ${escapeHtml(
+                            message
+                        )}
+
+                    </p>
+
+
+                    <span class="notification-time">
+
+                        <i class="fa-regular fa-clock"></i>
+
+                        ${escapeHtml(
+                            time
+                        )}
+
+                    </span>
+
+                </div>
+
+            `;
+
+
+            /*
+             * Click notification to mark
+             * it as read.
+             */
+
+            item.addEventListener(
+                "click",
+                async function() {
+
+                    if (!isRead) {
+
+                        await markAsRead(
+                            notification.id
+                        );
+
+                    }
+
+                }
+            );
+
+
+            notificationList.appendChild(
+                item
+            );
+
+        }
+    );
+
+
+    notificationCount.textContent =
+        unreadCount +
+        " unread notification" +
+        (
+            unreadCount === 1
+            ? ""
+            : "s"
+        );
+
+}
+
+
+
+/* =====================================================
+   MARK ONE AS READ
+===================================================== */
+
+async function markAsRead(
+    notificationId
+) {
+
+    try {
+
+        const notificationRef =
+            doc(
+                db,
+                "notifications",
+                notificationId
+            );
+
+
+        await updateDoc(
+            notificationRef,
+            {
+                read: true
+            }
+        );
+
+
+        const notification =
+            notificationDocs.find(
+                function(item) {
+
+                    return item.id ===
+                        notificationId;
+
+                }
+            );
+
+
+        if (notification) {
+
+            notification.data.read =
+                true;
+
+        }
+
+
+        renderNotifications();
+
+
+    } catch (error) {
+
+        console.error(
+            "MARK READ ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =====================================================
+   MARK ALL AS READ
+===================================================== */
+
+markAllButton.addEventListener(
+    "click",
+    async function() {
+
+        if (!currentUser) {
+
+            return;
+
+        }
+
+
+        const unread =
+            notificationDocs.filter(
+                function(item) {
+
+                    return item.data.read !==
+                        true;
+
+                }
+            );
+
+
+        if (
+            unread.length ===
+            0
+        ) {
+
+            alert(
+                "All notifications are already read."
+            );
+
+            return;
+
+        }
+
+
+        markAllButton.disabled =
+            true;
+
+
+        markAllButton.innerHTML = `
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            Updating...
+
+        `;
+
+
+        try {
+
+            const batch =
+                writeBatch(
+                    db
+                );
+
+
+            unread.forEach(
+                function(notification) {
+
+                    const notificationRef =
+                        doc(
+                            db,
+                            "notifications",
+                            notification.id
+                        );
+
+
+                    batch.update(
+                        notificationRef,
+                        {
+                            read: true
+                        }
+                    );
+
+                }
+            );
+
+
+            await batch.commit();
+
+
+            notificationDocs.forEach(
+                function(notification) {
+
+                    notification.data.read =
+                        true;
+
+                }
+            );
+
+
+            renderNotifications();
+
+
+        } catch (error) {
+
+            console.error(
+                "MARK ALL ERROR:",
+                error
+            );
+
+
+            alert(
+                "Unable to mark notifications as read.\n\n" +
+                error.message
+            );
+
+        }
+
+
+        markAllButton.disabled =
+            false;
+
+
+        markAllButton.innerHTML = `
+
+            <i class="fa-solid fa-check-double"></i>
+
+            Mark all as read
+
+        `;
+
+    }
+);
+
+
+
+/* =====================================================
+   AUTH
+===================================================== */
+
+onAuthStateChanged(
+    auth,
+    async function(user) {
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        currentUser =
+            user;
+
+
+        await loadNotifications();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
