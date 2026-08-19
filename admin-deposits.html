@@ -37,7 +37,6 @@
             border-radius: 16px;
             padding: 25px;
             margin-bottom: 25px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -108,7 +107,6 @@
         .deposits-title {
             padding: 22px;
             border-bottom: 1px solid #e5ebe7;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -662,10 +660,6 @@ async function loadDeposits() {
         let snapshot;
 
 
-        /*
-         * First try with createdAt sorting.
-         */
-
         try {
 
             const depositsQuery =
@@ -684,12 +678,6 @@ async function loadDeposits() {
 
         } catch (firstError) {
 
-            /*
-             * If createdAt is missing or the query
-             * cannot be used, load the collection
-             * without orderBy.
-             */
-
             console.warn(
                 "Ordered query failed. Loading all deposits.",
                 firstError
@@ -704,9 +692,7 @@ async function loadDeposits() {
 
 
         let pending = 0;
-
         let approved = 0;
-
         let pendingAmount = 0;
 
 
@@ -724,11 +710,7 @@ async function loadDeposits() {
 
             `;
 
-            updateStats(
-                0,
-                0,
-                0
-            );
+            updateStats(0, 0, 0);
 
             return;
 
@@ -761,7 +743,6 @@ async function loadDeposits() {
                 if (status === "pending") {
 
                     pending++;
-
                     pendingAmount += amount;
 
                 }
@@ -1084,6 +1065,7 @@ function attachDepositActions() {
 
 /* =====================================================
    APPROVE DEPOSIT
+   CREATE CUSTOMER ACCOUNT IF MISSING
 ===================================================== */
 
 async function approveDeposit(
@@ -1115,6 +1097,10 @@ async function approveDeposit(
             db,
             async function(transaction) {
 
+                /*
+                 * Get deposit first.
+                 */
+
                 const depositSnapshot =
                     await transaction.get(
                         depositRef
@@ -1136,15 +1122,16 @@ async function approveDeposit(
 
                 /*
                  * NEVER credit an already-approved
-                 * deposit a second time.
+                 * deposit twice.
                  */
 
-                if (
+                const currentStatus =
                     String(
-                        depositData.status || ""
-                    ).toLowerCase() ===
-                    "approved"
-                ) {
+                        depositData.status || "pending"
+                    ).toLowerCase();
+
+
+                if (currentStatus === "approved") {
 
                     throw new Error(
                         "This deposit has already been approved."
@@ -1153,12 +1140,7 @@ async function approveDeposit(
                 }
 
 
-                if (
-                    String(
-                        depositData.status || ""
-                    ).toLowerCase() ===
-                    "rejected"
-                ) {
+                if (currentStatus === "rejected") {
 
                     throw new Error(
                         "This deposit has already been rejected."
@@ -1167,14 +1149,12 @@ async function approveDeposit(
                 }
 
 
+                /*
+                 * Get customer UID.
+                 */
+
                 const userId =
                     depositData.userId;
-
-
-                const amount =
-                    Number(
-                        depositData.amount || 0
-                    );
 
 
                 if (!userId) {
@@ -1186,7 +1166,20 @@ async function approveDeposit(
                 }
 
 
-                if (!Number.isFinite(amount) || amount <= 0) {
+                /*
+                 * Get deposit amount.
+                 */
+
+                const amount =
+                    Number(
+                        depositData.amount || 0
+                    );
+
+
+                if (
+                    !Number.isFinite(amount) ||
+                    amount <= 0
+                ) {
 
                     throw new Error(
                         "Invalid deposit amount."
@@ -1194,6 +1187,10 @@ async function approveDeposit(
 
                 }
 
+
+                /*
+                 * Customer Firestore document.
+                 */
 
                 const userRef =
                     doc(
@@ -1203,38 +1200,109 @@ async function approveDeposit(
                     );
 
 
+                /*
+                 * Check whether customer document exists.
+                 */
+
                 const userSnapshot =
                     await transaction.get(
                         userRef
                     );
 
 
-                if (!userSnapshot.exists()) {
+                /* =========================================
+                   CUSTOMER EXISTS
+                ========================================= */
 
-                    throw new Error(
-                        "Customer account was not found."
+                if (userSnapshot.exists()) {
+
+                    const userData =
+                        userSnapshot.data();
+
+
+                    const currentBalance =
+                        Number(
+                            userData.walletBalance || 0
+                        );
+
+
+                    const newBalance =
+                        currentBalance + amount;
+
+
+                    /*
+                     * Update existing customer balance.
+                     */
+
+                    transaction.update(
+                        userRef,
+                        {
+
+                            walletBalance:
+                                newBalance
+
+                        }
                     );
 
                 }
 
 
-                const userData =
-                    userSnapshot.data();
+                /* =========================================
+                   CUSTOMER DOES NOT EXIST
+                   CREATE CUSTOMER ACCOUNT
+                ========================================= */
+
+                else {
+
+                    const customerName =
+                        depositData.fullName ||
+                        depositData.customerName ||
+                        "Customer";
 
 
-                const currentBalance =
-                    Number(
-                        userData.walletBalance || 0
+                    const customerEmail =
+                        depositData.customerEmail ||
+                        depositData.email ||
+                        "";
+
+
+                    /*
+                     * Create the missing users/{UID}
+                     * document with the deposit amount
+                     * as the starting balance.
+                     */
+
+                    transaction.set(
+                        userRef,
+                        {
+
+                            walletBalance:
+                                amount,
+
+                            fullName:
+                                customerName,
+
+                            email:
+                                customerEmail,
+
+                            uid:
+                                userId,
+
+                            createdAt:
+                                serverTimestamp(),
+
+                            walletCreatedBy:
+                                ADMIN_EMAIL
+
+                        }
                     );
 
-
-                const newBalance =
-                    currentBalance + amount;
+                }
 
 
-                /*
-                 * APPROVE DEPOSIT
-                 */
+                /* =========================================
+                   MARK DEPOSIT APPROVED
+                ========================================= */
 
                 transaction.update(
                     depositRef,
@@ -1247,22 +1315,13 @@ async function approveDeposit(
                             ADMIN_EMAIL,
 
                         approvedAt:
-                            serverTimestamp()
+                            serverTimestamp(),
 
-                    }
-                );
+                        creditedAmount:
+                            amount,
 
-
-                /*
-                 * CREDIT CUSTOMER WALLET
-                 */
-
-                transaction.update(
-                    userRef,
-                    {
-
-                        walletBalance:
-                            newBalance
+                        walletCredited:
+                            true
 
                     }
                 );
@@ -1386,5 +1445,3 @@ document
 </body>
 
 </html>
-
-
