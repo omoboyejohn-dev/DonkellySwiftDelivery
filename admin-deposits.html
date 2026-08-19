@@ -88,12 +88,15 @@ body {
 .stat-card i {
     width: 42px;
     height: 42px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     border-radius: 50%;
     background: #eaf8ef;
     color: #079447;
+
     margin-bottom: 12px;
 }
 
@@ -130,8 +133,10 @@ body {
     border: 1px solid #079447;
     background: #ffffff;
     color: #079447;
+
     padding: 9px 14px;
     border-radius: 7px;
+
     cursor: pointer;
     font-family: inherit;
     font-weight: 700;
@@ -150,6 +155,7 @@ body {
 .deposit-item {
     border: 1px solid #e5ebe7;
     border-radius: 12px;
+
     padding: 20px;
     margin-bottom: 15px;
 }
@@ -162,6 +168,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
     gap: 15px;
     margin-bottom: 18px;
 }
@@ -179,6 +186,7 @@ body {
 .status-badge {
     padding: 6px 10px;
     border-radius: 20px;
+
     font-size: 10px;
     font-weight: 800;
 }
@@ -192,7 +200,7 @@ body {
 .status-approved {
     background: #eaf8ef;
     color: #079447;
-    border: 1px solid #bde8cc;
+    border: 1px solid #bfe8cd;
 }
 
 .status-rejected {
@@ -204,6 +212,7 @@ body {
 .deposit-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     gap: 10px;
     margin-bottom: 18px;
 }
@@ -234,11 +243,14 @@ body {
 .approve-button,
 .reject-button {
     border: none;
+
     padding: 11px 17px;
     border-radius: 7px;
+
     font-family: inherit;
     font-size: 12px;
     font-weight: 800;
+
     cursor: pointer;
 }
 
@@ -251,9 +263,16 @@ body {
     background: #056b34;
 }
 
+.approve-button:disabled,
+.reject-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .reject-button {
     background: #fff1f1;
     color: #d93025;
+
     border: 1px solid #f0d0d0;
 }
 
@@ -266,7 +285,9 @@ body {
 .empty-message,
 .error-message {
     padding: 40px 20px;
+
     text-align: center;
+
     color: #66716b;
     font-size: 13px;
 }
@@ -278,14 +299,18 @@ body {
 
 .empty-message i {
     display: block;
+
     font-size: 35px;
     color: #079447;
+
     margin-bottom: 10px;
 }
 
 .admin-footer {
     margin-top: 25px;
+
     text-align: center;
+
     color: #66716b;
     font-size: 11px;
 }
@@ -327,7 +352,6 @@ body {
     .reject-button {
         width: 100%;
     }
-
 }
 
 </style>
@@ -337,145 +361,136 @@ body {
 
 <body>
 
-
 <main class="admin-page">
 
 
-    <section class="admin-header">
+<section class="admin-header">
 
-        <div>
+    <div>
 
-            <h1>
-                Deposit Management
-            </h1>
+        <h1>
+            Deposit Management
+        </h1>
 
-            <p>
-                Review customer deposit payment requests.
-            </p>
-
-        </div>
-
-        <div class="admin-badge">
-
-            <i class="fa-solid fa-user-shield"></i>
-
-            Admin
-
-        </div>
-
-    </section>
-
-
-
-    <section class="deposit-stats">
-
-
-        <div class="stat-card">
-
-            <i class="fa-solid fa-clock"></i>
-
-            <h3 id="pendingCount">
-                0
-            </h3>
-
-            <p>
-                Pending Deposits
-            </p>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <i class="fa-solid fa-check-circle"></i>
-
-            <h3 id="approvedCount">
-                0
-            </h3>
-
-            <p>
-                Approved Deposits
-            </p>
-
-        </div>
-
-
-
-        <div class="stat-card">
-
-            <i class="fa-solid fa-naira-sign"></i>
-
-            <h3 id="totalAmount">
-                ₦0.00
-            </h3>
-
-            <p>
-                Pending Amount
-            </p>
-
-        </div>
-
-
-    </section>
-
-
-
-    <section class="deposits-card">
-
-
-        <div class="deposits-title">
-
-            <h2>
-                Customer Deposit Requests
-            </h2>
-
-            <button
-                class="refresh-button"
-                id="refreshButton">
-
-                <i class="fa-solid fa-rotate"></i>
-
-                Refresh
-
-            </button>
-
-        </div>
-
-
-
-        <div
-            class="deposit-list"
-            id="depositList">
-
-            <div class="loading">
-
-                <i class="fa-solid fa-spinner fa-spin"></i>
-
-                Loading deposits...
-
-            </div>
-
-        </div>
-
-
-    </section>
-
-
-
-    <div class="admin-footer">
-
-        Donkelly Swift Delivery Admin Panel
+        <p>
+            Review customer deposit payment requests.
+        </p>
 
     </div>
+
+
+    <div class="admin-badge">
+
+        <i class="fa-solid fa-user-shield"></i>
+
+        Admin
+
+    </div>
+
+</section>
+
+
+<section class="deposit-stats">
+
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-clock"></i>
+
+        <h3 id="pendingCount">
+            0
+        </h3>
+
+        <p>
+            Pending Deposits
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-check-circle"></i>
+
+        <h3 id="approvedCount">
+            0
+        </h3>
+
+        <p>
+            Approved Deposits
+        </p>
+
+    </div>
+
+
+    <div class="stat-card">
+
+        <i class="fa-solid fa-naira-sign"></i>
+
+        <h3 id="totalAmount">
+            ₦0.00
+        </h3>
+
+        <p>
+            Pending Amount
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="deposits-card">
+
+
+<div class="deposits-title">
+
+    <h2>
+        Customer Deposit Requests
+    </h2>
+
+    <button
+        class="refresh-button"
+        id="refreshButton">
+
+        <i class="fa-solid fa-rotate"></i>
+
+        Refresh
+
+    </button>
+
+</div>
+
+
+<div
+    class="deposit-list"
+    id="depositList">
+
+    <div class="loading">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        Loading deposits...
+
+    </div>
+
+</div>
+
+
+</section>
+
+
+<div class="admin-footer">
+
+    Donkelly Swift Delivery Admin Panel
+
+</div>
 
 
 </main>
 
 
-
 <script type="module">
-
 
 import {
     initializeApp
@@ -494,14 +509,12 @@ import {
     collection,
     getDocs,
     doc,
-    getDoc,
+    runTransaction,
     updateDoc,
-    increment,
     query,
     orderBy,
-    serverTimestamp
+    increment
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
-
 
 
 const firebaseConfig = {
@@ -526,39 +539,39 @@ const firebaseConfig = {
 
     measurementId:
         "G-HFG8ENEEVB"
-
 };
-
 
 
 const app =
     initializeApp(firebaseConfig);
 
+
 const auth =
     getAuth(app);
 
+
 const db =
     getFirestore(app);
-
 
 
 const ADMIN_EMAIL =
     "Danieloluwaseun221@gmail.com";
 
 
-
 const depositList =
     document.getElementById("depositList");
+
 
 const pendingCount =
     document.getElementById("pendingCount");
 
+
 const approvedCount =
     document.getElementById("approvedCount");
 
+
 const totalAmount =
     document.getElementById("totalAmount");
-
 
 
 function formatNaira(amount) {
@@ -571,9 +584,7 @@ function formatNaira(amount) {
                 maximumFractionDigits: 2
             }
         );
-
 }
-
 
 
 function formatDate(timestamp) {
@@ -584,49 +595,20 @@ function formatDate(timestamp) {
 
     try {
 
-        if (
-            typeof timestamp.toDate ===
-            "function"
-        ) {
-
-            return timestamp
-                .toDate()
-                .toLocaleString(
-                    "en-NG",
-                    {
-                        dateStyle: "medium",
-                        timeStyle: "short"
-                    }
-                );
-
-        }
-
-
-        if (
-            timestamp instanceof Date
-        ) {
-
-            return timestamp.toLocaleString(
-                "en-NG",
-                {
-                    dateStyle: "medium",
-                    timeStyle: "short"
-                }
-            );
-
-        }
-
-
-        return "Date unavailable";
+        return timestamp.toDate().toLocaleString(
+            "en-NG",
+            {
+                dateStyle: "medium",
+                timeStyle: "short"
+            }
+        );
 
     } catch {
 
         return "Date unavailable";
 
     }
-
 }
-
 
 
 function escapeHtml(value) {
@@ -641,32 +623,9 @@ function escapeHtml(value) {
 }
 
 
-
-function getStatusClass(status) {
-
-    if (status === "approved") {
-
-        return "status-approved";
-
-    }
-
-    if (status === "rejected") {
-
-        return "status-rejected";
-
-    }
-
-    return "status-pending";
-
-}
-
-
-
-/*
-========================================================
-ADMIN AUTHENTICATION
-========================================================
-*/
+/* =====================================================
+   ADMIN AUTH
+===================================================== */
 
 onAuthStateChanged(
     auth,
@@ -678,7 +637,6 @@ onAuthStateChanged(
                 "login.html";
 
             return;
-
         }
 
 
@@ -698,7 +656,6 @@ onAuthStateChanged(
                 "login.html";
 
             return;
-
         }
 
 
@@ -708,21 +665,9 @@ onAuthStateChanged(
 );
 
 
-
-/*
-========================================================
-LOAD CUSTOMER DEPOSITS
-
-IMPORTANT:
-The customer page writes to:
-
-depositRequests
-
-So this admin page also reads:
-
-depositRequests
-========================================================
-*/
+/* =====================================================
+   LOAD DEPOSITS
+===================================================== */
 
 async function loadDeposits() {
 
@@ -740,7 +685,6 @@ async function loadDeposits() {
 
 
     try {
-
 
         const depositsRef =
             collection(
@@ -763,20 +707,12 @@ async function loadDeposits() {
                     )
                 );
 
-
             snapshot =
                 await getDocs(
                     depositsQuery
                 );
 
-
-        } catch (error) {
-
-            console.warn(
-                "Ordered query failed. Loading without order.",
-                error
-            );
-
+        } catch {
 
             snapshot =
                 await getDocs(
@@ -786,16 +722,12 @@ async function loadDeposits() {
         }
 
 
-
         depositList.innerHTML = "";
 
 
         let pending = 0;
-
         let approved = 0;
-
         let pendingAmount = 0;
-
 
 
         if (snapshot.empty) {
@@ -812,7 +744,6 @@ async function loadDeposits() {
 
             `;
 
-
             updateStats(
                 0,
                 0,
@@ -820,14 +751,11 @@ async function loadDeposits() {
             );
 
             return;
-
         }
-
 
 
         snapshot.forEach(
             function(depositDoc) {
-
 
                 const data =
                     depositDoc.data();
@@ -838,39 +766,27 @@ async function loadDeposits() {
 
 
                 const status =
-                    data.status ||
-                    "pending";
+                    data.status || "pending";
 
 
                 const amount =
-                    Number(
-                        data.amount || 0
-                    );
+                    Number(data.amount || 0);
 
 
-
-                if (
-                    status === "pending" ||
-                    status === "processing"
-                ) {
+                if (status === "pending") {
 
                     pending++;
 
-                    pendingAmount +=
-                        amount;
+                    pendingAmount += amount;
 
                 }
 
 
-
-                if (
-                    status === "approved"
-                ) {
+                if (status === "approved") {
 
                     approved++;
 
                 }
-
 
 
                 const customerEmail =
@@ -888,16 +804,15 @@ async function loadDeposits() {
                     "Not provided";
 
 
+                const customerUid =
+                    data.userId ||
+                    "";
+
+
                 const createdAt =
                     formatDate(
                         data.createdAt
                     );
-
-
-                const userId =
-                    data.userId ||
-                    "";
-
 
 
                 const item =
@@ -909,6 +824,24 @@ async function loadDeposits() {
                 item.className =
                     "deposit-item";
 
+
+                let statusClass =
+                    "status-pending";
+
+
+                if (status === "approved") {
+
+                    statusClass =
+                        "status-approved";
+
+                } else if (
+                    status === "rejected"
+                ) {
+
+                    statusClass =
+                        "status-rejected";
+
+                }
 
 
                 item.innerHTML = `
@@ -923,14 +856,14 @@ async function loadDeposits() {
 
                             <p>
                                 User ID:
-                                ${escapeHtml(userId)}
+                                ${escapeHtml(customerUid)}
                             </p>
 
                         </div>
 
 
                         <span
-                            class="status-badge ${getStatusClass(status)}">
+                            class="status-badge ${statusClass}">
 
                             ${escapeHtml(
                                 status.toUpperCase()
@@ -939,7 +872,6 @@ async function loadDeposits() {
                         </span>
 
                     </div>
-
 
 
                     <div class="deposit-details">
@@ -958,7 +890,6 @@ async function loadDeposits() {
                         </div>
 
 
-
                         <div class="detail-box">
 
                             <small>
@@ -970,7 +901,6 @@ async function loadDeposits() {
                             </strong>
 
                         </div>
-
 
 
                         <div class="detail-box">
@@ -986,7 +916,6 @@ async function loadDeposits() {
                         </div>
 
 
-
                         <div class="detail-box">
 
                             <small>
@@ -994,11 +923,10 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${createdAt}
+                                ${escapeHtml(createdAt)}
                             </strong>
 
                         </div>
-
 
 
                         <div class="detail-box">
@@ -1014,30 +942,11 @@ async function loadDeposits() {
                         </div>
 
 
-
-                        <div class="detail-box">
-
-                            <small>
-                                Bank
-                            </small>
-
-                            <strong>
-                                ${escapeHtml(
-                                    data.bankName ||
-                                    "Moniepoint"
-                                )}
-                            </strong>
-
-                        </div>
-
-
                     </div>
 
 
-
                     ${
-                        status === "pending" ||
-                        status === "processing"
+                        status === "pending"
 
                         ?
 
@@ -1045,19 +954,15 @@ async function loadDeposits() {
 
                         <div class="deposit-actions">
 
-
                             <button
                                 class="approve-button"
-                                data-id="${escapeHtml(depositId)}"
-                                data-uid="${escapeHtml(userId)}"
-                                data-amount="${amount}">
+                                data-id="${escapeHtml(depositId)}">
 
                                 <i class="fa-solid fa-check"></i>
 
                                 Approve Payment
 
                             </button>
-
 
 
                             <button
@@ -1069,7 +974,6 @@ async function loadDeposits() {
                                 Reject
 
                             </button>
-
 
                         </div>
 
@@ -1084,14 +988,10 @@ async function loadDeposits() {
                 `;
 
 
-                depositList.appendChild(
-                    item
-                );
-
+                depositList.appendChild(item);
 
             }
         );
-
 
 
         updateStats(
@@ -1101,12 +1001,10 @@ async function loadDeposits() {
         );
 
 
-        attachDepositActions();
-
+        attachActions();
 
 
     } catch (error) {
-
 
         console.error(
             "Load deposits error:",
@@ -1135,6 +1033,9 @@ async function loadDeposits() {
 }
 
 
+/* =====================================================
+   STATS
+===================================================== */
 
 function updateStats(
     pending,
@@ -1154,14 +1055,11 @@ function updateStats(
 }
 
 
+/* =====================================================
+   ACTIONS
+===================================================== */
 
-/*
-========================================================
-BUTTON ACTIONS
-========================================================
-*/
-
-function attachDepositActions() {
+function attachActions() {
 
 
     document
@@ -1177,8 +1075,7 @@ function attachDepositActions() {
 
                         approveDeposit(
                             button.dataset.id,
-                            button.dataset.uid,
-                            button.dataset.amount
+                            button
                         );
 
                     }
@@ -1186,7 +1083,6 @@ function attachDepositActions() {
 
             }
         );
-
 
 
     document
@@ -1201,7 +1097,8 @@ function attachDepositActions() {
                     function() {
 
                         rejectDeposit(
-                            button.dataset.id
+                            button.dataset.id,
+                            button
                         );
 
                     }
@@ -1213,23 +1110,18 @@ function attachDepositActions() {
 }
 
 
-
-/*
-========================================================
-APPROVE DEPOSIT
-========================================================
-*/
+/* =====================================================
+   APPROVE DEPOSIT
+===================================================== */
 
 async function approveDeposit(
     depositId,
-    userId,
-    amount
+    button
 ) {
-
 
     const confirmed =
         confirm(
-            "Are you sure you want to approve this payment?"
+            "Approve this deposit and add the money to the customer's wallet?"
         );
 
 
@@ -1238,9 +1130,13 @@ async function approveDeposit(
     }
 
 
+    button.disabled = true;
+
+    button.innerHTML =
+        '<i class="fa-solid fa-spinner fa-spin"></i> Approving...';
+
 
     try {
-
 
         const depositRef =
             doc(
@@ -1250,191 +1146,180 @@ async function approveDeposit(
             );
 
 
+        await runTransaction(
+            db,
+            async function(transaction) {
 
-        const depositSnapshot =
-            await getDoc(
-                depositRef
-            );
-
-
-
-        if (!depositSnapshot.exists()) {
-
-            alert(
-                "Deposit request no longer exists."
-            );
-
-            return;
-
-        }
+                const depositSnapshot =
+                    await transaction.get(
+                        depositRef
+                    );
 
 
+                if (!depositSnapshot.exists()) {
 
-        const depositData =
-            depositSnapshot.data();
+                    throw new Error(
+                        "Deposit request no longer exists."
+                    );
 
-
-
-        /*
-         * Prevent double approval.
-         */
-
-        if (
-            depositData.status ===
-            "approved"
-        ) {
-
-            alert(
-                "This deposit has already been approved."
-            );
-
-            loadDeposits();
-
-            return;
-
-        }
+                }
 
 
-
-        if (
-            depositData.status ===
-            "rejected"
-        ) {
-
-            alert(
-                "This deposit has already been rejected."
-            );
-
-            loadDeposits();
-
-            return;
-
-        }
+                const depositData =
+                    depositSnapshot.data();
 
 
+                /*
+                 * IMPORTANT:
+                 * Prevent double payment.
+                 */
 
-        const finalAmount =
-            Number(
-                depositData.amount ||
-                amount ||
-                0
-            );
+                if (
+                    depositData.status ===
+                    "approved"
+                ) {
 
+                    throw new Error(
+                        "This deposit has already been approved."
+                    );
 
-
-        if (
-            !finalAmount ||
-            finalAmount <= 0
-        ) {
-
-            alert(
-                "Invalid deposit amount."
-            );
-
-            return;
-
-        }
+                }
 
 
+                if (
+                    depositData.status ===
+                    "rejected"
+                ) {
 
-        /*
-         * First mark deposit as approved.
-         */
+                    throw new Error(
+                        "This deposit has already been rejected."
+                    );
 
-        await updateDoc(
-            depositRef,
-            {
-
-                status:
-                    "approved",
-
-                approvedBy:
-                    ADMIN_EMAIL,
-
-                approvedAt:
-                    serverTimestamp()
-
-            }
-        );
+                }
 
 
-
-        /*
-         * Add deposit amount to customer's wallet.
-         */
-
-        if (userId) {
+                const userId =
+                    depositData.userId;
 
 
-            const userRef =
-                doc(
-                    db,
-                    "users",
-                    userId
-                );
+                const amount =
+                    Number(
+                        depositData.amount || 0
+                    );
 
 
-            const userSnapshot =
-                await getDoc(
-                    userRef
-                );
+                if (!userId) {
+
+                    throw new Error(
+                        "Customer user ID is missing."
+                    );
+
+                }
 
 
+                if (!amount || amount <= 0) {
 
-            if (
-                userSnapshot.exists()
-            ) {
+                    throw new Error(
+                        "Invalid deposit amount."
+                    );
+
+                }
 
 
-                await updateDoc(
+                const userRef =
+                    doc(
+                        db,
+                        "users",
+                        userId
+                    );
+
+
+                const userSnapshot =
+                    await transaction.get(
+                        userRef
+                    );
+
+
+                if (!userSnapshot.exists()) {
+
+                    throw new Error(
+                        "Customer account was not found."
+                    );
+
+                }
+
+
+                const userData =
+                    userSnapshot.data();
+
+
+                const currentBalance =
+                    Number(
+                        userData.walletBalance || 0
+                    );
+
+
+                const newBalance =
+                    currentBalance + amount;
+
+
+                /*
+                 * UPDATE CUSTOMER WALLET
+                 */
+
+                transaction.update(
                     userRef,
                     {
 
                         walletBalance:
-                            increment(
-                                finalAmount
-                            )
+                            newBalance
 
                     }
                 );
 
 
-            } else {
-
                 /*
-                 * If the users document does not
-                 * exist, create it is not done here.
-                 *
-                 * The deposit remains approved,
-                 * but the wallet document must exist
-                 * for the balance to update.
+                 * UPDATE DEPOSIT
                  */
 
-                console.warn(
-                    "Customer users document not found:",
-                    userId
+                transaction.update(
+                    depositRef,
+                    {
+
+                        status:
+                            "approved",
+
+                        approvedBy:
+                            ADMIN_EMAIL,
+
+                        approvedAt:
+                            new Date(),
+
+                        creditedAmount:
+                            amount,
+
+                        balanceAfterApproval:
+                            newBalance
+
+                    }
                 );
 
             }
-
-        }
-
+        );
 
 
         alert(
-            "Deposit approved successfully. Customer wallet has been updated."
+            "Deposit approved successfully. The customer's wallet has been credited."
         );
 
 
         loadDeposits();
 
 
-
     } catch (error) {
 
-
         console.error(
-            "Approve error:",
+            "Approve deposit error:",
             error
         );
 
@@ -1444,26 +1329,30 @@ async function approveDeposit(
             error.message
         );
 
+
+        button.disabled =
+            false;
+
+        button.innerHTML =
+            '<i class="fa-solid fa-check"></i> Approve Payment';
+
     }
 
 }
 
 
-
-/*
-========================================================
-REJECT DEPOSIT
-========================================================
-*/
+/* =====================================================
+   REJECT DEPOSIT
+===================================================== */
 
 async function rejectDeposit(
-    depositId
+    depositId,
+    button
 ) {
-
 
     const confirmed =
         confirm(
-            "Are you sure you want to reject this payment?"
+            "Are you sure you want to reject this deposit?"
         );
 
 
@@ -1472,9 +1361,10 @@ async function rejectDeposit(
     }
 
 
+    button.disabled = true;
+
 
     try {
-
 
         const depositRef =
             doc(
@@ -1482,46 +1372,6 @@ async function rejectDeposit(
                 "depositRequests",
                 depositId
             );
-
-
-
-        const depositSnapshot =
-            await getDoc(
-                depositRef
-            );
-
-
-
-        if (!depositSnapshot.exists()) {
-
-            alert(
-                "Deposit request no longer exists."
-            );
-
-            return;
-
-        }
-
-
-
-        const depositData =
-            depositSnapshot.data();
-
-
-
-        if (
-            depositData.status ===
-            "approved"
-        ) {
-
-            alert(
-                "This deposit has already been approved and cannot be rejected."
-            );
-
-            return;
-
-        }
-
 
 
         await updateDoc(
@@ -1535,11 +1385,10 @@ async function rejectDeposit(
                     ADMIN_EMAIL,
 
                 rejectedAt:
-                    serverTimestamp()
+                    new Date()
 
             }
         );
-
 
 
         alert(
@@ -1550,12 +1399,10 @@ async function rejectDeposit(
         loadDeposits();
 
 
-
     } catch (error) {
 
-
         console.error(
-            "Reject error:",
+            "Reject deposit error:",
             error
         );
 
@@ -1565,31 +1412,27 @@ async function rejectDeposit(
             error.message
         );
 
+
+        button.disabled =
+            false;
+
     }
 
 }
 
 
-
-/*
-========================================================
-REFRESH
-========================================================
-*/
+/* =====================================================
+   REFRESH
+===================================================== */
 
 document
-    .getElementById(
-        "refreshButton"
-    )
+    .getElementById("refreshButton")
     .addEventListener(
         "click",
         loadDeposits
     );
 
-
 </script>
 
-
 </body>
-
 </html>
