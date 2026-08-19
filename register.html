@@ -348,472 +348,371 @@
 
     <script type="module">
 
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
+    import {
+        getAuth,
+        createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
-        import {
-            getAuth,
-            createUserWithEmailAndPassword,
-            updateProfile
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+    import {
+        getFirestore,
+        doc,
+        setDoc,
+        serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
-        import {
-            getFirestore,
-            doc,
-            setDoc,
-            serverTimestamp
-        } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+    // ================================
+    // FIREBASE CONFIG
+    // ================================
 
+    const firebaseConfig = {
 
+        apiKey:
+            "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
 
-        // =========================
-        // FIREBASE CONFIGURATION
-        // =========================
+        authDomain:
+            "donkellyswiftdelivery.firebaseapp.com",
 
-        const firebaseConfig = {
+        projectId:
+            "donkellyswiftdelivery",
 
-            apiKey:
-                "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+        storageBucket:
+            "donkellyswiftdelivery.firebasestorage.app",
 
-            authDomain:
-                "donkellyswiftdelivery.firebaseapp.com",
+        messagingSenderId:
+            "547113841009",
 
-            projectId:
-                "donkellyswiftdelivery",
+        appId:
+            "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
 
-            storageBucket:
-                "donkellyswiftdelivery.firebasestorage.app",
+        measurementId:
+            "G-HFG8ENEEVB"
+    };
 
-            messagingSenderId:
-                "547113841009",
 
-            appId:
-                "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+    // ================================
+    // INITIALIZE FIREBASE
+    // ================================
 
-            measurementId:
-                "G-HFG8ENEEVB"
+    const app =
+        initializeApp(firebaseConfig);
 
-        };
+    const auth =
+        getAuth(app);
 
+    const db =
+        getFirestore(app);
 
 
-        // =========================
-        // INITIALIZE FIREBASE
-        // =========================
+    // ================================
+    // PASSWORD TOGGLE
+    // ================================
 
-        const app =
-            initializeApp(firebaseConfig);
+    window.togglePassword = function(inputId, button) {
 
+        const input =
+            document.getElementById(inputId);
 
-        // Firebase Authentication
+        const icon =
+            button.querySelector("i");
 
-        const auth =
-            getAuth(app);
 
+        if (input.type === "password") {
 
-        // Firestore Database
+            input.type = "text";
 
-        const db =
-            getFirestore(app);
+            icon.classList.remove("fa-eye");
 
+            icon.classList.add("fa-eye-slash");
 
+        } else {
 
-        // =========================
-        // PASSWORD TOGGLE
-        // =========================
+            input.type = "password";
 
-        window.togglePassword =
-            function(inputId, button) {
+            icon.classList.remove("fa-eye-slash");
 
-                const input =
-                    document.getElementById(inputId);
+            icon.classList.add("fa-eye");
 
-                const icon =
-                    button.querySelector("i");
+        }
 
+    };
 
-                if (input.type === "password") {
 
-                    input.type = "text";
+    // ================================
+    // REGISTER FORM
+    // ================================
 
-                    icon.classList.remove(
-                        "fa-eye"
-                    );
+    const registerForm =
+        document.getElementById("registerForm");
 
-                    icon.classList.add(
-                        "fa-eye-slash"
-                    );
 
-                } else {
+    registerForm.addEventListener(
+        "submit",
+        async function(event) {
 
-                    input.type = "password";
+            event.preventDefault();
 
-                    icon.classList.remove(
-                        "fa-eye-slash"
-                    );
 
-                    icon.classList.add(
-                        "fa-eye"
-                    );
+            // Get values
 
-                }
+            const fullName =
+                document
+                    .getElementById("fullName")
+                    .value
+                    .trim();
 
-            };
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
 
+            const phone =
+                document
+                    .getElementById("phone")
+                    .value
+                    .trim();
 
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
 
-        // =========================
-        // FORM ELEMENTS
-        // =========================
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
 
-        const registerForm =
-            document.getElementById("registerForm");
+            const terms =
+                document
+                    .getElementById("terms")
+                    .checked;
 
 
-        const errorMessage =
-            document.getElementById("errorMessage");
+            const errorMessage =
+                document.getElementById(
+                    "errorMessage"
+                );
 
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
+                );
 
-        const successMessage =
-            document.getElementById("successMessage");
 
+            // Reset messages
 
-        const registerButton =
-            document.getElementById("registerButton");
+            errorMessage.style.display = "none";
 
+            successMessage.style.display = "none";
 
-        const buttonText =
-            document.getElementById("buttonText");
 
+            // ================================
+            // VALIDATION
+            // ================================
 
-        const buttonIcon =
-            document.getElementById("buttonIcon");
+            if (password.length < 8) {
 
-
-
-        // =========================
-        // REGISTER USER
-        // =========================
-
-        registerForm.addEventListener(
-            "submit",
-            async function(event) {
-
-                event.preventDefault();
-
-
-                // Clear messages
+                errorMessage.textContent =
+                    "Password must contain at least 8 characters.";
 
                 errorMessage.style.display =
-                    "none";
+                    "block";
+
+                return;
+            }
+
+
+            if (password !== confirmPassword) {
+
+                errorMessage.textContent =
+                    "Passwords do not match.";
+
+                errorMessage.style.display =
+                    "block";
+
+                return;
+            }
+
+
+            if (!terms) {
+
+                errorMessage.textContent =
+                    "Please agree to the Terms & Conditions.";
+
+                errorMessage.style.display =
+                    "block";
+
+                return;
+            }
+
+
+            // ================================
+            // DISABLE BUTTON
+            // ================================
+
+            const submitButton =
+                registerForm.querySelector(
+                    ".auth-submit"
+                );
+
+
+            submitButton.disabled = true;
+
+            submitButton.innerHTML =
+                '<i class="fa-solid fa-spinner fa-spin"></i> Creating Account...';
+
+
+            try {
+
+                // ================================
+                // CREATE FIREBASE AUTH ACCOUNT
+                // ================================
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                // ================================
+                // SAVE CUSTOMER TO FIRESTORE
+                // ================================
+
+                await setDoc(
+                    doc(db, "users", user.uid),
+                    {
+
+                        uid: user.uid,
+
+                        fullName: fullName,
+
+                        email: email,
+
+                        phone: phone,
+
+                        walletBalance: 0,
+
+                        role: "customer",
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+
+                // ================================
+                // SUCCESS
+                // ================================
+
+                successMessage.textContent =
+                    "Account created successfully. Redirecting...";
 
                 successMessage.style.display =
-                    "none";
+                    "block";
 
 
+                // ================================
+                // GO TO DASHBOARD
+                // ================================
 
-                // Get form values
+                setTimeout(
+                    function() {
 
-                const fullName =
-                    document
-                        .getElementById("fullName")
-                        .value
-                        .trim();
+                        window.location.href =
+                            "dashboard.html";
 
-
-                const email =
-                    document
-                        .getElementById("email")
-                        .value
-                        .trim();
+                    },
+                    1000
+                );
 
 
-                const phone =
-                    document
-                        .getElementById("phone")
-                        .value
-                        .trim();
+            } catch (error) {
+
+                console.error(
+                    "Registration error:",
+                    error
+                );
 
 
-                const password =
-                    document
-                        .getElementById("password")
-                        .value;
+                // ================================
+                // FIREBASE ERRORS
+                // ================================
+
+                let message =
+                    "Unable to create your account. Please try again.";
 
 
-                const confirmPassword =
-                    document
-                        .getElementById("confirmPassword")
-                        .value;
+                if (
+                    error.code ===
+                    "auth/email-already-in-use"
+                ) {
 
+                    message =
+                        "This Gmail is already registered. Please login instead.";
 
-                const terms =
-                    document
-                        .getElementById("terms")
-                        .checked;
+                }
 
+                else if (
+                    error.code ===
+                    "auth/invalid-email"
+                ) {
 
+                    message =
+                        "Please enter a valid Gmail address.";
 
-                // =========================
-                // VALIDATION
-                // =========================
+                }
 
-                if (password.length < 8) {
+                else if (
+                    error.code ===
+                    "auth/weak-password"
+                ) {
 
-                    errorMessage.textContent =
-                        "Password must contain at least 8 characters.";
+                    message =
+                        "Your password is too weak. Use at least 8 characters.";
 
-                    errorMessage.style.display =
-                        "block";
+                }
 
-                    return;
+                else if (
+                    error.code ===
+                    "auth/network-request-failed"
+                ) {
+
+                    message =
+                        "Network error. Please check your internet connection.";
 
                 }
 
 
+                errorMessage.textContent =
+                    message;
 
-                if (password !== confirmPassword) {
+                errorMessage.style.display =
+                    "block";
 
-                    errorMessage.textContent =
-                        "Passwords do not match.";
 
-                    errorMessage.style.display =
-                        "block";
+                // Enable button again
 
-                    return;
+                submitButton.disabled = false;
 
-                }
-
-
-
-                if (!terms) {
-
-                    errorMessage.textContent =
-                        "Please agree to the Terms & Conditions.";
-
-                    errorMessage.style.display =
-                        "block";
-
-                    return;
-
-                }
-
-
-
-                // =========================
-                // LOADING
-                // =========================
-
-                registerButton.disabled =
-                    true;
-
-                buttonText.textContent =
-                    "Creating Account...";
-
-                buttonIcon.className =
-                    "fa-solid fa-spinner fa-spin";
-
-
-
-                try {
-
-
-                    // =========================
-                    // CREATE AUTH ACCOUNT
-                    // =========================
-
-                    const userCredential =
-                        await createUserWithEmailAndPassword(
-                            auth,
-                            email,
-                            password
-                        );
-
-
-                    const user =
-                        userCredential.user;
-
-
-
-                    // =========================
-                    // SAVE DISPLAY NAME
-                    // =========================
-
-                    await updateProfile(
-                        user,
-                        {
-                            displayName:
-                                fullName
-                        }
-                    );
-
-
-
-                    // =========================
-                    // CREATE FIRESTORE USER
-                    // =========================
-
-                    await setDoc(
-                        doc(
-                            db,
-                            "users",
-                            user.uid
-                        ),
-                        {
-
-                            uid:
-                                user.uid,
-
-                            fullName:
-                                fullName,
-
-                            email:
-                                email,
-
-                            phone:
-                                phone,
-
-                            walletBalance:
-                                0,
-
-                            accountStatus:
-                                "active",
-
-                            role:
-                                "customer",
-
-                            createdAt:
-                                serverTimestamp()
-
-                        }
-                    );
-
-
-
-                    // =========================
-                    // SUCCESS
-                    // =========================
-
-                    successMessage.textContent =
-                        "Account created successfully! Redirecting...";
-
-                    successMessage.style.display =
-                        "block";
-
-
-                    buttonText.textContent =
-                        "Account Created";
-
-                    buttonIcon.className =
-                        "fa-solid fa-check";
-
-
-
-                    // =========================
-                    // REDIRECT
-                    // =========================
-
-                    setTimeout(
-                        function() {
-
-                            window.location.href =
-                                "dashboard.html";
-
-                        },
-                        1500
-                    );
-
-
-                } catch (error) {
-
-
-                    console.error(
-                        "Firebase Registration Error:",
-                        error
-                    );
-
-
-
-                    // =========================
-                    // FIREBASE ERROR MESSAGES
-                    // =========================
-
-                    let message =
-                        "Unable to create your account. Please try again.";
-
-
-                    if (
-                        error.code ===
-                        "auth/email-already-in-use"
-                    ) {
-
-                        message =
-                            "This Gmail is already registered.";
-
-                    }
-
-
-                    else if (
-                        error.code ===
-                        "auth/invalid-email"
-                    ) {
-
-                        message =
-                            "Please enter a valid email address.";
-
-                    }
-
-
-                    else if (
-                        error.code ===
-                        "auth/weak-password"
-                    ) {
-
-                        message =
-                            "Password is too weak. Use at least 8 characters.";
-
-                    }
-
-
-                    else if (
-                        error.code ===
-                        "auth/network-request-failed"
-                    ) {
-
-                        message =
-                            "Network error. Please check your internet connection.";
-
-                    }
-
-
-
-                    errorMessage.textContent =
-                        message;
-
-
-                    errorMessage.style.display =
-                        "block";
-
-
-
-                    // Reset button
-
-                    registerButton.disabled =
-                        false;
-
-                    buttonText.textContent =
-                        "Create Account";
-
-                    buttonIcon.className =
-                        "fa-solid fa-arrow-right";
-
-                }
+                submitButton.innerHTML =
+                    'Create Account <i class="fa-solid fa-arrow-right"></i>';
 
             }
-        );
+
+        }
+    );
 
     </script>
 
