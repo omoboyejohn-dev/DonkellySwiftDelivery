@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Donkelly Swift Delivery</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<!-- =====================================================
+     TOP NAVIGATION
+===================================================== -->
+
+<header class="dashboard-header">
+
+    <a href="dashboard.html"
+       class="dashboard-logo">
+
+        <div class="dashboard-logo-icon">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+
+        </div>
+
+        <div>
+
+            <h2>
+                Donkelly
+                <span>Swift Delivery</span>
+            </h2>
+
+            <p>
+                Send gifts 🎁, share love ❤️
+            </p>
+
+        </div>
+
+    </a>
+
+
+    <button
+        class="dashboard-menu"
+        id="dashboardMenu">
+
+        <i class="fa-solid fa-bars"></i>
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     DASHBOARD CONTAINER
+===================================================== -->
+
+<main class="dashboard-container">
+
+
+    <!-- =================================================
+         WELCOME
+    ================================================== -->
+
+    <section class="dashboard-welcome">
+
+        <div>
+
+            <p class="welcome-small">
+                Welcome back 👋
+            </p>
+
+            <h1 id="welcomeName">
+                Welcome
+            </h1>
+
+            <p class="welcome-text">
+                Send something special to someone you love.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WALLET CARD
+    ================================================== -->
+
+    <section class="wallet-card">
+
+        <div class="wallet-left">
+
+            <p>
+                Total Balance
+            </p>
+
+            <h2 id="walletBalance">
+                ₦0.00
+            </h2>
+
+            <span>
+                Available wallet balance
+            </span>
+
+        </div>
+
+
+        <button
+            class="deposit-button"
+            id="depositButton">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Deposit
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+    ================================================== -->
+
+    <section class="quick-actions">
+
+        <a href="profile.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <span>
+                Profile
+            </span>
+
+        </a>
+
+
+        <a href="deposit.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <span>
+                Deposit
+            </span>
+
+        </a>
+
+
+        <a href="settings.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+
+            <span>
+                Settings
+            </span>
+
+        </a>
+
+
+        <a href="notifications.html"
+           class="action-card">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <small class="notification-dot"></small>
+
+            </div>
+
+            <span>
+                Notifications
+            </span>
+
+        </a>
+
+
+        <a href="support.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-headset"></i>
+            </div>
+
+            <span>
+                Support
+            </span>
+
+        </a>
+
+
+        <a href="payment-history.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-credit-card"></i>
+            </div>
+
+            <span>
+                Payment History
+            </span>
+
+        </a>
+
+
+        <a href="order-history.html"
+           class="action-card">
+
+            <div class="action-icon">
+                <i class="fa-solid fa-box"></i>
+            </div>
+
+            <span>
+                Order History
+            </span>
+
+        </a>
+
+
+        <button
+            class="action-card logout-action"
+            id="logoutButton">
+
+            <div class="action-icon">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+            </div>
+
+            <span>
+                Logout
+            </span>
+
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         GIFT SECTION
+    ================================================== -->
+
+    <section class="gift-dashboard-section">
+
+
+        <div class="gift-section-header">
+
+            <div>
+
+                <p class="section-label">
+                    SEND A GIFT
+                </p>
+
+                <h2>
+                    Which gift do you want to send?
+                </h2>
+
+                <p>
+                    Choose a gift and send it to your loved one
+                    anywhere in the world.
+                </p>
+
+            </div>
+
+
+            <a href="gifts.html"
+               class="view-all-gifts">
+
+                View All
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- =================================================
+             GIFT GRID
+        ================================================== -->
+
+        <div class="dashboard-gift-grid">
+
+
+            <!-- FLOWERS -->
+
+            <a href="gifts.html?category=flowers"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image flowers-bg">
+
+                    🌹💐
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Flowers
+                    </h3>
+
+                    <p>
+                        Send beautiful flowers
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- CAKE -->
+
+            <a href="gifts.html?category=cake"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image cake-bg">
+
+                    🎂
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Cake
+                    </h3>
+
+                    <p>
+                        Make celebrations special
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- TEDDY BEAR -->
+
+            <a href="gifts.html?category=teddy-bear"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image teddy-bg">
+
+                    🧸
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Teddy Bear
+                    </h3>
+
+                    <p>
+                        A gift full of love
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- PIZZA & DRINK -->
+
+            <a href="gifts.html?category=pizza-drink"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image pizza-bg">
+
+                    🍕🥤
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Pizza N Drink
+                    </h3>
+
+                    <p>
+                        Pizza with a refreshing drink
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- GIFT BOX -->
+
+            <a href="gifts.html?category=gift-box"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image giftbox-bg">
+
+                    🎁
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Gift Boxes
+                    </h3>
+
+                    <p>
+                        Thoughtful gift packages
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- RING -->
+
+            <a href="gifts.html?category=ring"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image ring-bg">
+
+                    💍
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Ring
+                    </h3>
+
+                    <p>
+                        A special gift for someone
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- PERFUME -->
+
+            <a href="gifts.html?category=perfume"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image perfume-bg">
+
+                    🌸
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Perfume
+                    </h3>
+
+                    <p>
+                        Fragrance gifts
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- PIZZA & COKE -->
+
+            <a href="gifts.html?category=pizza-coke"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image pizza-coke-bg">
+
+                    🍕🥤
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Pizza N Coke
+                    </h3>
+
+                    <p>
+                        Pizza and Coke combo
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- PIZZA -->
+
+            <a href="gifts.html?category=pizza"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image pizza-only-bg">
+
+                    🍕
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Pizza
+                    </h3>
+
+                    <p>
+                        Send delicious pizza
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- COKE -->
+
+            <a href="gifts.html?category=coke"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image coke-bg">
+
+                    🥤
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Coke
+                    </h3>
+
+                    <p>
+                        Refreshing drinks
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- MAN WATCH -->
+
+            <a href="gifts.html?category=man-watch"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image watch-bg">
+
+                    ⌚
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Man Watch
+                    </h3>
+
+                    <p>
+                        Stylish watches for men
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- WOMAN WATCH -->
+
+            <a href="gifts.html?category=woman-watch"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image woman-watch-bg">
+
+                    ⌚
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Woman Watch
+                    </h3>
+
+                    <p>
+                        Elegant watches for women
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- BENZ KEY -->
+
+            <a href="gifts.html?category=benz-key"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image benz-bg">
+
+                    🔑🚘
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Benz Key
+                    </h3>
+
+                    <p>
+                        Luxury gift selection
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- WINE -->
+
+            <a href="gifts.html?category=wine"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image wine-bg">
+
+                    🍷
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Wine
+                    </h3>
+
+                    <p>
+                        Premium wine gifts
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- WALL CLOCK -->
+
+            <a href="gifts.html?category=wall-clock"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image clock-bg">
+
+                    🕐
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Wall Clock
+                    </h3>
+
+                    <p>
+                        Beautiful home gifts
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- WOMAN HANDBAG -->
+
+            <a href="gifts.html?category=woman-handbag"
+               class="dashboard-gift-card">
+
+                <div class="dashboard-gift-image handbag-bg">
+
+                    👜
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Woman Handbag
+                    </h3>
+
+                    <p>
+                        Fashionable handbags
+                    </p>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- OTHER GIFTS -->
+
+            <a href="gifts.html?category=others"
+               class="dashboard-gift-card other-gift-card">
+
+                <div class="dashboard-gift-image other-bg">
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+                <div class="dashboard-gift-info">
+
+                    <h3>
+                        Other Gifts
+                    </h3>
+
+                    <p>
+                        Explore more gifts
+                    </p>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         BOTTOM INFORMATION
+    ================================================== -->
+
+    <section class="dashboard-help">
+
+        <div class="help-icon">
+
+            <i class="fa-solid fa-headset"></i>
+
+        </div>
+
+        <div>
+
+            <h3>
+                Need help sending a gift?
+            </h3>
+
+            <p>
+                Our support team is available to help
+                you with your order.
+            </p>
+
+        </div>
+
+        <a href="support.html"
+           class="help-button">
+
+            Contact Support
+
+        </a>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FIREBASE
+===================================================== -->
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+
+    import {
+        getAuth,
+        onAuthStateChanged,
+        signOut
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+    import {
+        getFirestore,
+        doc,
+        getDoc
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+
+
+
+    // =========================
+    // FIREBASE CONFIG
+    // =========================
+
+    const firebaseConfig = {
+
+        apiKey:
+            "AIzaSyAuD2HIYRG0ZHq7KtfSjzexhq6NkXii5Qo",
+
+        authDomain:
+            "donkellyswiftdelivery.firebaseapp.com",
+
+        projectId:
+            "donkellyswiftdelivery",
+
+        storageBucket:
+            "donkellyswiftdelivery.firebasestorage.app",
+
+        messagingSenderId:
+            "547113841009",
+
+        appId:
+            "1:547113841009:web:a4c054dca08fc1f5b4c6d0",
+
+        measurementId:
+            "G-HFG8ENEEVB"
+
+    };
+
+
+
+    // Initialize Firebase
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    const auth =
+        getAuth(app);
+
+
+    const db =
+        getFirestore(app);
+
+
+
+    // =========================
+    // DASHBOARD ELEMENTS
+    // =========================
+
+    const welcomeName =
+        document.getElementById("welcomeName");
+
+
+    const walletBalance =
+        document.getElementById("walletBalance");
+
+
+    // =========================
+    // CHECK LOGIN
+    // =========================
+
+    onAuthStateChanged(
+        auth,
+        async function(user) {
+
+            if (!user) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            try {
+
+                // Get customer document
+
+                const userRef =
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    );
+
+
+                const userSnapshot =
+                    await getDoc(userRef);
+
+
+                if (userSnapshot.exists()) {
+
+                    const userData =
+                        userSnapshot.data();
+
+
+                    // Customer name
+
+                    const name =
+                        userData.fullName ||
+                        user.displayName ||
+                        "Customer";
+
+
+                    welcomeName.textContent =
+                        "Welcome, " + name + " 👋";
+
+
+                    // Wallet
+
+                    const balance =
+                        Number(
+                            userData.walletBalance || 0
+                        );
+
+
+                    walletBalance.textContent =
+                        "₦" +
+                        balance.toLocaleString(
+                            "en-NG",
+                            {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2
+                            }
+                        );
+
+                }
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard error:",
+                    error
+                );
+
+            }
+
+        }
+    );
+
+
+
+    // =========================
+    // LOGOUT
+    // =========================
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener(
+            "click",
+            async function() {
+
+                try {
+
+                    await signOut(auth);
+
+                    window.location.href =
+                        "login.html";
+
+                } catch (error) {
+
+                    console.error(
+                        "Logout error:",
+                        error
+                    );
+
+                }
+
+            }
+        );
+
+
+
+    // =========================
+    // DEPOSIT BUTTON
+    // =========================
+
+    document
+        .getElementById("depositButton")
+        .addEventListener(
+            "click",
+            function() {
+
+                window.location.href =
+                    "deposit.html";
+
+            }
+        );
+
+
+
+    // =========================
+    // MOBILE MENU
+    // =========================
+
+    document
+        .getElementById("dashboardMenu")
+        .addEventListener(
+            "click",
+            function() {
+
+                document
+                    .body
+                    .classList
+                    .toggle("dashboard-menu-open");
+
+            }
+        );
+
+</script>
+
+</body>
+
+                      </html>
