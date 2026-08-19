@@ -2,15 +2,21 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Admin Deposits | Donkelly Swift Delivery</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
@@ -18,11 +24,13 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+
     <style>
 
         body {
             background: #f5faf7;
         }
+
 
         .admin-page {
             width: 92%;
@@ -30,6 +38,7 @@
             margin: auto;
             padding: 35px 0 70px;
         }
+
 
         .admin-header {
             background: #fff;
@@ -44,15 +53,18 @@
             gap: 20px;
         }
 
+
         .admin-header h1 {
             font-size: 26px;
             margin-bottom: 5px;
         }
 
+
         .admin-header p {
             color: #66716b;
             font-size: 13px;
         }
+
 
         .admin-badge {
             background: #eaf8ef;
@@ -63,12 +75,14 @@
             font-weight: 700;
         }
 
+
         .deposit-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-bottom: 25px;
         }
+
 
         .stat-card {
             background: #fff;
@@ -77,26 +91,35 @@
             padding: 20px;
         }
 
+
         .stat-card i {
             width: 42px;
             height: 42px;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             border-radius: 50%;
             background: #eaf8ef;
             color: #079447;
+
             margin-bottom: 12px;
         }
 
+
         .stat-card h3 {
             font-size: 24px;
+            margin: 0 0 4px;
         }
+
 
         .stat-card p {
             color: #66716b;
             font-size: 12px;
+            margin: 0;
         }
+
 
         .deposits-card {
             background: #fff;
@@ -105,6 +128,7 @@
             overflow: hidden;
         }
 
+
         .deposits-title {
             padding: 22px;
             border-bottom: 1px solid #e5ebe7;
@@ -112,32 +136,44 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            gap: 15px;
         }
+
 
         .deposits-title h2 {
             font-size: 18px;
+            margin: 0;
         }
+
 
         .refresh-button {
             border: 1px solid #079447;
             background: #fff;
             color: #079447;
+
             padding: 9px 14px;
+
             border-radius: 7px;
+
             cursor: pointer;
+
             font-family: inherit;
             font-weight: 700;
             font-size: 12px;
         }
+
 
         .refresh-button:hover {
             background: #079447;
             color: #fff;
         }
 
+
         .deposit-list {
             padding: 20px;
         }
+
 
         .deposit-item {
             border: 1px solid #e5ebe7;
@@ -146,34 +182,46 @@
             margin-bottom: 15px;
         }
 
+
         .deposit-item:last-child {
             margin-bottom: 0;
         }
+
 
         .deposit-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+
             gap: 15px;
+
             margin-bottom: 18px;
         }
 
+
         .customer-info h3 {
             font-size: 15px;
-            margin-bottom: 4px;
+            margin: 0 0 4px;
         }
+
 
         .customer-info p {
             color: #66716b;
             font-size: 11px;
+            margin: 0;
         }
+
 
         .status-badge {
             padding: 6px 10px;
             border-radius: 20px;
+
             font-size: 10px;
             font-weight: 800;
+
+            white-space: nowrap;
         }
+
 
         .status-pending {
             background: #fff7e6;
@@ -181,11 +229,13 @@
             border: 1px solid #ffe0a3;
         }
 
+
         .status-approved {
             background: #eaf8ef;
             color: #079447;
             border: 1px solid #bce8cc;
         }
+
 
         .status-rejected {
             background: #fff1f1;
@@ -193,18 +243,23 @@
             border: 1px solid #f0d0d0;
         }
 
+
         .deposit-details {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+
             gap: 10px;
+
             margin-bottom: 18px;
         }
+
 
         .detail-box {
             background: #f7faf8;
             border-radius: 8px;
             padding: 12px;
         }
+
 
         .detail-box small {
             display: block;
@@ -213,74 +268,118 @@
             margin-bottom: 3px;
         }
 
+
         .detail-box strong {
             font-size: 12px;
             word-break: break-word;
         }
+
 
         .deposit-actions {
             display: flex;
             gap: 10px;
         }
 
+
         .approve-button,
         .reject-button {
             border: none;
+
             padding: 11px 17px;
+
             border-radius: 7px;
+
             font-family: inherit;
             font-size: 12px;
             font-weight: 800;
+
             cursor: pointer;
         }
+
 
         .approve-button {
             background: #079447;
             color: #fff;
         }
 
+
         .approve-button:hover {
             background: #056b34;
         }
 
+
+        .approve-button:disabled,
+        .reject-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+
         .reject-button {
             background: #fff1f1;
             color: #d93025;
+
             border: 1px solid #f0d0d0;
         }
+
 
         .reject-button:hover {
             background: #d93025;
             color: #fff;
         }
 
+
         .loading,
         .empty-message,
         .error-message {
             padding: 40px 20px;
+
             text-align: center;
+
             color: #66716b;
+
             font-size: 13px;
         }
+
 
         .loading i {
             color: #079447;
             margin-right: 7px;
         }
 
+
         .empty-message i {
             display: block;
+
             font-size: 35px;
+
             color: #079447;
+
             margin-bottom: 10px;
         }
 
+
+        .error-message i {
+            display: block;
+
+            font-size: 30px;
+
+            color: #d93025;
+
+            margin-bottom: 10px;
+        }
+
+
         .admin-footer {
             margin-top: 25px;
+
             text-align: center;
+
             color: #66716b;
+
             font-size: 11px;
         }
+
 
         @media (max-width: 700px) {
 
@@ -289,73 +388,119 @@
                 padding-top: 20px;
             }
 
+
             .admin-header {
                 padding: 18px;
+
                 flex-direction: column;
+
                 align-items: flex-start;
             }
+
 
             .admin-header h1 {
                 font-size: 22px;
             }
 
+
             .deposit-stats {
                 grid-template-columns: 1fr;
             }
+
 
             .deposit-details {
                 grid-template-columns: 1fr;
             }
 
+
             .deposit-top {
                 flex-direction: column;
             }
+
 
             .deposit-actions {
                 flex-direction: column;
             }
 
+
             .approve-button,
             .reject-button {
                 width: 100%;
             }
+
+
+            .deposits-title {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .refresh-button {
+                width: 100%;
+            }
+
         }
 
     </style>
 
 </head>
 
+
 <body>
 
+
 <main class="admin-page">
+
+
+    <!-- =========================
+         ADMIN HEADER
+    ========================== -->
 
     <section class="admin-header">
 
         <div>
-            <h1>Deposit Management</h1>
+
+            <h1>
+                Deposit Management
+            </h1>
 
             <p>
                 Review customer deposit payment requests.
             </p>
+
         </div>
 
+
         <div class="admin-badge">
+
             <i class="fa-solid fa-user-shield"></i>
+
             Admin
+
         </div>
 
     </section>
 
 
+
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
     <section class="deposit-stats">
+
 
         <div class="stat-card">
 
             <i class="fa-solid fa-clock"></i>
 
-            <h3 id="pendingCount">0</h3>
+            <h3 id="pendingCount">
+                0
+            </h3>
 
-            <p>Pending Deposits</p>
+            <p>
+                Pending Deposits
+            </p>
 
         </div>
 
@@ -364,9 +509,13 @@
 
             <i class="fa-solid fa-check-circle"></i>
 
-            <h3 id="approvedCount">0</h3>
+            <h3 id="approvedCount">
+                0
+            </h3>
 
-            <p>Approved Deposits</p>
+            <p>
+                Approved Deposits
+            </p>
 
         </div>
 
@@ -375,16 +524,27 @@
 
             <i class="fa-solid fa-naira-sign"></i>
 
-            <h3 id="totalAmount">₦0.00</h3>
+            <h3 id="totalAmount">
+                ₦0.00
+            </h3>
 
-            <p>Pending Amount</p>
+            <p>
+                Pending Amount
+            </p>
 
         </div>
+
 
     </section>
 
 
+
+    <!-- =========================
+         DEPOSIT REQUESTS
+    ========================== -->
+
     <section class="deposits-card">
+
 
         <div class="deposits-title">
 
@@ -392,11 +552,13 @@
                 Customer Deposit Requests
             </h2>
 
+
             <button
                 class="refresh-button"
                 id="refreshButton">
 
                 <i class="fa-solid fa-rotate"></i>
+
                 Refresh
 
             </button>
@@ -418,7 +580,9 @@
 
         </div>
 
+
     </section>
+
 
 
     <div class="admin-footer">
@@ -427,10 +591,17 @@
 
     </div>
 
+
 </main>
 
 
+
 <script type="module">
+
+
+/* =====================================================
+   FIREBASE IMPORTS
+===================================================== */
 
 import {
     initializeApp
@@ -451,12 +622,17 @@ import {
     doc,
     getDoc,
     updateDoc,
-    increment,
     runTransaction,
     query,
-    orderBy
+    orderBy,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
+
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig = {
 
@@ -480,39 +656,70 @@ const firebaseConfig = {
 
     measurementId:
         "G-HFG8ENEEVB"
+
 };
 
+
+
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
 
 const app =
     initializeApp(firebaseConfig);
 
+
 const auth =
     getAuth(app);
+
 
 const db =
     getFirestore(app);
 
 
+
+/* =====================================================
+   ADMIN EMAIL
+===================================================== */
+
 const ADMIN_EMAIL =
     "Danieloluwaseun221@gmail.com";
 
 
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
 const depositList =
     document.getElementById("depositList");
+
 
 const pendingCount =
     document.getElementById("pendingCount");
 
+
 const approvedCount =
     document.getElementById("approvedCount");
+
 
 const totalAmount =
     document.getElementById("totalAmount");
 
 
+const refreshButton =
+    document.getElementById("refreshButton");
+
+
+
+/* =====================================================
+   FORMAT NAIRA
+===================================================== */
+
 function formatNaira(amount) {
 
     return "₦" +
+
         Number(amount || 0).toLocaleString(
             "en-NG",
             {
@@ -524,24 +731,41 @@ function formatNaira(amount) {
 }
 
 
+
+/* =====================================================
+   FORMAT DATE
+===================================================== */
+
 function formatDate(timestamp) {
 
     if (!timestamp) {
+
         return "Date unavailable";
+
     }
+
 
     try {
 
-        const date =
-            timestamp.toDate();
+        if (
+            typeof timestamp.toDate ===
+            "function"
+        ) {
 
-        return date.toLocaleString(
-            "en-NG",
-            {
-                dateStyle: "medium",
-                timeStyle: "short"
-            }
-        );
+            return timestamp
+                .toDate()
+                .toLocaleString(
+                    "en-NG",
+                    {
+                        dateStyle: "medium",
+                        timeStyle: "short"
+                    }
+                );
+
+        }
+
+
+        return "Date unavailable";
 
     } catch {
 
@@ -552,16 +776,42 @@ function formatDate(timestamp) {
 }
 
 
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
 function escapeHtml(value) {
 
     return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
 
 }
+
 
 
 /* =====================================================
@@ -571,6 +821,7 @@ function escapeHtml(value) {
 onAuthStateChanged(
     auth,
     async function(user) {
+
 
         if (!user) {
 
@@ -582,9 +833,14 @@ onAuthStateChanged(
         }
 
 
+        const email =
+            user.email
+                ? user.email.toLowerCase()
+                : "";
+
+
         if (
-            !user.email ||
-            user.email.toLowerCase() !==
+            email !==
             ADMIN_EMAIL.toLowerCase()
         ) {
 
@@ -592,7 +848,20 @@ onAuthStateChanged(
                 "Access denied. Admin account required."
             );
 
-            await signOut(auth);
+
+            try {
+
+                await signOut(auth);
+
+            } catch (error) {
+
+                console.error(
+                    "Sign out error:",
+                    error
+                );
+
+            }
+
 
             window.location.href =
                 "login.html";
@@ -602,22 +871,25 @@ onAuthStateChanged(
         }
 
 
+        console.log(
+            "Admin authenticated:",
+            user.email
+        );
+
+
         loadDeposits();
 
     }
 );
 
 
+
 /* =====================================================
-   LOAD CUSTOMER DEPOSITS
-
-   IMPORTANT:
-   CUSTOMER DEPOSIT PAGE SAVES TO:
-   depositRequests
-
+   LOAD DEPOSITS
 ===================================================== */
 
 async function loadDeposits() {
+
 
     depositList.innerHTML = `
 
@@ -634,6 +906,7 @@ async function loadDeposits() {
 
     try {
 
+
         const depositsRef =
             collection(
                 db,
@@ -644,7 +917,12 @@ async function loadDeposits() {
         let snapshot;
 
 
+        /*
+         * Try loading newest deposits first.
+         */
+
         try {
+
 
             const depositsQuery =
                 query(
@@ -655,12 +933,21 @@ async function loadDeposits() {
                     )
                 );
 
+
             snapshot =
                 await getDocs(
                     depositsQuery
                 );
 
-        } catch {
+
+        } catch (queryError) {
+
+
+            console.warn(
+                "Ordered query failed. Loading all deposits:",
+                queryError
+            );
+
 
             snapshot =
                 await getDocs(
@@ -670,8 +957,6 @@ async function loadDeposits() {
         }
 
 
-        depositList.innerHTML = "";
-
 
         let pending = 0;
 
@@ -680,7 +965,13 @@ async function loadDeposits() {
         let pendingAmount = 0;
 
 
+
+        depositList.innerHTML = "";
+
+
+
         if (snapshot.empty) {
+
 
             depositList.innerHTML = `
 
@@ -694,48 +985,75 @@ async function loadDeposits() {
 
             `;
 
+
             updateStats(
                 0,
                 0,
                 0
             );
 
+
             return;
 
         }
 
 
+
         snapshot.forEach(
             function(depositDoc) {
+
 
                 const data =
                     depositDoc.data();
 
+
                 const depositId =
                     depositDoc.id;
 
+
                 const status =
-                    data.status || "pending";
+                    data.status ||
+                    "pending";
+
 
                 const amount =
-                    Number(data.amount || 0);
+                    Number(
+                        data.amount || 0
+                    );
 
 
-                if (status === "pending") {
+
+                /*
+                 * Statistics
+                 */
+
+                if (
+                    status ===
+                    "pending"
+                ) {
 
                     pending++;
 
-                    pendingAmount += amount;
+                    pendingAmount +=
+                        amount;
 
                 }
 
 
-                if (status === "approved") {
+                if (
+                    status ===
+                    "approved"
+                ) {
 
                     approved++;
 
                 }
 
+
+
+                /*
+                 * Customer information
+                 */
 
                 const customerName =
                     data.fullName ||
@@ -764,19 +1082,34 @@ async function loadDeposits() {
                     "";
 
 
+
+                /*
+                 * Create card
+                 */
+
                 const item =
-                    document.createElement("div");
+                    document.createElement(
+                        "div"
+                    );
 
 
                 item.className =
                     "deposit-item";
 
 
+
+                /*
+                 * Status style
+                 */
+
                 let badgeClass =
                     "status-pending";
 
 
-                if (status === "approved") {
+                if (
+                    status ===
+                    "approved"
+                ) {
 
                     badgeClass =
                         "status-approved";
@@ -784,12 +1117,16 @@ async function loadDeposits() {
                 }
 
 
-                if (status === "rejected") {
+                if (
+                    status ===
+                    "rejected"
+                ) {
 
                     badgeClass =
                         "status-rejected";
 
                 }
+
 
 
                 item.innerHTML = `
@@ -799,16 +1136,22 @@ async function loadDeposits() {
                         <div class="customer-info">
 
                             <h3>
-                                ${escapeHtml(customerName)}
+                                ${escapeHtml(
+                                    customerName
+                                )}
                             </h3>
 
                             <p>
-                                ${escapeHtml(customerEmail)}
+                                ${escapeHtml(
+                                    customerEmail
+                                )}
                             </p>
 
                         </div>
 
-                        <span class="status-badge ${badgeClass}">
+
+                        <span
+                            class="status-badge ${badgeClass}">
 
                             ${escapeHtml(
                                 status.toUpperCase()
@@ -819,7 +1162,9 @@ async function loadDeposits() {
                     </div>
 
 
+
                     <div class="deposit-details">
+
 
                         <div class="detail-box">
 
@@ -828,10 +1173,13 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${formatNaira(amount)}
+                                ${formatNaira(
+                                    amount
+                                )}
                             </strong>
 
                         </div>
+
 
 
                         <div class="detail-box">
@@ -841,10 +1189,13 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${escapeHtml(senderName)}
+                                ${escapeHtml(
+                                    senderName
+                                )}
                             </strong>
 
                         </div>
+
 
 
                         <div class="detail-box">
@@ -854,10 +1205,13 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${escapeHtml(reference)}
+                                ${escapeHtml(
+                                    reference
+                                )}
                             </strong>
 
                         </div>
+
 
 
                         <div class="detail-box">
@@ -867,10 +1221,13 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${formatDate(data.createdAt)}
+                                ${formatDate(
+                                    data.createdAt
+                                )}
                             </strong>
 
                         </div>
+
 
 
                         <div class="detail-box">
@@ -880,42 +1237,91 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${escapeHtml(userId)}
+                                ${escapeHtml(
+                                    userId
+                                )}
                             </strong>
 
                         </div>
 
+
+
+                        ${
+                            status === "approved"
+                            ?
+
+                            `
+
+                            <div class="detail-box">
+
+                                <small>
+                                    Approved By
+                                </small>
+
+                                <strong>
+                                    ${escapeHtml(
+                                        data.approvedBy ||
+                                        "Admin"
+                                    )}
+                                </strong>
+
+                            </div>
+
+                            `
+
+                            :
+
+                            ""
+
+                        }
+
+
                     </div>
 
 
+
                     ${
-                        status === "pending"
+                        status ===
+                        "pending"
+
                         ?
 
                         `
 
-                        <div class="deposit-actions">
+                        <div
+                            class="deposit-actions">
+
 
                             <button
                                 class="approve-button"
-                                data-id="${escapeHtml(depositId)}">
+                                data-id="${escapeHtml(
+                                    depositId
+                                )}">
 
-                                <i class="fa-solid fa-check"></i>
+                                <i
+                                    class="fa-solid fa-check">
+                                </i>
 
                                 Approve Payment
 
                             </button>
 
 
+
                             <button
                                 class="reject-button"
-                                data-id="${escapeHtml(depositId)}">
+                                data-id="${escapeHtml(
+                                    depositId
+                                )}">
 
-                                <i class="fa-solid fa-xmark"></i>
+                                <i
+                                    class="fa-solid fa-xmark">
+                                </i>
 
                                 Reject
 
                             </button>
+
 
                         </div>
 
@@ -930,10 +1336,14 @@ async function loadDeposits() {
                 `;
 
 
-                depositList.appendChild(item);
+                depositList.appendChild(
+                    item
+                );
+
 
             }
         );
+
 
 
         updateStats(
@@ -946,7 +1356,9 @@ async function loadDeposits() {
         attachDepositActions();
 
 
+
     } catch (error) {
+
 
         console.error(
             "Load deposits error:",
@@ -958,13 +1370,23 @@ async function loadDeposits() {
 
             <div class="error-message">
 
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i
+                    class="fa-solid fa-triangle-exclamation">
+                </i>
 
-                Unable to load deposits.
+                <strong>
+                    Unable to load deposits.
+                </strong>
 
                 <br><br>
 
-                ${escapeHtml(error.message)}
+                ${escapeHtml(
+                    error.message
+                )}
+
+                <br><br>
+
+                Check your Firestore security rules.
 
             </div>
 
@@ -975,8 +1397,9 @@ async function loadDeposits() {
 }
 
 
+
 /* =====================================================
-   STATS
+   UPDATE STATISTICS
 ===================================================== */
 
 function updateStats(
@@ -985,59 +1408,79 @@ function updateStats(
     amount
 ) {
 
+
     pendingCount.textContent =
         pending;
+
 
     approvedCount.textContent =
         approved;
 
+
     totalAmount.textContent =
-        formatNaira(amount);
+        formatNaira(
+            amount
+        );
 
 }
 
 
+
 /* =====================================================
-   BUTTON EVENTS
+   ATTACH BUTTON EVENTS
 ===================================================== */
 
 function attachDepositActions() {
 
+
     document
-        .querySelectorAll(".approve-button")
+        .querySelectorAll(
+            ".approve-button"
+        )
         .forEach(
             function(button) {
+
 
                 button.addEventListener(
                     "click",
                     function() {
+
 
                         approveDeposit(
                             button.dataset.id
                         );
 
+
                     }
                 );
+
 
             }
         );
 
 
+
     document
-        .querySelectorAll(".reject-button")
+        .querySelectorAll(
+            ".reject-button"
+        )
         .forEach(
             function(button) {
+
 
                 button.addEventListener(
                     "click",
                     function() {
 
+
                         rejectDeposit(
                             button.dataset.id
                         );
 
+
                     }
                 );
+
 
             }
         );
@@ -1045,35 +1488,32 @@ function attachDepositActions() {
 }
 
 
+
 /* =====================================================
    APPROVE DEPOSIT
-
-   THIS DOES TWO THINGS:
-
-   1. Marks depositRequests/{depositId}
-      as approved.
-
-   2. Adds amount to
-      users/{userId}.walletBalance
-
 ===================================================== */
 
 async function approveDeposit(
     depositId
 ) {
 
+
     const confirmed =
         confirm(
-            "Are you sure you want to approve this payment?"
+            "Approve this payment and add the money to the customer's wallet?"
         );
 
 
     if (!confirmed) {
+
         return;
+
     }
 
 
+
     try {
+
 
         const depositRef =
             doc(
@@ -1083,15 +1523,20 @@ async function approveDeposit(
             );
 
 
+
         /*
-         * Use a Firestore transaction so the
-         * wallet cannot accidentally receive
-         * the same deposit twice.
+         * Transaction ensures the deposit
+         * cannot be credited twice.
          */
 
         await runTransaction(
             db,
             async function(transaction) {
+
+
+                /*
+                 * Get deposit
+                 */
 
                 const depositSnapshot =
                     await transaction.get(
@@ -1099,18 +1544,27 @@ async function approveDeposit(
                     );
 
 
-                if (!depositSnapshot.exists()) {
+
+                if (
+                    !depositSnapshot.exists()
+                ) {
 
                     throw new Error(
-                        "Deposit request does not exist."
+                        "Deposit request was not found."
                     );
 
                 }
 
 
+
                 const depositData =
                     depositSnapshot.data();
 
+
+
+                /*
+                 * Already approved?
+                 */
 
                 if (
                     depositData.status ===
@@ -1124,6 +1578,11 @@ async function approveDeposit(
                 }
 
 
+
+                /*
+                 * Already rejected?
+                 */
+
                 if (
                     depositData.status ===
                     "rejected"
@@ -1136,14 +1595,14 @@ async function approveDeposit(
                 }
 
 
+
+                /*
+                 * Customer UID
+                 */
+
                 const userId =
                     depositData.userId;
 
-
-                const amount =
-                    Number(
-                        depositData.amount || 0
-                    );
 
 
                 if (!userId) {
@@ -1155,7 +1614,24 @@ async function approveDeposit(
                 }
 
 
-                if (!amount || amount <= 0) {
+
+                /*
+                 * Deposit amount
+                 */
+
+                const amount =
+                    Number(
+                        depositData.amount || 0
+                    );
+
+
+
+                if (
+                    !Number.isFinite(
+                        amount
+                    ) ||
+                    amount <= 0
+                ) {
 
                     throw new Error(
                         "Invalid deposit amount."
@@ -1163,6 +1639,11 @@ async function approveDeposit(
 
                 }
 
+
+
+                /*
+                 * Customer document
+                 */
 
                 const userRef =
                     doc(
@@ -1172,13 +1653,17 @@ async function approveDeposit(
                     );
 
 
+
                 const userSnapshot =
                     await transaction.get(
                         userRef
                     );
 
 
-                if (!userSnapshot.exists()) {
+
+                if (
+                    !userSnapshot.exists()
+                ) {
 
                     throw new Error(
                         "Customer account was not found."
@@ -1187,8 +1672,14 @@ async function approveDeposit(
                 }
 
 
+
+                /*
+                 * Current wallet
+                 */
+
                 const userData =
                     userSnapshot.data();
+
 
 
                 const currentBalance =
@@ -1197,12 +1688,19 @@ async function approveDeposit(
                     );
 
 
+
+                /*
+                 * New wallet balance
+                 */
+
                 const newBalance =
-                    currentBalance + amount;
+                    currentBalance +
+                    amount;
+
 
 
                 /*
-                 * Mark deposit approved.
+                 * APPROVE DEPOSIT
                  */
 
                 transaction.update(
@@ -1216,14 +1714,15 @@ async function approveDeposit(
                             ADMIN_EMAIL,
 
                         approvedAt:
-                            new Date()
+                            serverTimestamp()
 
                     }
                 );
 
 
+
                 /*
-                 * Add deposit to customer wallet.
+                 * CREDIT CUSTOMER
                  */
 
                 transaction.update(
@@ -1236,19 +1735,24 @@ async function approveDeposit(
                     }
                 );
 
+
             }
         );
 
 
+
         alert(
-            "Payment approved successfully. The customer's wallet has been credited."
+            "Payment approved successfully.\n\nThe customer's wallet has been credited."
         );
+
 
 
         await loadDeposits();
 
 
+
     } catch (error) {
+
 
         console.error(
             "Approve deposit error:",
@@ -1266,6 +1770,7 @@ async function approveDeposit(
 }
 
 
+
 /* =====================================================
    REJECT DEPOSIT
 ===================================================== */
@@ -1274,6 +1779,7 @@ async function rejectDeposit(
     depositId
 ) {
 
+
     const confirmed =
         confirm(
             "Are you sure you want to reject this payment?"
@@ -1281,11 +1787,15 @@ async function rejectDeposit(
 
 
     if (!confirmed) {
+
         return;
+
     }
 
 
+
     try {
+
 
         const depositRef =
             doc(
@@ -1295,13 +1805,17 @@ async function rejectDeposit(
             );
 
 
+
         const snapshot =
             await getDoc(
                 depositRef
             );
 
 
-        if (!snapshot.exists()) {
+
+        if (
+            !snapshot.exists()
+        ) {
 
             throw new Error(
                 "Deposit request does not exist."
@@ -1310,8 +1824,10 @@ async function rejectDeposit(
         }
 
 
+
         const data =
             snapshot.data();
+
 
 
         if (
@@ -1326,6 +1842,7 @@ async function rejectDeposit(
         }
 
 
+
         await updateDoc(
             depositRef,
             {
@@ -1337,10 +1854,11 @@ async function rejectDeposit(
                     ADMIN_EMAIL,
 
                 rejectedAt:
-                    new Date()
+                    serverTimestamp()
 
             }
         );
+
 
 
         alert(
@@ -1348,10 +1866,13 @@ async function rejectDeposit(
         );
 
 
+
         await loadDeposits();
 
 
+
     } catch (error) {
+
 
         console.error(
             "Reject deposit error:",
@@ -1369,18 +1890,36 @@ async function rejectDeposit(
 }
 
 
+
 /* =====================================================
-   REFRESH
+   REFRESH BUTTON
 ===================================================== */
 
-document
-    .getElementById("refreshButton")
-    .addEventListener(
-        "click",
-        loadDeposits
-    );
+refreshButton.addEventListener(
+    "click",
+    async function() {
+
+        refreshButton.disabled =
+            true;
+
+
+        try {
+
+            await loadDeposits();
+
+        } finally {
+
+            refreshButton.disabled =
+                false;
+
+        }
+
+    }
+);
+
 
 </script>
+
 
 </body>
 
