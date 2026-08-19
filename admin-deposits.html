@@ -2,22 +2,15 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Deposits | Donkelly Swift Delivery</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
@@ -25,467 +18,414 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
-<style>
-
-body {
-    background: #f5faf7;
-}
-
-.admin-page {
-    width: 92%;
-    max-width: 1250px;
-    margin: auto;
-    padding: 35px 0 70px;
-}
-
-.admin-header {
-    background: #ffffff;
-    border: 1px solid #e5ebe7;
-    border-radius: 16px;
-    padding: 25px;
-    margin-bottom: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.admin-header h1 {
-    font-size: 26px;
-    margin-bottom: 5px;
-}
-
-.admin-header p {
-    color: #66716b;
-    font-size: 13px;
-}
-
-.admin-badge {
-    background: #eaf8ef;
-    color: #079447;
-    padding: 10px 15px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.deposit-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    background: #ffffff;
-    border: 1px solid #e5ebe7;
-    border-radius: 14px;
-    padding: 20px;
-}
-
-.stat-card i {
-    width: 42px;
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-    background: #eaf8ef;
-    color: #079447;
-
-    margin-bottom: 12px;
-}
-
-.stat-card h3 {
-    font-size: 24px;
-}
-
-.stat-card p {
-    color: #66716b;
-    font-size: 12px;
-}
-
-.deposits-card {
-    background: #ffffff;
-    border: 1px solid #e5ebe7;
-    border-radius: 16px;
-    overflow: hidden;
-}
-
-.deposits-title {
-    padding: 22px;
-    border-bottom: 1px solid #e5ebe7;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.deposits-title h2 {
-    font-size: 18px;
-}
-
-.refresh-button {
-    border: 1px solid #079447;
-    background: #ffffff;
-    color: #079447;
-
-    padding: 9px 14px;
-    border-radius: 7px;
-
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 12px;
-}
-
-.refresh-button:hover {
-    background: #079447;
-    color: #ffffff;
-}
-
-.deposit-list {
-    padding: 20px;
-}
-
-.deposit-item {
-    border: 1px solid #e5ebe7;
-    border-radius: 12px;
-
-    padding: 20px;
-    margin-bottom: 15px;
-}
-
-.deposit-item:last-child {
-    margin-bottom: 0;
-}
-
-.deposit-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-
-    gap: 15px;
-    margin-bottom: 18px;
-}
-
-.customer-info h3 {
-    font-size: 15px;
-    margin-bottom: 4px;
-}
-
-.customer-info p {
-    color: #66716b;
-    font-size: 11px;
-}
-
-.status-badge {
-    padding: 6px 10px;
-    border-radius: 20px;
-
-    font-size: 10px;
-    font-weight: 800;
-}
-
-.status-pending {
-    background: #fff7e6;
-    color: #b76e00;
-    border: 1px solid #ffe0a3;
-}
-
-.status-approved {
-    background: #eaf8ef;
-    color: #079447;
-    border: 1px solid #bfe8cd;
-}
-
-.status-rejected {
-    background: #fff1f1;
-    color: #d93025;
-    border: 1px solid #f0d0d0;
-}
-
-.deposit-details {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 10px;
-    margin-bottom: 18px;
-}
-
-.detail-box {
-    background: #f7faf8;
-    border-radius: 8px;
-    padding: 12px;
-}
-
-.detail-box small {
-    display: block;
-    color: #66716b;
-    font-size: 10px;
-    margin-bottom: 3px;
-}
-
-.detail-box strong {
-    font-size: 12px;
-    word-break: break-word;
-}
-
-.deposit-actions {
-    display: flex;
-    gap: 10px;
-}
-
-.approve-button,
-.reject-button {
-    border: none;
-
-    padding: 11px 17px;
-    border-radius: 7px;
-
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 800;
-
-    cursor: pointer;
-}
-
-.approve-button {
-    background: #079447;
-    color: #ffffff;
-}
-
-.approve-button:hover {
-    background: #056b34;
-}
-
-.approve-button:disabled,
-.reject-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.reject-button {
-    background: #fff1f1;
-    color: #d93025;
-
-    border: 1px solid #f0d0d0;
-}
-
-.reject-button:hover {
-    background: #d93025;
-    color: #ffffff;
-}
-
-.loading,
-.empty-message,
-.error-message {
-    padding: 40px 20px;
-
-    text-align: center;
-
-    color: #66716b;
-    font-size: 13px;
-}
-
-.loading i {
-    color: #079447;
-    margin-right: 7px;
-}
-
-.empty-message i {
-    display: block;
-
-    font-size: 35px;
-    color: #079447;
-
-    margin-bottom: 10px;
-}
-
-.admin-footer {
-    margin-top: 25px;
-
-    text-align: center;
-
-    color: #66716b;
-    font-size: 11px;
-}
-
-@media (max-width: 700px) {
-
-    .admin-page {
-        width: 94%;
-        padding-top: 20px;
-    }
-
-    .admin-header {
-        padding: 18px;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .admin-header h1 {
-        font-size: 22px;
-    }
-
-    .deposit-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .deposit-details {
-        grid-template-columns: 1fr;
-    }
-
-    .deposit-top {
-        flex-direction: column;
-    }
-
-    .deposit-actions {
-        flex-direction: column;
-    }
-
-    .approve-button,
-    .reject-button {
-        width: 100%;
-    }
-}
-
-</style>
+    <style>
+
+        body {
+            background: #f5faf7;
+        }
+
+        .admin-page {
+            width: 92%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 0 70px;
+        }
+
+        .admin-header {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .admin-header h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .admin-header p {
+            color: #66716b;
+            font-size: 13px;
+        }
+
+        .admin-badge {
+            background: #eaf8ef;
+            color: #079447;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .deposit-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .stat-card i {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #eaf8ef;
+            color: #079447;
+            margin-bottom: 12px;
+        }
+
+        .stat-card h3 {
+            font-size: 24px;
+        }
+
+        .stat-card p {
+            color: #66716b;
+            font-size: 12px;
+        }
+
+        .deposits-card {
+            background: #fff;
+            border: 1px solid #e5ebe7;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .deposits-title {
+            padding: 22px;
+            border-bottom: 1px solid #e5ebe7;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .deposits-title h2 {
+            font-size: 18px;
+        }
+
+        .refresh-button {
+            border: 1px solid #079447;
+            background: #fff;
+            color: #079447;
+            padding: 9px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .refresh-button:hover {
+            background: #079447;
+            color: #fff;
+        }
+
+        .deposit-list {
+            padding: 20px;
+        }
+
+        .deposit-item {
+            border: 1px solid #e5ebe7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        .deposit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .deposit-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .customer-info h3 {
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .customer-info p {
+            color: #66716b;
+            font-size: 11px;
+        }
+
+        .status-badge {
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .status-pending {
+            background: #fff7e6;
+            color: #b76e00;
+            border: 1px solid #ffe0a3;
+        }
+
+        .status-approved {
+            background: #eaf8ef;
+            color: #079447;
+            border: 1px solid #bce8cc;
+        }
+
+        .status-rejected {
+            background: #fff1f1;
+            color: #d93025;
+            border: 1px solid #f0d0d0;
+        }
+
+        .deposit-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .detail-box {
+            background: #f7faf8;
+            border-radius: 8px;
+            padding: 12px;
+        }
+
+        .detail-box small {
+            display: block;
+            color: #66716b;
+            font-size: 10px;
+            margin-bottom: 3px;
+        }
+
+        .detail-box strong {
+            font-size: 12px;
+            word-break: break-word;
+        }
+
+        .deposit-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .approve-button,
+        .reject-button {
+            border: none;
+            padding: 11px 17px;
+            border-radius: 7px;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .approve-button {
+            background: #079447;
+            color: #fff;
+        }
+
+        .approve-button:hover {
+            background: #056b34;
+        }
+
+        .reject-button {
+            background: #fff1f1;
+            color: #d93025;
+            border: 1px solid #f0d0d0;
+        }
+
+        .reject-button:hover {
+            background: #d93025;
+            color: #fff;
+        }
+
+        .loading,
+        .empty-message,
+        .error-message {
+            padding: 40px 20px;
+            text-align: center;
+            color: #66716b;
+            font-size: 13px;
+        }
+
+        .loading i {
+            color: #079447;
+            margin-right: 7px;
+        }
+
+        .empty-message i {
+            display: block;
+            font-size: 35px;
+            color: #079447;
+            margin-bottom: 10px;
+        }
+
+        .admin-footer {
+            margin-top: 25px;
+            text-align: center;
+            color: #66716b;
+            font-size: 11px;
+        }
+
+        @media (max-width: 700px) {
+
+            .admin-page {
+                width: 94%;
+                padding-top: 20px;
+            }
+
+            .admin-header {
+                padding: 18px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .admin-header h1 {
+                font-size: 22px;
+            }
+
+            .deposit-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .deposit-details {
+                grid-template-columns: 1fr;
+            }
+
+            .deposit-top {
+                flex-direction: column;
+            }
+
+            .deposit-actions {
+                flex-direction: column;
+            }
+
+            .approve-button,
+            .reject-button {
+                width: 100%;
+            }
+        }
+
+    </style>
 
 </head>
-
 
 <body>
 
 <main class="admin-page">
 
+    <section class="admin-header">
 
-<section class="admin-header">
+        <div>
+            <h1>Deposit Management</h1>
 
-    <div>
+            <p>
+                Review customer deposit payment requests.
+            </p>
+        </div>
 
-        <h1>
-            Deposit Management
-        </h1>
+        <div class="admin-badge">
+            <i class="fa-solid fa-user-shield"></i>
+            Admin
+        </div>
 
-        <p>
-            Review customer deposit payment requests.
-        </p>
-
-    </div>
-
-
-    <div class="admin-badge">
-
-        <i class="fa-solid fa-user-shield"></i>
-
-        Admin
-
-    </div>
-
-</section>
+    </section>
 
 
-<section class="deposit-stats">
+    <section class="deposit-stats">
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3 id="pendingCount">0</h3>
+
+            <p>Pending Deposits</p>
+
+        </div>
 
 
-    <div class="stat-card">
+        <div class="stat-card">
 
-        <i class="fa-solid fa-clock"></i>
+            <i class="fa-solid fa-check-circle"></i>
 
-        <h3 id="pendingCount">
-            0
-        </h3>
+            <h3 id="approvedCount">0</h3>
 
-        <p>
-            Pending Deposits
-        </p>
+            <p>Approved Deposits</p>
 
-    </div>
+        </div>
 
 
-    <div class="stat-card">
+        <div class="stat-card">
 
-        <i class="fa-solid fa-check-circle"></i>
+            <i class="fa-solid fa-naira-sign"></i>
 
-        <h3 id="approvedCount">
-            0
-        </h3>
+            <h3 id="totalAmount">₦0.00</h3>
 
-        <p>
-            Approved Deposits
-        </p>
+            <p>Pending Amount</p>
 
-    </div>
+        </div>
+
+    </section>
 
 
-    <div class="stat-card">
+    <section class="deposits-card">
 
-        <i class="fa-solid fa-naira-sign"></i>
+        <div class="deposits-title">
 
-        <h3 id="totalAmount">
-            ₦0.00
-        </h3>
+            <h2>
+                Customer Deposit Requests
+            </h2>
 
-        <p>
-            Pending Amount
-        </p>
+            <button
+                class="refresh-button"
+                id="refreshButton">
 
-    </div>
+                <i class="fa-solid fa-rotate"></i>
+                Refresh
 
-</section>
+            </button>
 
-
-<section class="deposits-card">
-
-
-<div class="deposits-title">
-
-    <h2>
-        Customer Deposit Requests
-    </h2>
-
-    <button
-        class="refresh-button"
-        id="refreshButton">
-
-        <i class="fa-solid fa-rotate"></i>
-
-        Refresh
-
-    </button>
-
-</div>
+        </div>
 
 
-<div
-    class="deposit-list"
-    id="depositList">
+        <div
+            class="deposit-list"
+            id="depositList">
 
-    <div class="loading">
+            <div class="loading">
 
-        <i class="fa-solid fa-spinner fa-spin"></i>
+                <i class="fa-solid fa-spinner fa-spin"></i>
 
-        Loading deposits...
+                Loading deposits...
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <div class="admin-footer">
+
+        Donkelly Swift Delivery Admin Panel
 
     </div>
-
-</div>
-
-
-</section>
-
-
-<div class="admin-footer">
-
-    Donkelly Swift Delivery Admin Panel
-
-</div>
-
 
 </main>
 
@@ -509,11 +449,12 @@ import {
     collection,
     getDocs,
     doc,
-    runTransaction,
+    getDoc,
     updateDoc,
+    increment,
+    runTransaction,
     query,
-    orderBy,
-    increment
+    orderBy
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -545,10 +486,8 @@ const firebaseConfig = {
 const app =
     initializeApp(firebaseConfig);
 
-
 const auth =
     getAuth(app);
-
 
 const db =
     getFirestore(app);
@@ -561,14 +500,11 @@ const ADMIN_EMAIL =
 const depositList =
     document.getElementById("depositList");
 
-
 const pendingCount =
     document.getElementById("pendingCount");
 
-
 const approvedCount =
     document.getElementById("approvedCount");
-
 
 const totalAmount =
     document.getElementById("totalAmount");
@@ -584,6 +520,7 @@ function formatNaira(amount) {
                 maximumFractionDigits: 2
             }
         );
+
 }
 
 
@@ -595,7 +532,10 @@ function formatDate(timestamp) {
 
     try {
 
-        return timestamp.toDate().toLocaleString(
+        const date =
+            timestamp.toDate();
+
+        return date.toLocaleString(
             "en-NG",
             {
                 dateStyle: "medium",
@@ -608,6 +548,7 @@ function formatDate(timestamp) {
         return "Date unavailable";
 
     }
+
 }
 
 
@@ -624,7 +565,7 @@ function escapeHtml(value) {
 
 
 /* =====================================================
-   ADMIN AUTH
+   ADMIN LOGIN CHECK
 ===================================================== */
 
 onAuthStateChanged(
@@ -637,6 +578,7 @@ onAuthStateChanged(
                 "login.html";
 
             return;
+
         }
 
 
@@ -656,6 +598,7 @@ onAuthStateChanged(
                 "login.html";
 
             return;
+
         }
 
 
@@ -666,7 +609,12 @@ onAuthStateChanged(
 
 
 /* =====================================================
-   LOAD DEPOSITS
+   LOAD CUSTOMER DEPOSITS
+
+   IMPORTANT:
+   CUSTOMER DEPOSIT PAGE SAVES TO:
+   depositRequests
+
 ===================================================== */
 
 async function loadDeposits() {
@@ -726,7 +674,9 @@ async function loadDeposits() {
 
 
         let pending = 0;
+
         let approved = 0;
+
         let pendingAmount = 0;
 
 
@@ -751,6 +701,7 @@ async function loadDeposits() {
             );
 
             return;
+
         }
 
 
@@ -760,14 +711,11 @@ async function loadDeposits() {
                 const data =
                     depositDoc.data();
 
-
                 const depositId =
                     depositDoc.id;
 
-
                 const status =
                     data.status || "pending";
-
 
                 const amount =
                     Number(data.amount || 0);
@@ -789,8 +737,15 @@ async function loadDeposits() {
                 }
 
 
+                const customerName =
+                    data.fullName ||
+                    data.customerName ||
+                    "Customer";
+
+
                 const customerEmail =
                     data.customerEmail ||
+                    data.email ||
                     "No email";
 
 
@@ -804,41 +759,34 @@ async function loadDeposits() {
                     "Not provided";
 
 
-                const customerUid =
+                const userId =
                     data.userId ||
                     "";
 
 
-                const createdAt =
-                    formatDate(
-                        data.createdAt
-                    );
-
-
                 const item =
-                    document.createElement(
-                        "div"
-                    );
+                    document.createElement("div");
 
 
                 item.className =
                     "deposit-item";
 
 
-                let statusClass =
+                let badgeClass =
                     "status-pending";
 
 
                 if (status === "approved") {
 
-                    statusClass =
+                    badgeClass =
                         "status-approved";
 
-                } else if (
-                    status === "rejected"
-                ) {
+                }
 
-                    statusClass =
+
+                if (status === "rejected") {
+
+                    badgeClass =
                         "status-rejected";
 
                 }
@@ -851,19 +799,16 @@ async function loadDeposits() {
                         <div class="customer-info">
 
                             <h3>
-                                ${escapeHtml(customerEmail)}
+                                ${escapeHtml(customerName)}
                             </h3>
 
                             <p>
-                                User ID:
-                                ${escapeHtml(customerUid)}
+                                ${escapeHtml(customerEmail)}
                             </p>
 
                         </div>
 
-
-                        <span
-                            class="status-badge ${statusClass}">
+                        <span class="status-badge ${badgeClass}">
 
                             ${escapeHtml(
                                 status.toUpperCase()
@@ -875,7 +820,6 @@ async function loadDeposits() {
 
 
                     <div class="deposit-details">
-
 
                         <div class="detail-box">
 
@@ -923,7 +867,7 @@ async function loadDeposits() {
                             </small>
 
                             <strong>
-                                ${escapeHtml(createdAt)}
+                                ${formatDate(data.createdAt)}
                             </strong>
 
                         </div>
@@ -932,22 +876,20 @@ async function loadDeposits() {
                         <div class="detail-box">
 
                             <small>
-                                Deposit ID
+                                Customer UID
                             </small>
 
                             <strong>
-                                ${escapeHtml(depositId)}
+                                ${escapeHtml(userId)}
                             </strong>
 
                         </div>
-
 
                     </div>
 
 
                     ${
                         status === "pending"
-
                         ?
 
                         `
@@ -1001,7 +943,7 @@ async function loadDeposits() {
         );
 
 
-        attachActions();
+        attachDepositActions();
 
 
     } catch (error) {
@@ -1056,16 +998,13 @@ function updateStats(
 
 
 /* =====================================================
-   ACTIONS
+   BUTTON EVENTS
 ===================================================== */
 
-function attachActions() {
-
+function attachDepositActions() {
 
     document
-        .querySelectorAll(
-            ".approve-button"
-        )
+        .querySelectorAll(".approve-button")
         .forEach(
             function(button) {
 
@@ -1074,8 +1013,7 @@ function attachActions() {
                     function() {
 
                         approveDeposit(
-                            button.dataset.id,
-                            button
+                            button.dataset.id
                         );
 
                     }
@@ -1086,9 +1024,7 @@ function attachActions() {
 
 
     document
-        .querySelectorAll(
-            ".reject-button"
-        )
+        .querySelectorAll(".reject-button")
         .forEach(
             function(button) {
 
@@ -1097,8 +1033,7 @@ function attachActions() {
                     function() {
 
                         rejectDeposit(
-                            button.dataset.id,
-                            button
+                            button.dataset.id
                         );
 
                     }
@@ -1112,28 +1047,30 @@ function attachActions() {
 
 /* =====================================================
    APPROVE DEPOSIT
+
+   THIS DOES TWO THINGS:
+
+   1. Marks depositRequests/{depositId}
+      as approved.
+
+   2. Adds amount to
+      users/{userId}.walletBalance
+
 ===================================================== */
 
 async function approveDeposit(
-    depositId,
-    button
+    depositId
 ) {
 
     const confirmed =
         confirm(
-            "Approve this deposit and add the money to the customer's wallet?"
+            "Are you sure you want to approve this payment?"
         );
 
 
     if (!confirmed) {
         return;
     }
-
-
-    button.disabled = true;
-
-    button.innerHTML =
-        '<i class="fa-solid fa-spinner fa-spin"></i> Approving...';
 
 
     try {
@@ -1145,6 +1082,12 @@ async function approveDeposit(
                 depositId
             );
 
+
+        /*
+         * Use a Firestore transaction so the
+         * wallet cannot accidentally receive
+         * the same deposit twice.
+         */
 
         await runTransaction(
             db,
@@ -1159,7 +1102,7 @@ async function approveDeposit(
                 if (!depositSnapshot.exists()) {
 
                     throw new Error(
-                        "Deposit request no longer exists."
+                        "Deposit request does not exist."
                     );
 
                 }
@@ -1168,11 +1111,6 @@ async function approveDeposit(
                 const depositData =
                     depositSnapshot.data();
 
-
-                /*
-                 * IMPORTANT:
-                 * Prevent double payment.
-                 */
 
                 if (
                     depositData.status ===
@@ -1211,7 +1149,7 @@ async function approveDeposit(
                 if (!userId) {
 
                     throw new Error(
-                        "Customer user ID is missing."
+                        "Customer UID is missing from this deposit."
                     );
 
                 }
@@ -1264,22 +1202,7 @@ async function approveDeposit(
 
 
                 /*
-                 * UPDATE CUSTOMER WALLET
-                 */
-
-                transaction.update(
-                    userRef,
-                    {
-
-                        walletBalance:
-                            newBalance
-
-                    }
-                );
-
-
-                /*
-                 * UPDATE DEPOSIT
+                 * Mark deposit approved.
                  */
 
                 transaction.update(
@@ -1293,12 +1216,21 @@ async function approveDeposit(
                             ADMIN_EMAIL,
 
                         approvedAt:
-                            new Date(),
+                            new Date()
 
-                        creditedAmount:
-                            amount,
+                    }
+                );
 
-                        balanceAfterApproval:
+
+                /*
+                 * Add deposit to customer wallet.
+                 */
+
+                transaction.update(
+                    userRef,
+                    {
+
+                        walletBalance:
                             newBalance
 
                     }
@@ -1309,11 +1241,11 @@ async function approveDeposit(
 
 
         alert(
-            "Deposit approved successfully. The customer's wallet has been credited."
+            "Payment approved successfully. The customer's wallet has been credited."
         );
 
 
-        loadDeposits();
+        await loadDeposits();
 
 
     } catch (error) {
@@ -1325,16 +1257,9 @@ async function approveDeposit(
 
 
         alert(
-            "Unable to approve deposit: " +
+            "Unable to approve payment:\n\n" +
             error.message
         );
-
-
-        button.disabled =
-            false;
-
-        button.innerHTML =
-            '<i class="fa-solid fa-check"></i> Approve Payment';
 
     }
 
@@ -1346,22 +1271,18 @@ async function approveDeposit(
 ===================================================== */
 
 async function rejectDeposit(
-    depositId,
-    button
+    depositId
 ) {
 
     const confirmed =
         confirm(
-            "Are you sure you want to reject this deposit?"
+            "Are you sure you want to reject this payment?"
         );
 
 
     if (!confirmed) {
         return;
     }
-
-
-    button.disabled = true;
 
 
     try {
@@ -1372,6 +1293,37 @@ async function rejectDeposit(
                 "depositRequests",
                 depositId
             );
+
+
+        const snapshot =
+            await getDoc(
+                depositRef
+            );
+
+
+        if (!snapshot.exists()) {
+
+            throw new Error(
+                "Deposit request does not exist."
+            );
+
+        }
+
+
+        const data =
+            snapshot.data();
+
+
+        if (
+            data.status ===
+            "approved"
+        ) {
+
+            throw new Error(
+                "This deposit has already been approved."
+            );
+
+        }
 
 
         await updateDoc(
@@ -1396,7 +1348,7 @@ async function rejectDeposit(
         );
 
 
-        loadDeposits();
+        await loadDeposits();
 
 
     } catch (error) {
@@ -1408,13 +1360,9 @@ async function rejectDeposit(
 
 
         alert(
-            "Unable to reject deposit: " +
+            "Unable to reject payment:\n\n" +
             error.message
         );
-
-
-        button.disabled =
-            false;
 
     }
 
@@ -1435,4 +1383,5 @@ document
 </script>
 
 </body>
+
 </html>
